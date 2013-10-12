@@ -343,7 +343,7 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private System.Nullable<System.Guid> _ID;
+	private System.Guid _ID;
 	
 	private string _username;
 	
@@ -357,7 +357,7 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _idcard;
 	
-	private System.Nullable<int> _status;
+	private System.Nullable<byte> _status;
 	
 	private System.Nullable<int> _fail_login;
 	
@@ -365,7 +365,7 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _ip;
 	
-	private System.Nullable<byte> _role;
+	private System.Nullable<int> _role;
 	
 	private EntitySet<char_task> _char_tasks;
 	
@@ -377,7 +377,7 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDChanging(System.Nullable<System.Guid> value);
+    partial void OnIDChanging(System.Guid value);
     partial void OnIDChanged();
     partial void OnusernameChanging(string value);
     partial void OnusernameChanged();
@@ -391,7 +391,7 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnphoneChanged();
     partial void OnidcardChanging(string value);
     partial void OnidcardChanged();
-    partial void OnstatusChanging(System.Nullable<int> value);
+    partial void OnstatusChanging(System.Nullable<byte> value);
     partial void OnstatusChanged();
     partial void Onfail_loginChanging(System.Nullable<int> value);
     partial void Onfail_loginChanged();
@@ -399,7 +399,7 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
     partial void Ondate_lockChanged();
     partial void OnipChanging(string value);
     partial void OnipChanged();
-    partial void OnroleChanging(System.Nullable<byte> value);
+    partial void OnroleChanging(System.Nullable<int> value);
     partial void OnroleChanged();
     #endregion
 	
@@ -411,8 +411,8 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="UniqueIdentifier")]
-	public System.Nullable<System.Guid> ID
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="UniqueIdentifier NOT NULL")]
+	public System.Guid ID
 	{
 		get
 		{
@@ -551,8 +551,8 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Int")]
-	public System.Nullable<int> status
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="TinyInt")]
+	public System.Nullable<byte> status
 	{
 		get
 		{
@@ -632,7 +632,7 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_role", DbType="TinyInt")]
-	public System.Nullable<byte> role
+	public System.Nullable<int> role
 	{
 		get
 		{
@@ -3194,7 +3194,7 @@ public partial class inventory : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _ID;
+	private System.Guid _ID;
 	
 	private string _username;
 	
@@ -3210,7 +3210,7 @@ public partial class inventory : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIDChanging(int value);
+    partial void OnIDChanging(System.Guid value);
     partial void OnIDChanged();
     partial void OnusernameChanging(string value);
     partial void OnusernameChanged();
@@ -3228,8 +3228,8 @@ public partial class inventory : INotifyPropertyChanging, INotifyPropertyChanged
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ID
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+	public System.Guid ID
 	{
 		get
 		{

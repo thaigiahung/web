@@ -19,15 +19,20 @@ public partial class adm_account : System.Web.UI.Page
         {
             account acc = new account
                         {
+                            ID =  Guid.NewGuid(),
                             username = txtUsername.Text,
                             password = FormsAuthentication.HashPasswordForStoringInConfigFile(txtPassword.Text, "MD5"),
                             email = txtEmail.Text,
-                            name = txtName.Text
+                            name = txtName.Text,
+                            status = 1,
+                            role = int.Parse(ddlRole.SelectedValue)
                         };
             db.accounts.InsertOnSubmit(acc);
             db.SubmitChanges();
 
             lblError.Text = "Thành công!";
+
+            gvAccount.DataBind();
         }
         catch (Exception ex)
         {

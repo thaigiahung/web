@@ -11,26 +11,18 @@
     
     <asp:GridView ID="gvAccount" runat="server" AllowPaging="True" 
         AutoGenerateColumns="False" CellPadding="4" DataKeyNames="username" 
-        DataSourceID="sqlAccount" ForeColor="#333333" GridLines="None">
+        DataSourceID="sqlAccount" ForeColor="#333333" GridLines="None" 
+        Width="100%">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
             <asp:BoundField DataField="username" HeaderText="username" ReadOnly="True" 
                 SortExpression="username" />
-            <asp:BoundField DataField="password" HeaderText="password" 
-                SortExpression="password" />
             <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
             <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
             <asp:BoundField DataField="phone" HeaderText="phone" SortExpression="phone" />
-            <asp:BoundField DataField="idcard" HeaderText="idcard" 
-                SortExpression="idcard" />
             <asp:BoundField DataField="status" HeaderText="status" 
                 SortExpression="status" />
-            <asp:BoundField DataField="fail_login" HeaderText="fail_login" 
-                SortExpression="fail_login" />
-            <asp:BoundField DataField="date_lock" HeaderText="date_lock" 
-                SortExpression="date_lock" />
             <asp:BoundField DataField="ip" HeaderText="ip" SortExpression="ip" />
             <asp:BoundField DataField="role" HeaderText="role" SortExpression="role" />
         </Columns>
@@ -131,11 +123,23 @@
         </tr>
         <tr>
             <td>
-                &nbsp;</td>
+                Loại tài khoản</td>
+            <td>
+                :</td>
+            <td>
+                <asp:DropDownList ID="ddlRole" runat="server">
+                    <asp:ListItem Selected="True" Value="0">Người dùng</asp:ListItem>
+                    <asp:ListItem Value="1">Quản trị</asp:ListItem>
+                </asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
             <td>
                 &nbsp;</td>
             <td>
-                <asp:Button ID="btnSubmit" runat="server" onclick="btnSubmit_Click" 
+                &nbsp;</td>
+            <td>
+                <asp:Button class="btn btn-primary" ID="btnSubmit" runat="server" onclick="btnSubmit_Click" 
                     Text="Tạo" />
             </td>
         </tr>

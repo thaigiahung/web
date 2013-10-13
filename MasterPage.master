@@ -241,11 +241,14 @@
            
                         <!-- component -->
                         <div class="content-border">
-                            <h2 class="black-bar-header">Trang liên kết</h2>
-                        </div>
-
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
+                            <h2 class="black-bar-header">Trang liên kết</h2>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+
+                        
 
                     
                     </div> 

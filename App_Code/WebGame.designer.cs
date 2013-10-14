@@ -335,6 +335,30 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
 			return this.GetTable<shop>();
 		}
 	}
+	
+	public System.Data.Linq.Table<HeroCart> HeroCarts
+	{
+		get
+		{
+			return this.GetTable<HeroCart>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Hero> Heros
+	{
+		get
+		{
+			return this.GetTable<Hero>();
+		}
+	}
+	
+	public System.Data.Linq.Table<HeroType> HeroTypes
+	{
+		get
+		{
+			return this.GetTable<HeroType>();
+		}
+	}
 }
 
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.account")]
@@ -6895,6 +6919,321 @@ public partial class shop : INotifyPropertyChanging, INotifyPropertyChanged
 		if ((this.PropertyChanged != null))
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HeroCart")]
+public partial class HeroCart
+{
+	
+	private int _IdCart;
+	
+	private string _UserName;
+	
+	private System.Nullable<int> _SelectedIndex;
+	
+	private System.Nullable<int> _IdSelectedHero;
+	
+	public HeroCart()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCart", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+	public int IdCart
+	{
+		get
+		{
+			return this._IdCart;
+		}
+		set
+		{
+			if ((this._IdCart != value))
+			{
+				this._IdCart = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50)")]
+	public string UserName
+	{
+		get
+		{
+			return this._UserName;
+		}
+		set
+		{
+			if ((this._UserName != value))
+			{
+				this._UserName = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SelectedIndex", DbType="Int")]
+	public System.Nullable<int> SelectedIndex
+	{
+		get
+		{
+			return this._SelectedIndex;
+		}
+		set
+		{
+			if ((this._SelectedIndex != value))
+			{
+				this._SelectedIndex = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSelectedHero", DbType="Int")]
+	public System.Nullable<int> IdSelectedHero
+	{
+		get
+		{
+			return this._IdSelectedHero;
+		}
+		set
+		{
+			if ((this._IdSelectedHero != value))
+			{
+				this._IdSelectedHero = value;
+			}
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Hero")]
+public partial class Hero
+{
+	
+	private int _IdHero;
+	
+	private string _Name;
+	
+	private System.Nullable<int> _IdType;
+	
+	private string _Lore;
+	
+	private string _Avatar;
+	
+	private string _Skin;
+	
+	public Hero()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdHero", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+	public int IdHero
+	{
+		get
+		{
+			return this._IdHero;
+		}
+		set
+		{
+			if ((this._IdHero != value))
+			{
+				this._IdHero = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Name
+	{
+		get
+		{
+			return this._Name;
+		}
+		set
+		{
+			if ((this._Name != value))
+			{
+				this._Name = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdType", DbType="Int")]
+	public System.Nullable<int> IdType
+	{
+		get
+		{
+			return this._IdType;
+		}
+		set
+		{
+			if ((this._IdType != value))
+			{
+				this._IdType = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lore", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Lore
+	{
+		get
+		{
+			return this._Lore;
+		}
+		set
+		{
+			if ((this._Lore != value))
+			{
+				this._Lore = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Avatar", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Avatar
+	{
+		get
+		{
+			return this._Avatar;
+		}
+		set
+		{
+			if ((this._Avatar != value))
+			{
+				this._Avatar = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skin", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Skin
+	{
+		get
+		{
+			return this._Skin;
+		}
+		set
+		{
+			if ((this._Skin != value))
+			{
+				this._Skin = value;
+			}
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HeroType")]
+public partial class HeroType
+{
+	
+	private int _IdType;
+	
+	private string _TypeName;
+	
+	private System.Nullable<int> _HP;
+	
+	private System.Nullable<int> _Damage;
+	
+	private System.Nullable<int> _Defence;
+	
+	private System.Nullable<int> _Energy;
+	
+	public HeroType()
+	{
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdType", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+	public int IdType
+	{
+		get
+		{
+			return this._IdType;
+		}
+		set
+		{
+			if ((this._IdType != value))
+			{
+				this._IdType = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeName", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string TypeName
+	{
+		get
+		{
+			return this._TypeName;
+		}
+		set
+		{
+			if ((this._TypeName != value))
+			{
+				this._TypeName = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HP", DbType="Int")]
+	public System.Nullable<int> HP
+	{
+		get
+		{
+			return this._HP;
+		}
+		set
+		{
+			if ((this._HP != value))
+			{
+				this._HP = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Damage", DbType="Int")]
+	public System.Nullable<int> Damage
+	{
+		get
+		{
+			return this._Damage;
+		}
+		set
+		{
+			if ((this._Damage != value))
+			{
+				this._Damage = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Defence", DbType="Int")]
+	public System.Nullable<int> Defence
+	{
+		get
+		{
+			return this._Defence;
+		}
+		set
+		{
+			if ((this._Defence != value))
+			{
+				this._Defence = value;
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Energy", DbType="Int")]
+	public System.Nullable<int> Energy
+	{
+		get
+		{
+			return this._Energy;
+		}
+		set
+		{
+			if ((this._Energy != value))
+			{
+				this._Energy = value;
+			}
 		}
 	}
 }

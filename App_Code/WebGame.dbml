@@ -39,7 +39,7 @@
     <Type Name="category">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="cat_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="category_new" Member="news" ThisKey="ID" OtherKey="news_category" Type="new" />
+      <Association Name="category_new" Member="news" ThisKey="ID" OtherKey="news_category" Type="news" />
     </Type>
   </Table>
   <Table Name="dbo.char_level" Member="char_levels">
@@ -245,15 +245,6 @@
       <Column Name="monster_drop_list" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.news" Member="news">
-    <Type Name="new">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="news_title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="news_category" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="news_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="category_new" Member="category" ThisKey="news_category" OtherKey="ID" Type="category" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.original_item" Member="original_items">
     <Type Name="original_item">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -311,6 +302,16 @@
       <Column Name="shop_item_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="shop_item_price" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="original_item_shop" Member="original_item" ThisKey="shop_item_id" OtherKey="ID" Type="original_item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.news" Member="news">
+    <Type Name="news">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="news_title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="news_category" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="news_content" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="news_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="category_new" Member="category" ThisKey="news_category" OtherKey="ID" Type="category" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

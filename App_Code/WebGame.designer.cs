@@ -86,9 +86,6 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
   partial void Insertmonster(monster instance);
   partial void Updatemonster(monster instance);
   partial void Deletemonster(monster instance);
-  partial void Insertnew(@new instance);
-  partial void Updatenew(@new instance);
-  partial void Deletenew(@new instance);
   partial void Insertoriginal_item(original_item instance);
   partial void Updateoriginal_item(original_item instance);
   partial void Deleteoriginal_item(original_item instance);
@@ -104,6 +101,9 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
   partial void Insertshop(shop instance);
   partial void Updateshop(shop instance);
   partial void Deleteshop(shop instance);
+  partial void Insertnews(news instance);
+  partial void Updatenews(news instance);
+  partial void Deletenews(news instance);
   #endregion
 	
 	public WebGameDataContext() : 
@@ -288,14 +288,6 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<@new> news
-	{
-		get
-		{
-			return this.GetTable<@new>();
-		}
-	}
-	
 	public System.Data.Linq.Table<original_item> original_items
 	{
 		get
@@ -333,6 +325,14 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<shop>();
+		}
+	}
+	
+	public System.Data.Linq.Table<news> news
+	{
+		get
+		{
+			return this.GetTable<news>();
 		}
 	}
 }
@@ -1033,7 +1033,7 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _cat_name;
 	
-	private EntitySet<@new> _news;
+	private EntitySet<news> _news;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1047,7 +1047,7 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public category()
 	{
-		this._news = new EntitySet<@new>(new Action<@new>(this.attach_news), new Action<@new>(this.detach_news));
+		this._news = new EntitySet<news>(new Action<news>(this.attach_news), new Action<news>(this.detach_news));
 		OnCreated();
 	}
 	
@@ -1092,7 +1092,7 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_new", Storage="_news", ThisKey="ID", OtherKey="news_category")]
-	public EntitySet<@new> news
+	public EntitySet<news> news
 	{
 		get
 		{
@@ -1124,13 +1124,13 @@ public partial class category : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	private void attach_news(@new entity)
+	private void attach_news(news entity)
 	{
 		this.SendPropertyChanging();
 		entity.category = this;
 	}
 	
-	private void detach_news(@new entity)
+	private void detach_news(news entity)
 	{
 		this.SendPropertyChanging();
 		entity.category = null;
@@ -5560,181 +5560,6 @@ public partial class monster : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.news")]
-public partial class @new : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _ID;
-	
-	private string _news_title;
-	
-	private System.Nullable<int> _news_category;
-	
-	private string _news_content;
-	
-	private EntityRef<category> _category;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void Onnews_titleChanging(string value);
-    partial void Onnews_titleChanged();
-    partial void Onnews_categoryChanging(System.Nullable<int> value);
-    partial void Onnews_categoryChanged();
-    partial void Onnews_contentChanging(string value);
-    partial void Onnews_contentChanged();
-    #endregion
-	
-	public @new()
-	{
-		this._category = default(EntityRef<category>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ID
-	{
-		get
-		{
-			return this._ID;
-		}
-		set
-		{
-			if ((this._ID != value))
-			{
-				this.OnIDChanging(value);
-				this.SendPropertyChanging();
-				this._ID = value;
-				this.SendPropertyChanged("ID");
-				this.OnIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_news_title", DbType="NVarChar(100)")]
-	public string news_title
-	{
-		get
-		{
-			return this._news_title;
-		}
-		set
-		{
-			if ((this._news_title != value))
-			{
-				this.Onnews_titleChanging(value);
-				this.SendPropertyChanging();
-				this._news_title = value;
-				this.SendPropertyChanged("news_title");
-				this.Onnews_titleChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_news_category", DbType="Int")]
-	public System.Nullable<int> news_category
-	{
-		get
-		{
-			return this._news_category;
-		}
-		set
-		{
-			if ((this._news_category != value))
-			{
-				if (this._category.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onnews_categoryChanging(value);
-				this.SendPropertyChanging();
-				this._news_category = value;
-				this.SendPropertyChanged("news_category");
-				this.Onnews_categoryChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_news_content", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-	public string news_content
-	{
-		get
-		{
-			return this._news_content;
-		}
-		set
-		{
-			if ((this._news_content != value))
-			{
-				this.Onnews_contentChanging(value);
-				this.SendPropertyChanging();
-				this._news_content = value;
-				this.SendPropertyChanged("news_content");
-				this.Onnews_contentChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_new", Storage="_category", ThisKey="news_category", OtherKey="ID", IsForeignKey=true)]
-	public category category
-	{
-		get
-		{
-			return this._category.Entity;
-		}
-		set
-		{
-			category previousValue = this._category.Entity;
-			if (((previousValue != value) 
-						|| (this._category.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._category.Entity = null;
-					previousValue.news.Remove(this);
-				}
-				this._category.Entity = value;
-				if ((value != null))
-				{
-					value.news.Add(this);
-					this._news_category = value.ID;
-				}
-				else
-				{
-					this._news_category = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("category");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.original_item")]
 public partial class original_item : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -6874,6 +6699,205 @@ public partial class shop : INotifyPropertyChanging, INotifyPropertyChanged
 					this._shop_item_id = default(Nullable<int>);
 				}
 				this.SendPropertyChanged("original_item");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.news")]
+public partial class news : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _ID;
+	
+	private string _news_title;
+	
+	private System.Nullable<int> _news_category;
+	
+	private string _news_content;
+	
+	private System.Nullable<System.DateTime> _news_date;
+	
+	private EntityRef<category> _category;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void Onnews_titleChanging(string value);
+    partial void Onnews_titleChanged();
+    partial void Onnews_categoryChanging(System.Nullable<int> value);
+    partial void Onnews_categoryChanged();
+    partial void Onnews_contentChanging(string value);
+    partial void Onnews_contentChanged();
+    partial void Onnews_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onnews_dateChanged();
+    #endregion
+	
+	public news()
+	{
+		this._category = default(EntityRef<category>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int ID
+	{
+		get
+		{
+			return this._ID;
+		}
+		set
+		{
+			if ((this._ID != value))
+			{
+				this.OnIDChanging(value);
+				this.SendPropertyChanging();
+				this._ID = value;
+				this.SendPropertyChanged("ID");
+				this.OnIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_news_title", DbType="NVarChar(100)")]
+	public string news_title
+	{
+		get
+		{
+			return this._news_title;
+		}
+		set
+		{
+			if ((this._news_title != value))
+			{
+				this.Onnews_titleChanging(value);
+				this.SendPropertyChanging();
+				this._news_title = value;
+				this.SendPropertyChanged("news_title");
+				this.Onnews_titleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_news_category", DbType="Int")]
+	public System.Nullable<int> news_category
+	{
+		get
+		{
+			return this._news_category;
+		}
+		set
+		{
+			if ((this._news_category != value))
+			{
+				if (this._category.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onnews_categoryChanging(value);
+				this.SendPropertyChanging();
+				this._news_category = value;
+				this.SendPropertyChanged("news_category");
+				this.Onnews_categoryChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_news_content", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	public string news_content
+	{
+		get
+		{
+			return this._news_content;
+		}
+		set
+		{
+			if ((this._news_content != value))
+			{
+				this.Onnews_contentChanging(value);
+				this.SendPropertyChanging();
+				this._news_content = value;
+				this.SendPropertyChanged("news_content");
+				this.Onnews_contentChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_news_date", DbType="DateTime")]
+	public System.Nullable<System.DateTime> news_date
+	{
+		get
+		{
+			return this._news_date;
+		}
+		set
+		{
+			if ((this._news_date != value))
+			{
+				this.Onnews_dateChanging(value);
+				this.SendPropertyChanging();
+				this._news_date = value;
+				this.SendPropertyChanged("news_date");
+				this.Onnews_dateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="category_new", Storage="_category", ThisKey="news_category", OtherKey="ID", IsForeignKey=true)]
+	public category category
+	{
+		get
+		{
+			return this._category.Entity;
+		}
+		set
+		{
+			category previousValue = this._category.Entity;
+			if (((previousValue != value) 
+						|| (this._category.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._category.Entity = null;
+					previousValue.news.Remove(this);
+				}
+				this._category.Entity = value;
+				if ((value != null))
+				{
+					value.news.Add(this);
+					this._news_category = value.ID;
+				}
+				else
+				{
+					this._news_category = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("category");
 			}
 		}
 	}

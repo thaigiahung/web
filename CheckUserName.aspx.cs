@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.Services;
 using System.Web.UI.WebControls;
+using System.Web.Script.Services;
+
 
 public partial class CheckUserName : User
 {
@@ -11,19 +14,49 @@ public partial class CheckUserName : User
     {
 
     }
-    [System.Web.Services.WebMethod]
-    public bool CheckUN(string UserName)
+    public bool getuser(string un)
     {
-        bool check = false;
-        string username = UserName; 
-        account user = db.accounts.Single(n => n.username == username);
+        string username = un;
+        account user = db.accounts.SingleOrDefault(n => n.username == username);
         if (user != null)
         {
-            check = false;
-            
+            return false;
+
         }
-        else check = true;
+        else return true;
+    }
+    [WebMethod]
+    [ScriptMethod]
+    public static bool CheckUN(string UserName)
+    {
+        bool check = false;
+        CheckUserName user = new CheckUserName();
+        check = user.getuser(UserName);
+
         
+
+        return check;
+    }
+    public bool getEmail(string mail)
+    {
+        string email = mail;
+        account user = db.accounts.SingleOrDefault(n => n.email == email);
+        if (user != null)
+        {
+            return false;
+
+        }
+        else return true;
+    }
+    [WebMethod]
+    [ScriptMethod]
+    public static bool checkEmail(string Email)
+    {
+        bool check = false;
+        CheckUserName user = new CheckUserName();
+        check = user.getEmail(Email);
         return check;
     }
 }
+
+    

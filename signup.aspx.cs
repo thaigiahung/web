@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Net;
 using System.Net.Mail;
 using System.IO;
+using System.Web.Security;
 
 public partial class signup : User
 {
@@ -19,12 +20,14 @@ public partial class signup : User
     {
         account newuser = new account
         {
+            ID = Guid.NewGuid(),
             username = txtUN.Text,
-            password = txtPW.Text,
+            password = FormsAuthentication.HashPasswordForStoringInConfigFile(txtPW.Text, "MD5"),
             email = txtEmail.Text,
             name = txtName.Text,
             idcard = txtIDCard.Text,
             phone = txtPhone.Text,
+            status = 0,
             fail_login = 0,
             ip = (Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? Request.ServerVariables["REMOTE_ADDR"]).Split(',')[0].Trim(),
             role = 0,
@@ -37,7 +40,7 @@ public partial class signup : User
             //send verification email
 
             string urlBase = Request.Url.GetLeftPart(UriPartial.Authority) + Request.ApplicationPath;
-            string verifyUrl = "activate.aspx?ID=" + newuser.ID.ToString();
+            string verifyUrl = "/activate.aspx?ID=" + newuser.ID.ToString();
             string fullPath = urlBase + verifyUrl;
             string AppPath = Request.PhysicalApplicationPath;
             StreamReader sr = new StreamReader(AppPath + "resources/EmailTemplates/VerifyNewUser.txt");
@@ -68,7 +71,7 @@ public partial class signup : User
         }
         catch(Exception ex)
         {
-            
+            Label1.Text = ex.Message;
         }
         
 

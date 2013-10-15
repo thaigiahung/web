@@ -87,80 +87,92 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<table align="center">
+<table align="center" width="800">
    
         <tr>
-            <td></td>
-            <td></td>
             <td width="200"></td>
+            <td width="200"></td>
+            <td width="400"></td>
         </tr>
         <tr>
-            <td width="200" align="right">Tên đăng nhập: </td>
+            <td width="100" align="right">Tên đăng nhập: </td>
             <td>
-                <asp:TextBox ID="txtUN" runat="server"  width="200" MaxLength="20"></asp:TextBox>
+                <asp:TextBox ID="txtUN" runat="server" MaxLength="20" Width="200px"></asp:TextBox>
             </td>
             <td align="left">
+                <span id="checkReturnUserName"></span>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
-                    ControlToValidate="txtUN" ErrorMessage="Không được để trống" ForeColor="Red"></asp:RequiredFieldValidator>
-                <span id="checkReturnUserName"></span></td>
+                    ControlToValidate="txtUN" ErrorMessage="Không được để trống" 
+                    ForeColor="Red" Font-Bold="True" Font-Size="Small"></asp:RequiredFieldValidator>
+                </td>
         </tr>
         <tr>
             <td  align="right">Mật khẩu: </td>
             <td>
-                <asp:TextBox ID="txtPW" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox></td>
+                <asp:TextBox ID="txtPW" runat="server" TextMode="Password" MaxLength="20" 
+                    Width="200px"></asp:TextBox></td>
             <td>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-                    ControlToValidate="txtPW" ErrorMessage="Không được để trống" ForeColor="Red"></asp:RequiredFieldValidator>
+                    ControlToValidate="txtPW" ErrorMessage="Không được để trống" 
+                    ForeColor="Red" Font-Bold="True" Font-Size="Small"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td  align="right">Nhập lại mật khẩu: </td>
             <td>
-                <asp:TextBox ID="TXTRePW" runat="server" TextMode="Password" MaxLength="20"></asp:TextBox></td>
+                <asp:TextBox ID="TXTRePW" runat="server" TextMode="Password" MaxLength="20" 
+                    Width="200px"></asp:TextBox></td>
             <td>
                 <asp:CompareValidator ID="CompareValidator1" runat="server" 
                     ControlToCompare="txtPW" ControlToValidate="TXTRePW" 
-                    ErrorMessage="Mật khẩu nhập lại không chính xác" ForeColor="Red"></asp:CompareValidator>
+                    ErrorMessage="Mật khẩu nhập lại không chính xác" ForeColor="Red" 
+                    Font-Bold="True" Font-Size="Small"></asp:CompareValidator>
             </td>
         </tr>
         <tr>
             <td align="right" >Email: </td>
             <td>
-                <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox></td>
-            <td>
+                <asp:TextBox ID="txtEmail" runat="server" Width="200px"></asp:TextBox></td>
+            <td><span id="checkReturnEmail"></span>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
                     ErrorMessage="Không được để trống" ForeColor="Red" 
-                    ControlToValidate="txtEmail"></asp:RequiredFieldValidator>
-                <span id="checkReturnEmail"></span></td>
+                    ControlToValidate="txtEmail" Font-Bold="True" Font-Size="Small"></asp:RequiredFieldValidator>
+
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                    ControlToValidate="txtEmail" ErrorMessage="Email không hợp lệ" Font-Bold="True" 
+                    Font-Size="Small" ForeColor="Red" 
+                    ValidationExpression="^.+@[^\.].*\.[a-z]{2,}$"></asp:RegularExpressionValidator>
+
+           </td>
         </tr>
         <tr>
-            <td colspan="3" align="center">--------------------------------------------</td>
+            <td colspan="3" align="center">----------------------------------------------------------------------------------------------</td>
             
         </tr>
         <tr>
             <td align="right">Họ & tên: </td>
             <td>
-                <asp:TextBox ID="txtName" runat="server"></asp:TextBox></td>
+                <asp:TextBox ID="txtName" runat="server" Width="200px"></asp:TextBox></td>
             <td></td>
         </tr>
         <tr>
             <td align="right">Số điện thoại: </td>
             <td>
-                <asp:TextBox ID="txtPhone" runat="server"></asp:TextBox></td>
+                <asp:TextBox ID="txtPhone" runat="server" Width="200px"></asp:TextBox></td>
             <td></td>
         </tr>
         <tr>
             <td align="right">Số CMND</td>
             <td>
-                <asp:TextBox ID="txtIDCard" runat="server"></asp:TextBox></td>
+                <asp:TextBox ID="txtIDCard" runat="server" Width="200px"></asp:TextBox></td>
             <td></td>
         </tr>
         <tr>
-            <td>
-                </td>
+            <td></td>
             <td><asp:Button ID="btnSubmit" runat="server" Text="Đăng Kí" 
                     onclick="btnSubmit_Click" /></td>
-            <td></td>
+            <td>
+                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></td>
         </tr>
     </table>
 

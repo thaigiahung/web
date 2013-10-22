@@ -26,6 +26,7 @@
                     <td align=right>
                         <asp:Button ID="BtnLogin" runat="server" Text="Đăng nhập" 
                             onclick="BtnLogin_Click" />
+                        <asp:Label ID="Pass" runat="server" Text="Label"></asp:Label>
                     </td>
                 </tr>
                 <tr>

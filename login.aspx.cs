@@ -25,8 +25,8 @@ public partial class login : User
             string UN = txtUN.Text;
             string PW = FormsAuthentication.HashPasswordForStoringInConfigFile(txtPW.Text, "MD5");
             account user = db.accounts.Single(n => n.username == UN);
+            Pass.Text = PW;
             
-
             try
             {
                 if (PW == user.password)

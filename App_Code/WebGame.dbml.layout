@@ -44,12 +44,6 @@
         <elementListCompartment Id="c2e0e4f2-b5fe-4cdb-a12c-e3d502872f49" absoluteBounds="6.515, 9.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" absoluteBounds="9.25, 2.375, 2, 6.0015283203125005">
-      <DataClassMoniker Name="/WebGameDataContext/character" />
-      <nestedChildShapes>
-        <elementListCompartment Id="59c90661-9907-4ca9-ad71-52b9caa2c204" absoluteBounds="9.265, 2.835, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="8d7bf0ff-fa76-4715-885a-f8b041bdd882" absoluteBounds="6.5, 11.125, 2, 1.9631982421875005">
       <DataClassMoniker Name="/WebGameDataContext/clan" />
       <nestedChildShapes>
@@ -152,126 +146,56 @@
         <elementListCompartment Id="5b056139-fbc6-4664-a82c-6468ba82bc7e" absoluteBounds="14.515, 2.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.5 : 14.2124239095052); (9.25 : 14.2124239095052)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.5 : 14.2124239095052); (8.79166666666667 : 14.2124239095052 : JumpStart); (8.95833333333333 : 14.2124239095052 : JumpEnd); (9.04166666666667 : 14.2124239095052 : JumpStart); (9.20833333333333 : 14.2124239095052 : JumpEnd); (9.25 : 14.2124239095052)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/account/account_char_task" />
       <nodes>
         <classShapeMoniker Id="7e69db8e-2e5a-4406-987c-227b14e84e6d" />
         <classShapeMoniker Id="05e7f2d6-87fc-4d2a-9f20-e2606ebaa393" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 17.375); (8.875 : 17); (8.875 : 13.7624599547526); (9.25 : 13.7624599547526)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.5 : 17.375); (8.875 : 17); (8.875 : 13.7624599547526); (9.04166666666667 : 13.7624599547526 : JumpStart); (9.20833333333333 : 13.7624599547526 : JumpEnd); (9.25 : 13.7624599547526)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/task/task_char_task" />
       <nodes>
         <classShapeMoniker Id="360359c6-5f5a-4298-85c0-7a6676ff58d3" />
         <classShapeMoniker Id="05e7f2d6-87fc-4d2a-9f20-e2606ebaa393" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 13.625); (8.875 : 13.25); (8.875 : 4.97741821289063); (9.25 : 4.97741821289063)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/account/account_character" />
-      <nodes>
-        <classShapeMoniker Id="7e69db8e-2e5a-4406-987c-227b14e84e6d" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 10.2917504882813); (8.79166666666667 : 10.2917504882813 : JumpStart); (8.95833333333333 : 10.2917504882813 : JumpEnd); (9.46875 : 10.2917504882813); (9.46875 : 7.57983642578125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/char_title/char_title_character" />
-      <nodes>
-        <classShapeMoniker Id="761d5761-ab2f-4d81-aad6-673c12f9431c" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 12.0017712402344); (8.79166666666667 : 12.0017712402344 : JumpStart); (8.95833333333333 : 12.0017712402344 : JumpEnd); (9.3281225 : 12.0017712402344); (9.3281225 : 7.57983642578125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/clan/clan_character" />
-      <nodes>
-        <classShapeMoniker Id="8d7bf0ff-fa76-4715-885a-f8b041bdd882" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 16.3015485417668); (8.81607443490112 : 16.6176229766679 : JumpStart); (8.93392556509888 : 16.7354741068657 : JumpEnd); (9.0625 : 16.8640485417668); (9.0625 : 16.1875); (9.25 : 16.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.5 : 16.3015485417668); (9.0625 : 16.8640485417668); (9.0625 : 16.1875); (9.25 : 16.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/account/account_inventory" />
       <nodes>
         <classShapeMoniker Id="7e69db8e-2e5a-4406-987c-227b14e84e6d" />
         <classShapeMoniker Id="6366871f-3e16-48a2-85bb-c2dd20dbd668" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 3.46875); (9.25 : 3.46875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/item/item_character" />
-      <nodes>
-        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.35709757486979); (9.25 : 6.35709757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/item/item_character1" />
-      <nodes>
-        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 3.828125); (9.25 : 3.828125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/item/item_character2" />
-      <nodes>
-        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 3.109375); (9.25 : 3.109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/item/item_character3" />
-      <nodes>
-        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.00439636230469); (8.79166666666667 : 6.00439636230469 : JumpStart); (8.95833333333333 : 6.00439636230469 : JumpEnd); (9.25 : 6.00439636230469)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/item/item_character4" />
-      <nodes>
-        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.7097987874349); (8.79166666666667 : 6.7097987874349 : JumpStart); (8.95833333333333 : 6.7097987874349 : JumpEnd); (9.25 : 6.7097987874349)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/item/item_character5" />
-      <nodes>
-        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.0078125); (9.25 : 4.0078125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/item/item_character6" />
-      <nodes>
-        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.92307657877604); (3.5 : 4.92307657877604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 4.97199625651042); (3.5 : 4.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/WebGameDataContext/item_option/item_option_item" />
       <nodes>
         <classShapeMoniker Id="bb85c92c-02fa-4e4b-afc7-4023963faabe" />
         <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.58653828938802); (3.5 : 4.58653828938802)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 4.61099812825521); (3.5 : 4.61099812825521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/WebGameDataContext/item_option/item_option_item1" />
       <nodes>
         <classShapeMoniker Id="bb85c92c-02fa-4e4b-afc7-4023963faabe" />
         <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.25961486816406); (3.5 : 5.25961486816406)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 5.33299438476562); (3.5 : 5.33299438476562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/WebGameDataContext/item_option/item_option_item2" />
       <nodes>
         <classShapeMoniker Id="bb85c92c-02fa-4e4b-afc7-4023963faabe" />
         <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.09134572347005); (3.5 : 5.09134572347005)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 5.15249532063802); (3.5 : 5.15249532063802)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/WebGameDataContext/item_option/item_option_item3" />
       <nodes>
         <classShapeMoniker Id="bb85c92c-02fa-4e4b-afc7-4023963faabe" />
         <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.75480743408203); (3.5 : 4.75480743408203)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.75 : 4.79149719238281); (3.5 : 4.79149719238281)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/WebGameDataContext/item_option/item_option_item4" />
       <nodes>
         <classShapeMoniker Id="bb85c92c-02fa-4e4b-afc7-4023963faabe" />
@@ -285,13 +209,6 @@
         <classShapeMoniker Id="eda1932b-3a31-4495-9b86-bc57e2f73b05" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 7.28991821289063); (8.79166666666667 : 7.28991821289063 : JumpStart); (8.95833333333333 : 7.28991821289063 : JumpEnd); (9.25 : 7.28991821289063)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/WebGameDataContext/map/map_character" />
-      <nodes>
-        <classShapeMoniker Id="cb8c45ca-e526-4c71-87d9-d6192a27dd17" />
-        <classShapeMoniker Id="b29d07e3-614f-4938-9b9c-d8771120ba3e" />
-      </nodes>
-    </associationConnector>
     <associationConnector edgePoints="[(5.5 : 4.91959757486979); (6.25 : 4.91959757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/item/item_market" />
       <nodes>
@@ -299,7 +216,7 @@
         <classShapeMoniker Id="d232854b-1a1b-4561-ae18-a0e02d020867" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11.75 : 9.54807657877604); (12.5 : 9.54807657877604)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(11.75 : 9.59699625651042); (12.5 : 9.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/WebGameDataContext/category/category_new" />
       <nodes>
         <classShapeMoniker Id="6b2aa235-f772-498f-b20b-d735a96d48fa" />
@@ -320,23 +237,106 @@
         <classShapeMoniker Id="13bffb3d-6ef5-4089-9891-b9412018c67e" />
       </nodes>
     </associationConnector>
-    <classShape Id="81d3c8d0-7436-4c1b-a8ce-0fffbfa21399" absoluteBounds="0.625, 8, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/WebGameDataContext/HeroCart" />
-      <nestedChildShapes>
-        <elementListCompartment Id="6648a3fb-7032-4dfc-9513-89e73751c22a" absoluteBounds="0.64000000000000012, 8.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="d3aab469-bbf5-44dc-856f-8ffef6e50391" absoluteBounds="2.875, 8, 2, 1.9631982421875">
+    <classShape Id="c415fe1e-df59-4fba-ac74-6e0079d3e572" absoluteBounds="3.875, 8.25, 2, 1.9631982421875">
       <DataClassMoniker Name="/WebGameDataContext/Hero" />
       <nestedChildShapes>
-        <elementListCompartment Id="fb64a224-9025-4dd2-bb35-1b59831a099a" absoluteBounds="2.8899999999999997, 8.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="13a6a1cc-9600-43c6-b02f-c25965108642" absoluteBounds="3.89, 8.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="91cea50f-6a51-477a-ba47-e8239e9e0f84" absoluteBounds="0.625, 9.75, 2, 1.9631982421875">
+    <classShape Id="8034a1c4-4a1a-40dd-b781-c3acbf50f8af" absoluteBounds="1.875, 10.5, 2, 1.9631982421875">
       <DataClassMoniker Name="/WebGameDataContext/HeroType" />
       <nestedChildShapes>
-        <elementListCompartment Id="df2975cf-0e95-432a-a8af-06bada157b10" absoluteBounds="0.64000000000000012, 10.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f508537c-f8b8-4a2d-a473-cf22e4b89d22" absoluteBounds="1.8900000000000001, 10.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="f156714a-bca4-43bd-b92f-a53a324aca62" absoluteBounds="0.875, 9, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/WebGameDataContext/HeroCart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3490fefe-9c0e-49ad-bc21-ad6a7042f678" absoluteBounds="0.89, 9.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" absoluteBounds="9, 1.875, 2, 6.1938297526041657">
+      <DataClassMoniker Name="/WebGameDataContext/character" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a0484be8-bf0d-40c8-a1cf-6013b7c27363" absoluteBounds="9.015, 2.335, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.5 : 15.6275694596855); (8.79166666666667 : 15.6275694596855 : JumpStart); (8.95833333333333 : 15.6275694596855 : JumpEnd); (9.125 : 15.6275694596855); (9.125 : 8.06882975260417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/account/account_character" />
+      <nodes>
+        <classShapeMoniker Id="7e69db8e-2e5a-4406-987c-227b14e84e6d" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 10.4175439453125); (9.04166666666667 : 10.4175439453125 : JumpStart); (9.36458458333333 : 10.4175439453125 : JumpEnd); (9.4375025 : 10.4175439453125); (9.4375025 : 8.06882975260417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/char_title/char_title_character" />
+      <nodes>
+        <classShapeMoniker Id="761d5761-ab2f-4d81-aad6-673c12f9431c" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 12.1065991210938); (9.04166666666667 : 12.1065991210938 : JumpStart); (9.20833333333333 : 12.1065991210938 : JumpEnd); (9.28125125 : 12.1065991210938); (9.28125125 : 8.06882975260417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/clan/clan_character" />
+      <nodes>
+        <classShapeMoniker Id="8d7bf0ff-fa76-4715-885a-f8b041bdd882" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 3.46875); (9 : 3.46875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/item/item_character" />
+      <nodes>
+        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.44794840494792); (9 : 6.44794840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/item/item_character1" />
+      <nodes>
+        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 3.828125); (9 : 3.828125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/item/item_character2" />
+      <nodes>
+        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 3.109375); (9 : 3.109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/item/item_character3" />
+      <nodes>
+        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.14067260742187); (9 : 6.14067260742187)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/item/item_character4" />
+      <nodes>
+        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 6.75522420247396); (9 : 6.75522420247396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/item/item_character5" />
+      <nodes>
+        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.0078125); (9 : 4.0078125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/item/item_character6" />
+      <nodes>
+        <classShapeMoniker Id="b9a0ab2c-0aa2-42c5-9dbb-25c6165d2b5c" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 7.53441487630208); (9 : 7.53441487630208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WebGameDataContext/map/map_character" />
+      <nodes>
+        <classShapeMoniker Id="cb8c45ca-e526-4c71-87d9-d6192a27dd17" />
+        <classShapeMoniker Id="79c160fb-8b98-4d2c-8247-3dabe5e9bf0c" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -50,7 +50,7 @@
                                     <td style="border: medium groove #FF0000" width="600">
                                         
                                         <asp:TextBox ID="TextBox1" runat="server" Rows="20" Text='<%# Eval("Lore") %>' 
-                                            TextMode="MultiLine" Width="100%" Height="100%"></asp:TextBox>
+                                            TextMode="MultiLine" Width="100%" Height="100%" ReadOnly="True"></asp:TextBox>
                                         
                                     </td>
                                     </tr>
@@ -82,14 +82,22 @@
                     <td colspan="3" align=center>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                             ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                            SelectCommand="SELECT * FROM [Hero] ORDER BY [IdHero]"></asp:SqlDataSource>
+                            SelectCommand="SELECT * FROM [Hero] ORDER BY [IdHero]" 
+                            ></asp:SqlDataSource>
+                        &nbsp;
+                        <asp:Button ID="btnCreateChar" runat="server" Text="Create" 
+                            onclick="btnCreateChar_Click" />
                         <ContentTemplate>
+                            <br />
+                            <br />
                             <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" 
-                                GroupItemCount="7">
+                                GroupItemCount="7" onitemcommand="ListView1_ItemCommand">
                                 <AlternatingItemTemplate>
                                     <td runat="server" style="">
                                          <asp:ImageButton ID="ImageButton4" runat="server"  BorderColor="Red"
-                                        ImageUrl='<%# Eval("Avatar") %>' CommandName="PickHero2" />
+                                        ImageUrl='<%# Eval("Avatar") %>' CommandName="PickHero2" BorderStyle="None" />
+                                         <asp:Label ID="lbIdHero2" runat="server" Text='<%# Eval("IdHero") %>' 
+                                             Visible="False"></asp:Label>
                                     </td>
                                 </AlternatingItemTemplate>
                                 <EditItemTemplate>
@@ -166,6 +174,8 @@
                                     <td runat="server" style="">
                                         <asp:ImageButton ID="ImageButton3" runat="server" 
                                         ImageUrl='<%# Eval("Avatar") %>' CommandName="PickHero1" BorderColor="Red" />
+                                        <asp:Label ID="lbIdHero1" runat="server" Text='<%# Eval("IdHero") %>' 
+                                            Visible="False"></asp:Label>
                                     </td>
                                 </ItemTemplate>
                                 <LayoutTemplate>
@@ -180,7 +190,7 @@
                                         </tr>
                                         <tr runat="server">
                                             <td runat="server" style="">
-                                            </td>
+                                                &nbsp;</td>
                                         </tr>
                                     </table>
                                 </LayoutTemplate>
@@ -207,11 +217,15 @@
                                     </td>
                                 </SelectedItemTemplate>
                             </asp:ListView>
+                            
+                            
                         </ContentTemplate>
-                        <asp:Label ID="lbSelectedIndex" runat="server"></asp:Label>
-                        <asp:Label ID="lbIdHero" runat="server"></asp:Label>
-                        <asp:Timer ID="Timer1" runat="server" Interval="100" ontick="Timer1_Tick">
+                        <asp:Timer ID="Timer1" runat="server" Interval="100" ontick="Timer1_Tick" 
+                            Enabled="True">
                         </asp:Timer>
+                        <asp:Label ID="lbIdHero" runat="server" Visible="False"></asp:Label>
+                        <asp:Label ID="lbSelectedIndex" runat="server" Visible="False"></asp:Label>
+                       
                     </td>
                 </tr>
             </table>
@@ -220,6 +234,7 @@
             <asp:AsyncPostBackTrigger ControlID="ListView1" EventName="ItemCommand" />
         </Triggers>
     </asp:UpdatePanel>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
 </asp:Content>

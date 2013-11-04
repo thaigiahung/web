@@ -9,11 +9,11 @@ public partial class CreateCharacter : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["username"] = "watsu99";// gan thu username de test chuc nang
+        Session["username"] = "99";// gan thu username de test chuc nang
         string us = Session["username"].ToString();
         if (us == "")//chua dang nhap
         {
-            Response.Redirect("");//link ve trang chu
+            Response.Redirect("Default.aspx");//link ve trang chu
         }
         else
         {
@@ -23,7 +23,7 @@ public partial class CreateCharacter : System.Web.UI.Page
                         select y;
             if (items.Count() != 0)//user da tao nhan vat
             {
-                Response.Redirect("");//link ve trang chu
+                Response.Redirect("Default.aspx");//link ve trang chu
             }
         }
        
@@ -285,6 +285,9 @@ public partial class CreateCharacter : System.Web.UI.Page
         nhanvat.char_kill = 0;
         db.characters.InsertOnSubmit(nhanvat);
         db.SubmitChanges();
+
+
         //link sang trang choi game bo sung sau 
+        Response.Redirect("Default.aspx");
     }
 }

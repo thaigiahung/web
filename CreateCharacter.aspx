@@ -93,7 +93,7 @@
                             <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource1" 
                                 GroupItemCount="7" onitemcommand="ListView1_ItemCommand">
                                 <AlternatingItemTemplate>
-                                    <td runat="server" style="">
+                                    <td id="Td1" runat="server" style="">
                                          <asp:ImageButton ID="ImageButton4" runat="server"  BorderColor="Red"
                                         ImageUrl='<%# Eval("Avatar") %>' CommandName="PickHero2" BorderStyle="None" />
                                          <asp:Label ID="lbIdHero2" runat="server" Text='<%# Eval("IdHero") %>' 
@@ -101,7 +101,7 @@
                                     </td>
                                 </AlternatingItemTemplate>
                                 <EditItemTemplate>
-                                    <td runat="server" style="">
+                                    <td id="Td2" runat="server" style="">
                                         IdHero:
                                         <asp:Label ID="IdHeroLabel1" runat="server" Text='<%# Eval("IdHero") %>' />
                                         <br />
@@ -129,7 +129,7 @@
                                     </td>
                                 </EditItemTemplate>
                                 <EmptyDataTemplate>
-                                    <table runat="server" style="">
+                                    <table id="Table1" runat="server" style="">
                                         <tr>
                                             <td>
                                                 No data was returned.</td>
@@ -137,7 +137,7 @@
                                     </table>
                                 </EmptyDataTemplate>
                                 <emptyitemtemplate>
-                                    <td runat="server" />
+                                    <td id="Td3" runat="server" />
                                 </emptyitemtemplate>
                                 <grouptemplate>
                                     <tr ID="itemPlaceholderContainer" runat="server">
@@ -146,7 +146,7 @@
                                     </tr>
                                 </grouptemplate>
                                 <InsertItemTemplate>
-                                    <td runat="server" style="">
+                                    <td id="Td4" runat="server" style="">
                                         Name:
                                         <asp:TextBox ID="NameTextBox" runat="server" Text='<%# Bind("Name") %>' />
                                         <br />
@@ -171,7 +171,7 @@
                                     </td>
                                 </InsertItemTemplate>
                                 <ItemTemplate>
-                                    <td runat="server" style="">
+                                    <td id="Td5" runat="server" style="">
                                         <asp:ImageButton ID="ImageButton3" runat="server" 
                                         ImageUrl='<%# Eval("Avatar") %>' CommandName="PickHero1" BorderColor="Red" />
                                         <asp:Label ID="lbIdHero1" runat="server" Text='<%# Eval("IdHero") %>' 
@@ -179,23 +179,23 @@
                                     </td>
                                 </ItemTemplate>
                                 <LayoutTemplate>
-                                    <table runat="server">
-                                        <tr runat="server">
-                                            <td runat="server">
+                                    <table id="Table2" runat="server">
+                                        <tr id="Tr1" runat="server">
+                                            <td id="Td6" runat="server">
                                                 <table ID="groupPlaceholderContainer" runat="server" border="0" style="">
                                                     <tr ID="groupPlaceholder" runat="server">
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
-                                        <tr runat="server">
-                                            <td runat="server" style="">
+                                        <tr id="Tr2" runat="server">
+                                            <td id="Td7" runat="server" style="">
                                                 &nbsp;</td>
                                         </tr>
                                     </table>
                                 </LayoutTemplate>
                                 <SelectedItemTemplate>
-                                    <td runat="server" style="">
+                                    <td id="Td8" runat="server" style="">
                                         IdHero:
                                         <asp:Label ID="IdHeroLabel" runat="server" Text='<%# Eval("IdHero") %>' />
                                         <br />
@@ -229,11 +229,13 @@
                     </td>
                 </tr>
             </table>
-        </ContentTemplate>
+        </ContentTemplate>    
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="ListView1" EventName="ItemCommand" />
         </Triggers>
     </asp:UpdatePanel>
+
+    
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">

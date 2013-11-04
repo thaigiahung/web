@@ -47,11 +47,19 @@ public partial class activate : User
             }
             else
             {
-                usr.status = 1;
+                
                 //db.accounts.InsertOnSubmit(usr);
                 db.SubmitChanges();
-                VerificationMessageLabel.Text = "Chào mừng bạn đến với LOL WEBGAME. Chúng tôi sẽ chuyển bạn về trang đăng nhập để sử dụng dịch vụ!!";
-                Response.AddHeader("REFRESH", "3;URL=login.aspx");
+                VerificationMessageLabel.Text = "Chào mừng bạn đến với LOL WEBGAME. Chúc bạn chơi game vui vẻ!!";
+                character cha = new character();
+                cha = db.characters.SingleOrDefault(n => n.username == usr.username);
+                if(cha == null)
+                {
+                    Session["user"] = usr.username;
+                    Response.AddHeader("REFRESH", "2;URL=CreateCharater.aspx");
+                }
+                else
+                    Response.AddHeader("REFRESH", "3;URL=Default.aspx");
             }
         }
     }

@@ -32,9 +32,6 @@ public partial class CheckUserName : User
         bool check = false;
         CheckUserName user = new CheckUserName();
         check = user.getuser(UserName);
-
-        
-
         return check;
     }
     public bool getEmail(string mail)
@@ -60,3 +57,102 @@ public partial class CheckUserName : User
 }
 
     
+//<script language="javascript" type="text/javascript">
+        
+//        var $j = jQuery.noConflict();
+//        $j(document).ready(function () {
+//            $j("#<%=txtEmail.ClientID %>").blur(function () {
+//                if ($j("#<%=txtEmail.ClientID %>").val() != "") {
+//                    $j.ajax({
+//                        type: "POST",
+//                        url: "CheckUserName.aspx/checkEmail",
+//                        data: "{'Email':'" + $j("#<%=txtEmail.ClientID %>").val() + "'}",
+//                        contentType: "application/json; charset=utf-8",
+//                        dataType: "json",
+//                        success: function (message) {
+//                            if (message.d == false) {
+//                                $j("#checkReturnEmail").css({
+//                                    "color": "red",
+//                                    "font-weight": "bold",
+//                                    "font-size": "small",
+//                                    "padding-left": "5px"
+//                                });
+//                                $j("#checkReturnEmail").text("Email đã tồn tại");
+                                
+//                            }
+//                            else {
+//                                $j("#checkReturnEmail").css({
+//                                    "color": "green",
+//                                    "font-weight": "bold",
+//                                    "font-size": "small",
+//                                    "padding-left": "5px"
+//                                });
+
+//                                $j("#checkReturnEmail").text("OK");
+//                                if ($j("#<%=RegularExpressionValidator1.ClientID %>") == "false")
+//                                    $j("#checkReturnEmail").text("");
+                                    
+//                            }
+
+//                        },
+//                        error: function (errormessage) {
+//                            //Hiển thị lỗi nếu xảy ra
+//                            $j("#checkReturnEmail").text(errormessage.responseText);
+//                        }
+//                    });
+//                }
+//                else {
+                    
+//                    $j("#checkReturnEmail").text("");
+                    
+//                }
+//            });
+//        });
+//    </script>
+
+//<script language="javascript" type="text/javascript">
+//        var $j = jQuery.noConflict();
+//        $j(document).ready(function () {
+//            $j("#<%=txtUN.ClientID %>").blur(function () {
+//                if ($j("#<%=txtUN.ClientID %>").val() != "") {
+//                    $j.ajax({
+//                        type: "POST",
+//                        url: "CheckUserName.aspx/CheckUN",
+//                        data: "{'UserName':'" + $j("#<%=txtUN.ClientID %>").val() + "'}",
+//                        contentType: "application/json; charset=utf-8",
+//                        dataType: "json",
+//                        success: function (message) {
+//                            if (message.d == false) {
+//                                $j("#checkReturnUserName").css({
+//                                    "color": "red",
+//                                    "font-weight": "bold",
+//                                    "font-size": "small",
+//                                    "padding-left": "5px"
+//                                });
+//                                $j("#checkReturnUserName").text("Tài khoản đã tồn tại");
+                                
+
+//                            }
+//                            else {
+//                                $j("#checkReturnUserName").css({
+//                                    "color": "green",
+//                                    "font-weight": "bold",
+//                                    "font-size": "small",
+//                                    "padding-left": "5px"
+//                                });
+
+//                                $j("#checkReturnUserName").text("OK");
+                                
+//                            }
+//                        },
+//                        error: function (errormessage) {
+//                            //Hiển thị lỗi nếu xảy ra
+//                            $j("#checkReturnUserName").text(errormessage.responseText);
+//                        }
+//                    });
+//                }
+//                else
+//                    $j("#checkReturnUserName").text("");
+//            });
+//        });
+//    </script>

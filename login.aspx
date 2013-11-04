@@ -16,14 +16,14 @@
                     <td><asp:TextBox ID="txtPW" runat="server" TextMode="Password" Width="100"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align"center">
+                    <td colspan="2" align="center">
                         <asp:Label ID="LbMessages" runat="server" Text="Label" Visible="False" 
                             ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td align=right>
+                    <td align="right">
                         <asp:Button ID="BtnLogin" runat="server" Text="Đăng nhập" 
                             onclick="BtnLogin_Click" />
                         <asp:Label ID="Pass" runat="server" Text="Label"></asp:Label>

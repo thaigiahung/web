@@ -48,7 +48,14 @@ public partial class login : User
                         {
                             user.status = 1;
                             Session["User"] = user;
-                            Response.Redirect("Default.aspx");
+                            character cha = new character();
+                            cha = db.characters.SingleOrDefault(n => n.username == user.username);
+                            if (cha == null)
+                            {
+                                Response.AddHeader("REFRESH", "0;URL=CreateCharacter.aspx");
+                            }
+                            else
+                                Response.AddHeader("REFRESH", "1;URL=Default.aspx");
                         }
                     }
                 }

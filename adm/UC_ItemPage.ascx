@@ -1,7 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UC_ItemPage.ascx.cs" Inherits="adm_WebUserControl" %>
+<style type="text/css">
+    .style1
+    {
+        width: 559px;
+    }
+</style>
 <table style="width:100%;" border="1" align="center">
     <tr>
-        <td>
+        <td class="style1">
 <asp:SqlDataSource ID="SQLDataSelect" runat="server" 
     ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
     DeleteCommand="DELETE FROM [item] WHERE [ID] = @ID" 
@@ -160,41 +166,136 @@
                     <asp:TextBox ID="item_require_levelTextBox" runat="server" 
                         Text='<%# Bind("item_require_level") %>' />
                     <br />
+                    <asp:SqlDataSource ID="SQL1" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
+                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
+                        SelectCommand="SELECT * FROM [item_option]" 
+                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
+                    <br />
                     item_param1:
-                    <asp:TextBox ID="item_param1TextBox" runat="server" 
-                        Text='<%# Bind("item_param1") %>' />
+                    <asp:DropDownList ID="DropDown1" runat="server" DataSourceID="SQL1" 
+                        DataTextField="opt_name" DataValueField="ID" 
+                        SelectedValue='<%# Bind("item_param1") %>'>
+                    </asp:DropDownList>
                     <br />
                     item_value1:
                     <asp:TextBox ID="item_value1TextBox" runat="server" 
                         Text='<%# Bind("item_value1") %>' />
                     <br />
                     item_param2:
-                    <asp:TextBox ID="item_param2TextBox" runat="server" 
-                        Text='<%# Bind("item_param2") %>' />
+                    <asp:DropDownList ID="DropDown2" runat="server" DataSourceID="SQL2" 
+                        DataTextField="opt_name" DataValueField="ID" 
+                        SelectedValue='<%# Bind("item_param2") %>'>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SQL2" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
+                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
+                        SelectCommand="SELECT * FROM [item_option]" 
+                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                     <br />
                     item_value2:
                     <asp:TextBox ID="item_value2TextBox" runat="server" 
                         Text='<%# Bind("item_value2") %>' />
                     <br />
                     item_param3:
-                    <asp:TextBox ID="item_param3TextBox" runat="server" 
-                        Text='<%# Bind("item_param3") %>' />
+                    <asp:DropDownList ID="DropDown3" runat="server" DataSourceID="SQL3" 
+                        DataTextField="opt_name" DataValueField="ID" 
+                        SelectedValue='<%# Bind("item_param3") %>'>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SQL3" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
+                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
+                        SelectCommand="SELECT * FROM [item_option]" 
+                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                     <br />
                     item_value3:
                     <asp:TextBox ID="item_value3TextBox" runat="server" 
                         Text='<%# Bind("item_value3") %>' />
                     <br />
                     item_param4:
-                    <asp:TextBox ID="item_param4TextBox" runat="server" 
-                        Text='<%# Bind("item_param4") %>' />
+                    <asp:DropDownList ID="DropDown4" runat="server" DataSourceID="SQL4" 
+                        DataTextField="opt_name" DataValueField="ID" 
+                        SelectedValue='<%# Bind("item_param4") %>'>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SQL4" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
+                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
+                        SelectCommand="SELECT * FROM [item_option]" 
+                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                     <br />
-                    item_value4:
-                    <asp:TextBox ID="item_value4TextBox" runat="server" 
+                    item_value4:&nbsp;<asp:TextBox ID="item_value4TextBox" runat="server" 
                         Text='<%# Bind("item_value4") %>' />
                     <br />
                     item_param5:
-                    <asp:TextBox ID="item_param5TextBox" runat="server" 
-                        Text='<%# Bind("item_param5") %>' />
+                    <asp:DropDownList ID="DropDown5" runat="server" DataSourceID="SQL5" 
+                        DataTextField="opt_name" DataValueField="ID" 
+                        SelectedValue='<%# Bind("item_param5") %>'>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SQL5" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
+                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
+                        SelectCommand="SELECT * FROM [item_option]" 
+                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="opt_name" Type="String" />
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                     <br />
                     item_value5:
                     <asp:TextBox ID="item_value5TextBox" runat="server" 

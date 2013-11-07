@@ -10,7 +10,6 @@ public partial class CreateCharacter : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Session["username"] = "99";// gan thu username de test chuc nang
-        Response.Write(Session["User"].ToString());
         string us = Session["User"].ToString();
         if (us == "")//chua dang nhap
         {

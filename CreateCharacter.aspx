@@ -5,14 +5,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-           
+          
         </ContentTemplate>    
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="ListView1" EventName="ItemCommand" />
         </Triggers>
     </asp:UpdatePanel>--%>
 
-     <table class="default-1-1">
+       <table class="default-1-1">
                 <tr>
                     <td rowspan="2">
                         <asp:ScriptManager ID="ScriptManager1" runat="server">

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 17, 21.625" name="WebGame">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 19.625, 21.625" name="WebGame">
   <DataContextMoniker Name="/WebGameDataContext" />
   <nestedChildShapes>
     <classShape Id="03ee1ae5-f34b-4b29-bab3-f5539d55a374" absoluteBounds="6.5, 17.375, 2, 1.3862939453125023">
@@ -146,7 +146,7 @@
         <elementListCompartment Id="4ceb8477-18ad-4b07-99e9-ad8e7ea1f58a" absoluteBounds="14.515, 2.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.96875 : 17.375); (7.96875 : 13.65625); (9.25 : 13.65625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.96875 : 17.375); (7.96875 : 13.65625); (9.25 : 13.65625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/task/task_char_task" />
       <nodes>
         <classShapeMoniker Id="03ee1ae5-f34b-4b29-bab3-f5539d55a374" />
@@ -167,14 +167,14 @@
         <classShapeMoniker Id="9710bb01-0d55-4994-8e50-35bd25834784" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 3.46875); (5.79166666666667 : 3.46875 : JumpStart); (5.95833333333333 : 3.46875 : JumpEnd); (9.25 : 3.46875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 3.46875); (9.25 : 3.46875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/item/item_character" />
       <nodes>
         <classShapeMoniker Id="cf668008-feca-42f7-9810-eeb9d8363f0a" />
         <classShapeMoniker Id="9710bb01-0d55-4994-8e50-35bd25834784" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.35709757486979); (5.79166666666667 : 6.35709757486979 : JumpStart); (5.95833333333333 : 6.35709757486979 : JumpEnd); (9.25 : 6.35709757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 6.35709757486979); (9.25 : 6.35709757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/item/item_character1" />
       <nodes>
         <classShapeMoniker Id="cf668008-feca-42f7-9810-eeb9d8363f0a" />
@@ -195,14 +195,14 @@
         <classShapeMoniker Id="9710bb01-0d55-4994-8e50-35bd25834784" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.00439636230469); (5.79166666666667 : 6.00439636230469 : JumpStart); (5.95833333333333 : 6.00439636230469 : JumpEnd); (9.25 : 6.00439636230469)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 6.00439636230469); (9.25 : 6.00439636230469)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/item/item_character4" />
       <nodes>
         <classShapeMoniker Id="cf668008-feca-42f7-9810-eeb9d8363f0a" />
         <classShapeMoniker Id="9710bb01-0d55-4994-8e50-35bd25834784" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.7097987874349); (5.79166666666667 : 6.7097987874349 : JumpStart); (5.95833333333333 : 6.7097987874349 : JumpEnd); (9.25 : 6.7097987874349)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 6.7097987874349); (9.25 : 6.7097987874349)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/item/item_character5" />
       <nodes>
         <classShapeMoniker Id="cf668008-feca-42f7-9810-eeb9d8363f0a" />
@@ -265,7 +265,7 @@
         <classShapeMoniker Id="9710bb01-0d55-4994-8e50-35bd25834784" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.91959757486979); (5.79166666666667 : 4.91959757486979 : JumpStart); (5.95833333333333 : 4.91959757486979 : JumpEnd); (6.25 : 4.91959757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 4.91959757486979); (6.25 : 4.91959757486979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/item/item_market" />
       <nodes>
         <classShapeMoniker Id="cf668008-feca-42f7-9810-eeb9d8363f0a" />
@@ -299,26 +299,44 @@
         <elementListCompartment Id="25755c73-785d-4814-9b42-ad6fc4d54c28" absoluteBounds="4.89, 13.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.875 : 14.3674226888021); (7.88541666666667 : 14.3674226888021 : JumpStart); (8.05208333333333 : 14.3674226888021 : JumpEnd); (9.25 : 14.3674226888021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.875 : 14.3674226888021); (9.25 : 14.3674226888021)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/account/account_char_task" />
       <nodes>
         <classShapeMoniker Id="1f8bba79-e8d4-48c2-8d0e-aa122761bc01" />
         <classShapeMoniker Id="18bf757e-a5f6-4b0f-b6d1-3039057b4118" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.875 : 13.5); (5.875 : 2.59375); (9.25 : 2.59375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.875 : 13.5); (5.875 : 2.59375); (9.25 : 2.59375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/account/account_character" />
       <nodes>
         <classShapeMoniker Id="1f8bba79-e8d4-48c2-8d0e-aa122761bc01" />
         <classShapeMoniker Id="9710bb01-0d55-4994-8e50-35bd25834784" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.65625 : 16.6170068359375); (5.65625 : 16.9647539179688); (7.88541666666667 : 16.9647539179688 : JumpStart); (8.05208333333333 : 16.9647539179688 : JumpEnd); (9.25 : 16.9647539179688)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.65625 : 16.6170068359375); (5.65625 : 16.9647539179688); (7.88541666666667 : 16.9647539179688 : JumpStart); (8.05208333333333 : 16.9647539179688 : JumpEnd); (9.25 : 16.9647539179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/WebGameDataContext/account/account_inventory" />
       <nodes>
         <classShapeMoniker Id="1f8bba79-e8d4-48c2-8d0e-aa122761bc01" />
         <classShapeMoniker Id="07967535-f3d5-41ac-bf85-96b7cd1d0c4c" />
       </nodes>
     </associationConnector>
+    <classShape Id="ee203ddb-4f57-4114-ad47-0b87794e996c" absoluteBounds="14.375, 14.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/WebGameDataContext/Hero" />
+      <nestedChildShapes>
+        <elementListCompartment Id="10e198c8-52d5-48fd-865c-cb32e1c88ecb" absoluteBounds="14.39, 15.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5f81f204-b1c9-4c8d-9044-00a56d4be169" absoluteBounds="15.375, 8.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/WebGameDataContext/HeroType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="131a36c9-299c-428d-b674-ddbf0cf37812" absoluteBounds="15.39, 9.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="317727f3-67a2-401f-b7d2-15a2d15f448c" absoluteBounds="17.375, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/WebGameDataContext/HeroCart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="224bb83f-af85-45b5-8855-a751f7b17c09" absoluteBounds="17.39, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

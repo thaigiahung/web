@@ -313,4 +313,32 @@
       <Association Name="account_inventory" Member="inventories" ThisKey="username" OtherKey="username" Type="inventory" />
     </Type>
   </Table>
+  <Table Name="dbo.Hero" Member="Heros">
+    <Type Name="Hero">
+      <Column Name="IdHero" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IdType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Lore" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Avatar" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Skin" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HeroType" Member="HeroTypes">
+    <Type Name="HeroType">
+      <Column Name="IdType" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeName" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="HP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Damage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Defence" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Energy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HeroCart" Member="HeroCarts">
+    <Type Name="HeroCart">
+      <Column Name="IdCart" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SelectedIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdSelectedHero" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

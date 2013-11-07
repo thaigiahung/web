@@ -47,7 +47,7 @@ public partial class activate : User
             }
             else
             {
-                
+                usr.status = 1;
                 //db.accounts.InsertOnSubmit(usr);
                 db.SubmitChanges();
                 VerificationMessageLabel.Text = "Chào mừng bạn đến với LOL WEBGAME. Chúc bạn chơi game vui vẻ!!";
@@ -56,7 +56,7 @@ public partial class activate : User
                 if(cha == null)
                 {
                     Session["user"] = usr.username;
-                    Response.AddHeader("REFRESH", "2;URL=CreateCharater.aspx");
+                    Response.AddHeader("REFRESH", "2;URL=CreateCharacter.aspx");
                 }
                 else
                     Response.AddHeader("REFRESH", "3;URL=Default.aspx");

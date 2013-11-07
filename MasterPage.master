@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="resources/template/templates/lmht_2013/css/main.css" type="text/css" media="screen,projection"  />
     <script src="resources/template/templates/lmht_2013/js/modernizr.js" type="text/javascript"></script>
     <script src="resources/template/templates/lmht_2013/js/jquery.min.js" type="text/javascript"></script>
+    <script language="javascript" src="/resources/js/jquery-1.4.2.min.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -28,8 +29,74 @@
             <%--<h1 id="logoLMHT"><a href="/"><img src="resources/template/templates/lmht_2013/images/logo_lmht.png" alt="" /></a></h1>--%>
             <div id="main-navigation">
                 <ul class="nav menugs-container gs-table">
-<li class="item-101 deeper parent"><a href="/game-info" >Giới thiệu</a><ul class="nav-child unstyled small"><li class="item-162 deeper parent"><a href="/game-info/game-mode" >Chế độ chơi</a><ul class="nav-child unstyled small"><li class="item-168"><a href="/game-info/game-mode/summoners-rift" >Summoner's Rift</a></li><li class="item-169"><a href="/game-info/game-mode/the-twisted-treeline" >Khu rừng quỷ dị</a></li><li class="item-170"><a href="/game-info/game-mode/howling-abyss" title="aaaaaaaaaaaaaaaaaaaaaaaaa" >Vực gió hú</a></li><li class="item-196"><a href="/game-info/game-mode/the-crystal-scar" >The Crystal Scar</a></li></ul></li><li class="item-105 deeper parent"><a href="/game-info/summoner" >Anh hùng</a><ul class="nav-child unstyled small"><li class="item-106"><a href="/game-info/summoner/spells" >Phép bổ trợ</a></li><li class="item-107"><a href="/game-info/summoner/runes" >Ngọc bổ trợ</a></li><li class="item-108"><a href="/game-info/summoner/masteries" >Bảng bổ trợ</a></li></ul></li><li class="item-103"><a href="/game-info/champions" >Tướng</a></li><li class="item-104"><a href="/game-info/items" >Trang bị</a></li><li class="item-171 deeper parent"><a href="/game-info/get-started" >Khởi đầu</a><ul class="nav-child unstyled small"><li class="item-172"><a href="/game-info/get-started/what-is-lol" >Liên minh huyền thoại là gì ?</a></li><li class="item-173"><a href="/game-info/get-started/new-player-guide" >Cẩm nang tân thủ</a></li><li class="item-175"><a href="/game-info/get-started/community-interaction" >Kết nối cộng đồng</a></li><li class="item-176"><a href="/game-info/get-started/summoners-code" >Thiết luật anh hùng</a></li><li class="item-174"><a href="/game-info/get-started/chat-commands" >Các lệnh chat</a></li></ul></li></ul></li><li class="item-109"><a href="/news" >Tin Tức</a></li><li class="item-110"><a href="/competition" >Giải đấu</a></li><li class="item-111"><a href="/community" >Cộng đồng</a></li><li class="item-112 deeper parent"><a href="/thu-vien" >Video &amp;Hình ảnh</a><ul class="nav-child unstyled small"><li class="item-144 deeper parent"><a href="/thu-vien/art" >Tranh</a><ul class="nav-child unstyled small"><li class="item-145"><a href="/thu-vien/art/artwork" >Phòng tranh liên minh</a></li><li class="item-146"><a href="/thu-vien/art/fan-art" >Tranh cộng đồng</a></li><li class="item-147"><a href="/thu-vien/art/wallpapers" >Hình nền</a></li><li class="item-148"><a href="/thu-vien/art/screenshot" >Ảnh đấu trường công lý</a></li></ul></li><li class="item-150 deeper parent"><a href="/thu-vien/videos" >videos</a><ul class="nav-child unstyled small"><li class="item-151"><a href="/thu-vien/videos/patch-previews" >Tổng quan phiên bản</a></li><li class="item-152"><a href="/thu-vien/videos/champion-spotlights" >Tiêu điểm tướng</a></li><li class="item-153"><a href="/thu-vien/videos/summoner-showcase" >Hậu trường liên minh</a></li><li class="item-154"><a href="/thu-vien/videos/creative-spotlights" >Góc sáng tạo</a></li><li class="item-155"><a href="/thu-vien/videos/fan-videos" >Video cộng đồng</a></li></ul></li></ul></li><li class="item-113"><a href="http://diendan.garena.vn/forumdisplay.php?860-Di%E1%BB%85n-%C4%90%C3%A0n-Li%C3%AAn-Minh-Huy%E1%BB%81n-Tho%E1%BA%A1i" >Diễn đàn</a></li><li class="item-114"><a href="/2013-07-01-07-49-30" >Hỗ trợ</a></li></ul>
-
+                    <li class="item-101 deeper parent"><a href="/game-info" >Giới thiệu</a>
+                        <ul class="nav-child unstyled small">
+                            <li class="item-162 deeper parent"><a href="/game-info/game-mode" >Chế độ chơi</a>
+                                <ul class="nav-child unstyled small">
+                                    <li class="item-168"><a href="/game-info/game-mode/summoners-rift" >Summoner's Rift</a></li>
+                                    <li class="item-169"><a href="/game-info/game-mode/the-twisted-treeline" >Khu rừng quỷ dị</a></li>
+                                    <li class="item-170"><a href="/game-info/game-mode/howling-abyss" title="aaaaaaaaaaaaaaaaaaaaaaaaa" >Vực gió hú</a></li>
+                                    <li class="item-196"><a href="/game-info/game-mode/the-crystal-scar" >The Crystal Scar</a></li>
+                                </ul>
+                            </li>
+                            <li class="item-105 deeper parent"><a href="/game-info/summoner" >Anh hùng</a>
+                                <ul class="nav-child unstyled small">
+                                    <li class="item-106"><a href="/game-info/summoner/spells" >Phép bổ trợ</a></li>
+                                    <li class="item-107"><a href="/game-info/summoner/runes" >Ngọc bổ trợ</a></li>
+                                    <li class="item-108"><a href="/game-info/summoner/masteries" >Bảng bổ trợ</a></li>
+                                </ul>
+                            </li>
+                            <li class="item-103"><a href="/game-info/champions" >Tướng</a></li>
+                            <li class="item-104"><a href="/game-info/items" >Trang bị</a></li>
+                            <li class="item-171 deeper parent"><a href="/game-info/get-started" >Khởi đầu</a>
+                                <ul class="nav-child unstyled small">
+                                    <li class="item-172"><a href="/game-info/get-started/what-is-lol" >Liên minh huyền thoại là gì ?</a></li>
+                                    <li class="item-173"><a href="/game-info/get-started/new-player-guide" >Cẩm nang tân thủ</a></li>
+                                    <li class="item-175"><a href="/game-info/get-started/community-interaction" >Kết nối cộng đồng</a></li>
+                                    <li class="item-176"><a href="/game-info/get-started/summoners-code" >Thiết luật anh hùng</a></li>
+                                    <li class="item-174"><a href="/game-info/get-started/chat-commands" >Các lệnh chat</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="item-109"><a href="/news" >Tin Tức</a></li>
+                    <li class="item-110"><a href="/competition" >Giải đấu</a></li>
+                    <li class="item-111"><a href="/community" >Cộng đồng</a></li>
+                    <li class="item-112 deeper parent"><a href="/thu-vien" >Video &amp;Hình ảnh</a>
+                        <ul class="nav-child unstyled small">
+                            <li class="item-144 deeper parent"><a href="/thu-vien/art" >Tranh</a>
+                                <ul class="nav-child unstyled small">
+                                    <li class="item-145"><a href="/thu-vien/art/artwork" >Phòng tranh liên minh</a></li>
+                                    <li class="item-146"><a href="/thu-vien/art/fan-art" >Tranh cộng đồng</a></li>
+                                    <li class="item-147"><a href="/thu-vien/art/wallpapers" >Hình nền</a></li>
+                                    <li class="item-148"><a href="/thu-vien/art/screenshot" >Ảnh đấu trường công lý</a></li>
+                                </ul>
+                            </li>
+                            <li class="item-150 deeper parent"><a href="/thu-vien/videos" >videos</a>
+                                <ul class="nav-child unstyled small">
+                                    <li class="item-151"><a href="/thu-vien/videos/patch-previews" >Tổng quan phiên bản</a></li>
+                                    <li class="item-152"><a href="/thu-vien/videos/champion-spotlights" >Tiêu điểm tướng</a></li>
+                                    <li class="item-153"><a href="/thu-vien/videos/summoner-showcase" >Hậu trường liên minh</a></li>
+                                    <li class="item-154"><a href="/thu-vien/videos/creative-spotlights" >Góc sáng tạo</a></li>
+                                    <li class="item-155"><a href="/thu-vien/videos/fan-videos" >Video cộng đồng</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="item-113"><a href="http://diendan.garena.vn/forumdisplay.php?860-Di%E1%BB%85n-%C4%90%C3%A0n-Li%C3%AAn-Minh-Huy%E1%BB%81n-Tho%E1%BA%A1i" >Diễn đàn</a></li>
+                    <li class="item-114"><a href="/2013-07-01-07-49-30" >Tài khoản</a>
+                        <ul class="nav-child unstyled small">
+                            <li class="item-144 deeper parent"><a href="/thu-vien/art" >Tranh</a>
+                                <ul class="nav-child unstyled small">
+                                    <li class="item-145"><a href="/thu-vien/art/artwork" >Phòng tranh liên minh</a></li>
+                                    <li class="item-146"><a href="/thu-vien/art/fan-art" >Tranh cộng đồng</a></li>
+                                    <li class="item-147"><a href="/thu-vien/art/wallpapers" >Hình nền</a></li>
+                                    <li class="item-148"><a href="/thu-vien/art/screenshot" >Ảnh đấu trường công lý</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <div id="groupButtonTop">
                 <a href="http://lienminh.garena.vn/download" id="btnDownload">Chơi Ngay</a>
@@ -243,12 +310,10 @@
                         <div class="content-border">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
-                        
                         </asp:ContentPlaceHolder>
                             <h2 class="black-bar-header">Trang liên kết</h2>
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                             </asp:ContentPlaceHolder>
-
                         </div>
 
                         

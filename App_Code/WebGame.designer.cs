@@ -104,6 +104,15 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
   partial void Insertaccount(account instance);
   partial void Updateaccount(account instance);
   partial void Deleteaccount(account instance);
+  partial void InsertHero(Hero instance);
+  partial void UpdateHero(Hero instance);
+  partial void DeleteHero(Hero instance);
+  partial void InsertHeroType(HeroType instance);
+  partial void UpdateHeroType(HeroType instance);
+  partial void DeleteHeroType(HeroType instance);
+  partial void InsertHeroCart(HeroCart instance);
+  partial void UpdateHeroCart(HeroCart instance);
+  partial void DeleteHeroCart(HeroCart instance);
   #endregion
 	
 	public WebGameDataContext() : 
@@ -333,6 +342,30 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<account>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Hero> Heros
+	{
+		get
+		{
+			return this.GetTable<Hero>();
+		}
+	}
+	
+	public System.Data.Linq.Table<HeroType> HeroTypes
+	{
+		get
+		{
+			return this.GetTable<HeroType>();
+		}
+	}
+	
+	public System.Data.Linq.Table<HeroCart> HeroCarts
+	{
+		get
+		{
+			return this.GetTable<HeroCart>();
 		}
 	}
 }
@@ -6896,6 +6929,504 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this.SendPropertyChanging();
 		entity.account = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Hero")]
+public partial class Hero : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _IdHero;
+	
+	private string _Name;
+	
+	private System.Nullable<int> _IdType;
+	
+	private string _Lore;
+	
+	private string _Avatar;
+	
+	private string _Skin;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdHeroChanging(int value);
+    partial void OnIdHeroChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnIdTypeChanging(System.Nullable<int> value);
+    partial void OnIdTypeChanged();
+    partial void OnLoreChanging(string value);
+    partial void OnLoreChanged();
+    partial void OnAvatarChanging(string value);
+    partial void OnAvatarChanged();
+    partial void OnSkinChanging(string value);
+    partial void OnSkinChanged();
+    #endregion
+	
+	public Hero()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdHero", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int IdHero
+	{
+		get
+		{
+			return this._IdHero;
+		}
+		set
+		{
+			if ((this._IdHero != value))
+			{
+				this.OnIdHeroChanging(value);
+				this.SendPropertyChanging();
+				this._IdHero = value;
+				this.SendPropertyChanged("IdHero");
+				this.OnIdHeroChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Name
+	{
+		get
+		{
+			return this._Name;
+		}
+		set
+		{
+			if ((this._Name != value))
+			{
+				this.OnNameChanging(value);
+				this.SendPropertyChanging();
+				this._Name = value;
+				this.SendPropertyChanged("Name");
+				this.OnNameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdType", DbType="Int")]
+	public System.Nullable<int> IdType
+	{
+		get
+		{
+			return this._IdType;
+		}
+		set
+		{
+			if ((this._IdType != value))
+			{
+				this.OnIdTypeChanging(value);
+				this.SendPropertyChanging();
+				this._IdType = value;
+				this.SendPropertyChanged("IdType");
+				this.OnIdTypeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lore", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Lore
+	{
+		get
+		{
+			return this._Lore;
+		}
+		set
+		{
+			if ((this._Lore != value))
+			{
+				this.OnLoreChanging(value);
+				this.SendPropertyChanging();
+				this._Lore = value;
+				this.SendPropertyChanged("Lore");
+				this.OnLoreChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Avatar", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Avatar
+	{
+		get
+		{
+			return this._Avatar;
+		}
+		set
+		{
+			if ((this._Avatar != value))
+			{
+				this.OnAvatarChanging(value);
+				this.SendPropertyChanging();
+				this._Avatar = value;
+				this.SendPropertyChanged("Avatar");
+				this.OnAvatarChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skin", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string Skin
+	{
+		get
+		{
+			return this._Skin;
+		}
+		set
+		{
+			if ((this._Skin != value))
+			{
+				this.OnSkinChanging(value);
+				this.SendPropertyChanging();
+				this._Skin = value;
+				this.SendPropertyChanged("Skin");
+				this.OnSkinChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HeroType")]
+public partial class HeroType : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _IdType;
+	
+	private string _TypeName;
+	
+	private System.Nullable<int> _HP;
+	
+	private System.Nullable<int> _Damage;
+	
+	private System.Nullable<int> _Defence;
+	
+	private System.Nullable<int> _Energy;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdTypeChanging(int value);
+    partial void OnIdTypeChanged();
+    partial void OnTypeNameChanging(string value);
+    partial void OnTypeNameChanged();
+    partial void OnHPChanging(System.Nullable<int> value);
+    partial void OnHPChanged();
+    partial void OnDamageChanging(System.Nullable<int> value);
+    partial void OnDamageChanged();
+    partial void OnDefenceChanging(System.Nullable<int> value);
+    partial void OnDefenceChanged();
+    partial void OnEnergyChanging(System.Nullable<int> value);
+    partial void OnEnergyChanged();
+    #endregion
+	
+	public HeroType()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdType", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int IdType
+	{
+		get
+		{
+			return this._IdType;
+		}
+		set
+		{
+			if ((this._IdType != value))
+			{
+				this.OnIdTypeChanging(value);
+				this.SendPropertyChanging();
+				this._IdType = value;
+				this.SendPropertyChanged("IdType");
+				this.OnIdTypeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeName", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string TypeName
+	{
+		get
+		{
+			return this._TypeName;
+		}
+		set
+		{
+			if ((this._TypeName != value))
+			{
+				this.OnTypeNameChanging(value);
+				this.SendPropertyChanging();
+				this._TypeName = value;
+				this.SendPropertyChanged("TypeName");
+				this.OnTypeNameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HP", DbType="Int")]
+	public System.Nullable<int> HP
+	{
+		get
+		{
+			return this._HP;
+		}
+		set
+		{
+			if ((this._HP != value))
+			{
+				this.OnHPChanging(value);
+				this.SendPropertyChanging();
+				this._HP = value;
+				this.SendPropertyChanged("HP");
+				this.OnHPChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Damage", DbType="Int")]
+	public System.Nullable<int> Damage
+	{
+		get
+		{
+			return this._Damage;
+		}
+		set
+		{
+			if ((this._Damage != value))
+			{
+				this.OnDamageChanging(value);
+				this.SendPropertyChanging();
+				this._Damage = value;
+				this.SendPropertyChanged("Damage");
+				this.OnDamageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Defence", DbType="Int")]
+	public System.Nullable<int> Defence
+	{
+		get
+		{
+			return this._Defence;
+		}
+		set
+		{
+			if ((this._Defence != value))
+			{
+				this.OnDefenceChanging(value);
+				this.SendPropertyChanging();
+				this._Defence = value;
+				this.SendPropertyChanged("Defence");
+				this.OnDefenceChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Energy", DbType="Int")]
+	public System.Nullable<int> Energy
+	{
+		get
+		{
+			return this._Energy;
+		}
+		set
+		{
+			if ((this._Energy != value))
+			{
+				this.OnEnergyChanging(value);
+				this.SendPropertyChanging();
+				this._Energy = value;
+				this.SendPropertyChanged("Energy");
+				this.OnEnergyChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HeroCart")]
+public partial class HeroCart : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _IdCart;
+	
+	private string _UserName;
+	
+	private System.Nullable<int> _SelectedIndex;
+	
+	private System.Nullable<int> _IdSelectedHero;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdCartChanging(int value);
+    partial void OnIdCartChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnSelectedIndexChanging(System.Nullable<int> value);
+    partial void OnSelectedIndexChanged();
+    partial void OnIdSelectedHeroChanging(System.Nullable<int> value);
+    partial void OnIdSelectedHeroChanged();
+    #endregion
+	
+	public HeroCart()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCart", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int IdCart
+	{
+		get
+		{
+			return this._IdCart;
+		}
+		set
+		{
+			if ((this._IdCart != value))
+			{
+				this.OnIdCartChanging(value);
+				this.SendPropertyChanging();
+				this._IdCart = value;
+				this.SendPropertyChanged("IdCart");
+				this.OnIdCartChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(50)")]
+	public string UserName
+	{
+		get
+		{
+			return this._UserName;
+		}
+		set
+		{
+			if ((this._UserName != value))
+			{
+				this.OnUserNameChanging(value);
+				this.SendPropertyChanging();
+				this._UserName = value;
+				this.SendPropertyChanged("UserName");
+				this.OnUserNameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SelectedIndex", DbType="Int")]
+	public System.Nullable<int> SelectedIndex
+	{
+		get
+		{
+			return this._SelectedIndex;
+		}
+		set
+		{
+			if ((this._SelectedIndex != value))
+			{
+				this.OnSelectedIndexChanging(value);
+				this.SendPropertyChanging();
+				this._SelectedIndex = value;
+				this.SendPropertyChanged("SelectedIndex");
+				this.OnSelectedIndexChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSelectedHero", DbType="Int")]
+	public System.Nullable<int> IdSelectedHero
+	{
+		get
+		{
+			return this._IdSelectedHero;
+		}
+		set
+		{
+			if ((this._IdSelectedHero != value))
+			{
+				this.OnIdSelectedHeroChanging(value);
+				this.SendPropertyChanging();
+				this._IdSelectedHero = value;
+				this.SendPropertyChanged("IdSelectedHero");
+				this.OnIdSelectedHeroChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }
 #pragma warning restore 1591

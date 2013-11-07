@@ -3,9 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <%--<asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <table class="default-1-1">
+           
+        </ContentTemplate>    
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="ListView1" EventName="ItemCommand" />
+        </Triggers>
+    </asp:UpdatePanel>--%>
+
+     <table class="default-1-1">
                 <tr>
                     <td rowspan="2">
                         <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -229,11 +236,6 @@
                     </td>
                 </tr>
             </table>
-        </ContentTemplate>    
-        <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="ListView1" EventName="ItemCommand" />
-        </Triggers>
-    </asp:UpdatePanel>
 
     
 

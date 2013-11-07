@@ -47,7 +47,7 @@ public partial class login : User
                         else
                         {
                             user.status = 1;
-                            Session["User"] = user;
+                            Session["User"] = user.username;
                             character cha = new character();
                             cha = db.characters.SingleOrDefault(n => n.username == user.username);
                             if (cha == null)

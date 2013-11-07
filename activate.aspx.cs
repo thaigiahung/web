@@ -55,7 +55,7 @@ public partial class activate : User
                 cha = db.characters.SingleOrDefault(n => n.username == usr.username);
                 if(cha == null)
                 {
-                    Session["user"] = usr.username;
+                    Session["User"] = usr.username;
                     Response.AddHeader("REFRESH", "2;URL=CreateCharacter.aspx");
                 }
                 else

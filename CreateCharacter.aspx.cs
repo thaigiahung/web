@@ -9,8 +9,9 @@ public partial class CreateCharacter : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["username"] = "99";// gan thu username de test chuc nang
-        string us = Session["username"].ToString();
+        //Session["username"] = "99";// gan thu username de test chuc nang
+        Response.Write(Session["User"].ToString());
+        string us = Session["User"].ToString();
         if (us == "")//chua dang nhap
         {
             Response.Redirect("Default.aspx");//link ve trang chu
@@ -32,7 +33,7 @@ public partial class CreateCharacter : System.Web.UI.Page
    protected void Timer1_Tick(object sender, EventArgs e)
     {
        Timer1.Enabled = false;
-       string username = Session["username"].ToString();
+       string username = Session["User"].ToString();
         /*Label5.Text=username;
         WebGameDataContext db = new WebGameDataContext();
         var items = from l in db.HeroCarts
@@ -99,7 +100,7 @@ public partial class CreateCharacter : System.Web.UI.Page
     }
     protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
     {
-        string username= Session["username"].ToString();
+        string username = Session["User"].ToString();
         if (e.CommandName == "PickHero1")//truong hop select nhung vi tri item template
         {
             int vitriduocchon = e.Item.DataItemIndex;
@@ -255,8 +256,8 @@ public partial class CreateCharacter : System.Web.UI.Page
     protected void btnCreateChar_Click(object sender, EventArgs e)
     {
         WebGameDataContext db = new WebGameDataContext();
-        string username= Session["username"].ToString();
-        int idherochon = int.Parse(lbIdHero.Text.ToString());// lay ra idherochon
+        string username = Session["User"].ToString();
+        int idherochon = int.Parse(lbIdHero.Text);// lay ra idherochon
         character nhanvat = new character();
         nhanvat.username = username;
         nhanvat.char_level = 1;

@@ -62,8 +62,28 @@
                         Text='<%# Bind("itemevent_name") %>' />
                     <br />
                     itemevent_param:
-                    <asp:TextBox ID="itemevent_paramTextBox" runat="server" 
-                        Text='<%# Bind("itemevent_param") %>' />
+                    <br />
+                    <asp:DropDownList ID="DropDownList1" runat="server" 
+                        DataSourceID="SQLEventOptionID" DataTextField="eventopt_name" 
+                        DataValueField="ID" SelectedValue='<%# Bind("itemevent_param") %>'>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SQLEventOptionID" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                        SelectCommand="SELECT [ID], [eventopt_name] FROM [itemevent_option]" 
+                        DeleteCommand="DELETE FROM [itemevent_option] WHERE [ID] = @ID" 
+                        InsertCommand="INSERT INTO [itemevent_option] ([eventopt_name]) VALUES (@eventopt_name)" 
+                        UpdateCommand="UPDATE [itemevent_option] SET [eventopt_name] = @eventopt_name WHERE [ID] = @ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="eventopt_name" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="eventopt_name" Type="String" />
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                     <br />
                     itemevent_value:
                     <asp:TextBox ID="itemevent_valueTextBox" runat="server" 

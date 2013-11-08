@@ -62,9 +62,6 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
   partial void Insertinventory(inventory instance);
   partial void Updateinventory(inventory instance);
   partial void Deleteinventory(inventory instance);
-  partial void Insertitem(item instance);
-  partial void Updateitem(item instance);
-  partial void Deleteitem(item instance);
   partial void Insertitem_option(item_option instance);
   partial void Updateitem_option(item_option instance);
   partial void Deleteitem_option(item_option instance);
@@ -80,9 +77,6 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
   partial void Insertmarket(market instance);
   partial void Updatemarket(market instance);
   partial void Deletemarket(market instance);
-  partial void Insertmonster(monster instance);
-  partial void Updatemonster(monster instance);
-  partial void Deletemonster(monster instance);
   partial void Insertoriginal_item(original_item instance);
   partial void Updateoriginal_item(original_item instance);
   partial void Deleteoriginal_item(original_item instance);
@@ -122,6 +116,12 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
   partial void Inserttintuc(tintuc instance);
   partial void Updatetintuc(tintuc instance);
   partial void Deletetintuc(tintuc instance);
+  partial void Insertitem(item instance);
+  partial void Updateitem(item instance);
+  partial void Deleteitem(item instance);
+  partial void Insertmonster(monster instance);
+  partial void Updatemonster(monster instance);
+  partial void Deletemonster(monster instance);
   #endregion
 	
 	public WebGameDataContext() : 
@@ -242,14 +242,6 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<item> items
-	{
-		get
-		{
-			return this.GetTable<item>();
-		}
-	}
-	
 	public System.Data.Linq.Table<item_option> item_options
 	{
 		get
@@ -287,14 +279,6 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<market>();
-		}
-	}
-	
-	public System.Data.Linq.Table<monster> monsters
-	{
-		get
-		{
-			return this.GetTable<monster>();
 		}
 	}
 	
@@ -399,6 +383,22 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<tintuc>();
+		}
+	}
+	
+	public System.Data.Linq.Table<item> items
+	{
+		get
+		{
+			return this.GetTable<item>();
+		}
+	}
+	
+	public System.Data.Linq.Table<monster> monsters
+	{
+		get
+		{
+			return this.GetTable<monster>();
 		}
 	}
 }
@@ -2320,977 +2320,6 @@ public partial class inventory : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.item")]
-public partial class item : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _ID;
-	
-	private string _item_name;
-	
-	private string _item_description;
-	
-	private System.Nullable<int> _item_level;
-	
-	private System.Nullable<int> _item_require_level;
-	
-	private System.Nullable<int> _item_param1;
-	
-	private System.Nullable<int> _item_value1;
-	
-	private System.Nullable<int> _item_param2;
-	
-	private System.Nullable<int> _item_value2;
-	
-	private System.Nullable<int> _item_param3;
-	
-	private System.Nullable<int> _item_value3;
-	
-	private System.Nullable<int> _item_param4;
-	
-	private System.Nullable<int> _item_value4;
-	
-	private System.Nullable<int> _item_param5;
-	
-	private System.Nullable<int> _item_value5;
-	
-	private int _item_isbuying;
-	
-	private int _item_islocked;
-	
-	private string _item_icon;
-	
-	private string _item_username;
-	
-	private int _item_equip;
-	
-	private System.Nullable<int> _item_type;
-	
-	private EntitySet<market> _markets;
-	
-	private EntitySet<character> _characters;
-	
-	private EntitySet<character> _characters1;
-	
-	private EntitySet<character> _characters2;
-	
-	private EntitySet<character> _characters3;
-	
-	private EntitySet<character> _characters4;
-	
-	private EntitySet<character> _characters5;
-	
-	private EntitySet<character> _characters6;
-	
-	private EntityRef<item_option> _item_option;
-	
-	private EntityRef<item_option> _item_option1;
-	
-	private EntityRef<item_option> _item_option2;
-	
-	private EntityRef<item_option> _item_option3;
-	
-	private EntityRef<item_option> _item_option4;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void Onitem_nameChanging(string value);
-    partial void Onitem_nameChanged();
-    partial void Onitem_descriptionChanging(string value);
-    partial void Onitem_descriptionChanged();
-    partial void Onitem_levelChanging(System.Nullable<int> value);
-    partial void Onitem_levelChanged();
-    partial void Onitem_require_levelChanging(System.Nullable<int> value);
-    partial void Onitem_require_levelChanged();
-    partial void Onitem_param1Changing(System.Nullable<int> value);
-    partial void Onitem_param1Changed();
-    partial void Onitem_value1Changing(System.Nullable<int> value);
-    partial void Onitem_value1Changed();
-    partial void Onitem_param2Changing(System.Nullable<int> value);
-    partial void Onitem_param2Changed();
-    partial void Onitem_value2Changing(System.Nullable<int> value);
-    partial void Onitem_value2Changed();
-    partial void Onitem_param3Changing(System.Nullable<int> value);
-    partial void Onitem_param3Changed();
-    partial void Onitem_value3Changing(System.Nullable<int> value);
-    partial void Onitem_value3Changed();
-    partial void Onitem_param4Changing(System.Nullable<int> value);
-    partial void Onitem_param4Changed();
-    partial void Onitem_value4Changing(System.Nullable<int> value);
-    partial void Onitem_value4Changed();
-    partial void Onitem_param5Changing(System.Nullable<int> value);
-    partial void Onitem_param5Changed();
-    partial void Onitem_value5Changing(System.Nullable<int> value);
-    partial void Onitem_value5Changed();
-    partial void Onitem_isbuyingChanging(int value);
-    partial void Onitem_isbuyingChanged();
-    partial void Onitem_islockedChanging(int value);
-    partial void Onitem_islockedChanged();
-    partial void Onitem_iconChanging(string value);
-    partial void Onitem_iconChanged();
-    partial void Onitem_usernameChanging(string value);
-    partial void Onitem_usernameChanged();
-    partial void Onitem_equipChanging(int value);
-    partial void Onitem_equipChanged();
-    partial void Onitem_typeChanging(System.Nullable<int> value);
-    partial void Onitem_typeChanged();
-    #endregion
-	
-	public item()
-	{
-		this._markets = new EntitySet<market>(new Action<market>(this.attach_markets), new Action<market>(this.detach_markets));
-		this._characters = new EntitySet<character>(new Action<character>(this.attach_characters), new Action<character>(this.detach_characters));
-		this._characters1 = new EntitySet<character>(new Action<character>(this.attach_characters1), new Action<character>(this.detach_characters1));
-		this._characters2 = new EntitySet<character>(new Action<character>(this.attach_characters2), new Action<character>(this.detach_characters2));
-		this._characters3 = new EntitySet<character>(new Action<character>(this.attach_characters3), new Action<character>(this.detach_characters3));
-		this._characters4 = new EntitySet<character>(new Action<character>(this.attach_characters4), new Action<character>(this.detach_characters4));
-		this._characters5 = new EntitySet<character>(new Action<character>(this.attach_characters5), new Action<character>(this.detach_characters5));
-		this._characters6 = new EntitySet<character>(new Action<character>(this.attach_characters6), new Action<character>(this.detach_characters6));
-		this._item_option = default(EntityRef<item_option>);
-		this._item_option1 = default(EntityRef<item_option>);
-		this._item_option2 = default(EntityRef<item_option>);
-		this._item_option3 = default(EntityRef<item_option>);
-		this._item_option4 = default(EntityRef<item_option>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ID
-	{
-		get
-		{
-			return this._ID;
-		}
-		set
-		{
-			if ((this._ID != value))
-			{
-				this.OnIDChanging(value);
-				this.SendPropertyChanging();
-				this._ID = value;
-				this.SendPropertyChanged("ID");
-				this.OnIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_name", DbType="NVarChar(50)")]
-	public string item_name
-	{
-		get
-		{
-			return this._item_name;
-		}
-		set
-		{
-			if ((this._item_name != value))
-			{
-				this.Onitem_nameChanging(value);
-				this.SendPropertyChanging();
-				this._item_name = value;
-				this.SendPropertyChanged("item_name");
-				this.Onitem_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
-	public string item_description
-	{
-		get
-		{
-			return this._item_description;
-		}
-		set
-		{
-			if ((this._item_description != value))
-			{
-				this.Onitem_descriptionChanging(value);
-				this.SendPropertyChanging();
-				this._item_description = value;
-				this.SendPropertyChanged("item_description");
-				this.Onitem_descriptionChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_level", DbType="Int")]
-	public System.Nullable<int> item_level
-	{
-		get
-		{
-			return this._item_level;
-		}
-		set
-		{
-			if ((this._item_level != value))
-			{
-				this.Onitem_levelChanging(value);
-				this.SendPropertyChanging();
-				this._item_level = value;
-				this.SendPropertyChanged("item_level");
-				this.Onitem_levelChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_require_level", DbType="Int")]
-	public System.Nullable<int> item_require_level
-	{
-		get
-		{
-			return this._item_require_level;
-		}
-		set
-		{
-			if ((this._item_require_level != value))
-			{
-				this.Onitem_require_levelChanging(value);
-				this.SendPropertyChanging();
-				this._item_require_level = value;
-				this.SendPropertyChanged("item_require_level");
-				this.Onitem_require_levelChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param1", DbType="Int")]
-	public System.Nullable<int> item_param1
-	{
-		get
-		{
-			return this._item_param1;
-		}
-		set
-		{
-			if ((this._item_param1 != value))
-			{
-				if (this._item_option.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onitem_param1Changing(value);
-				this.SendPropertyChanging();
-				this._item_param1 = value;
-				this.SendPropertyChanged("item_param1");
-				this.Onitem_param1Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value1", DbType="Int")]
-	public System.Nullable<int> item_value1
-	{
-		get
-		{
-			return this._item_value1;
-		}
-		set
-		{
-			if ((this._item_value1 != value))
-			{
-				this.Onitem_value1Changing(value);
-				this.SendPropertyChanging();
-				this._item_value1 = value;
-				this.SendPropertyChanged("item_value1");
-				this.Onitem_value1Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param2", DbType="Int")]
-	public System.Nullable<int> item_param2
-	{
-		get
-		{
-			return this._item_param2;
-		}
-		set
-		{
-			if ((this._item_param2 != value))
-			{
-				if (this._item_option1.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onitem_param2Changing(value);
-				this.SendPropertyChanging();
-				this._item_param2 = value;
-				this.SendPropertyChanged("item_param2");
-				this.Onitem_param2Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value2", DbType="Int")]
-	public System.Nullable<int> item_value2
-	{
-		get
-		{
-			return this._item_value2;
-		}
-		set
-		{
-			if ((this._item_value2 != value))
-			{
-				this.Onitem_value2Changing(value);
-				this.SendPropertyChanging();
-				this._item_value2 = value;
-				this.SendPropertyChanged("item_value2");
-				this.Onitem_value2Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param3", DbType="Int")]
-	public System.Nullable<int> item_param3
-	{
-		get
-		{
-			return this._item_param3;
-		}
-		set
-		{
-			if ((this._item_param3 != value))
-			{
-				if (this._item_option2.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onitem_param3Changing(value);
-				this.SendPropertyChanging();
-				this._item_param3 = value;
-				this.SendPropertyChanged("item_param3");
-				this.Onitem_param3Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value3", DbType="Int")]
-	public System.Nullable<int> item_value3
-	{
-		get
-		{
-			return this._item_value3;
-		}
-		set
-		{
-			if ((this._item_value3 != value))
-			{
-				this.Onitem_value3Changing(value);
-				this.SendPropertyChanging();
-				this._item_value3 = value;
-				this.SendPropertyChanged("item_value3");
-				this.Onitem_value3Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param4", DbType="Int")]
-	public System.Nullable<int> item_param4
-	{
-		get
-		{
-			return this._item_param4;
-		}
-		set
-		{
-			if ((this._item_param4 != value))
-			{
-				if (this._item_option3.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onitem_param4Changing(value);
-				this.SendPropertyChanging();
-				this._item_param4 = value;
-				this.SendPropertyChanged("item_param4");
-				this.Onitem_param4Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value4", DbType="Int")]
-	public System.Nullable<int> item_value4
-	{
-		get
-		{
-			return this._item_value4;
-		}
-		set
-		{
-			if ((this._item_value4 != value))
-			{
-				this.Onitem_value4Changing(value);
-				this.SendPropertyChanging();
-				this._item_value4 = value;
-				this.SendPropertyChanged("item_value4");
-				this.Onitem_value4Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param5", DbType="Int")]
-	public System.Nullable<int> item_param5
-	{
-		get
-		{
-			return this._item_param5;
-		}
-		set
-		{
-			if ((this._item_param5 != value))
-			{
-				if (this._item_option4.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onitem_param5Changing(value);
-				this.SendPropertyChanging();
-				this._item_param5 = value;
-				this.SendPropertyChanged("item_param5");
-				this.Onitem_param5Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value5", DbType="Int")]
-	public System.Nullable<int> item_value5
-	{
-		get
-		{
-			return this._item_value5;
-		}
-		set
-		{
-			if ((this._item_value5 != value))
-			{
-				this.Onitem_value5Changing(value);
-				this.SendPropertyChanging();
-				this._item_value5 = value;
-				this.SendPropertyChanged("item_value5");
-				this.Onitem_value5Changed();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_isbuying", DbType="Int NOT NULL")]
-	public int item_isbuying
-	{
-		get
-		{
-			return this._item_isbuying;
-		}
-		set
-		{
-			if ((this._item_isbuying != value))
-			{
-				this.Onitem_isbuyingChanging(value);
-				this.SendPropertyChanging();
-				this._item_isbuying = value;
-				this.SendPropertyChanged("item_isbuying");
-				this.Onitem_isbuyingChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_islocked", DbType="Int NOT NULL")]
-	public int item_islocked
-	{
-		get
-		{
-			return this._item_islocked;
-		}
-		set
-		{
-			if ((this._item_islocked != value))
-			{
-				this.Onitem_islockedChanging(value);
-				this.SendPropertyChanging();
-				this._item_islocked = value;
-				this.SendPropertyChanged("item_islocked");
-				this.Onitem_islockedChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_icon", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-	public string item_icon
-	{
-		get
-		{
-			return this._item_icon;
-		}
-		set
-		{
-			if ((this._item_icon != value))
-			{
-				this.Onitem_iconChanging(value);
-				this.SendPropertyChanging();
-				this._item_icon = value;
-				this.SendPropertyChanged("item_icon");
-				this.Onitem_iconChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_username", DbType="NVarChar(50)")]
-	public string item_username
-	{
-		get
-		{
-			return this._item_username;
-		}
-		set
-		{
-			if ((this._item_username != value))
-			{
-				this.Onitem_usernameChanging(value);
-				this.SendPropertyChanging();
-				this._item_username = value;
-				this.SendPropertyChanged("item_username");
-				this.Onitem_usernameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_equip", DbType="Int NOT NULL")]
-	public int item_equip
-	{
-		get
-		{
-			return this._item_equip;
-		}
-		set
-		{
-			if ((this._item_equip != value))
-			{
-				this.Onitem_equipChanging(value);
-				this.SendPropertyChanging();
-				this._item_equip = value;
-				this.SendPropertyChanged("item_equip");
-				this.Onitem_equipChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_type", DbType="Int")]
-	public System.Nullable<int> item_type
-	{
-		get
-		{
-			return this._item_type;
-		}
-		set
-		{
-			if ((this._item_type != value))
-			{
-				this.Onitem_typeChanging(value);
-				this.SendPropertyChanging();
-				this._item_type = value;
-				this.SendPropertyChanged("item_type");
-				this.Onitem_typeChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_market", Storage="_markets", ThisKey="ID", OtherKey="market_item_id")]
-	public EntitySet<market> markets
-	{
-		get
-		{
-			return this._markets;
-		}
-		set
-		{
-			this._markets.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character", Storage="_characters", ThisKey="ID", OtherKey="char_item_equipment_helm")]
-	public EntitySet<character> characters
-	{
-		get
-		{
-			return this._characters;
-		}
-		set
-		{
-			this._characters.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character1", Storage="_characters1", ThisKey="ID", OtherKey="char_item_equipment_armor")]
-	public EntitySet<character> characters1
-	{
-		get
-		{
-			return this._characters1;
-		}
-		set
-		{
-			this._characters1.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character2", Storage="_characters2", ThisKey="ID", OtherKey="char_item_equipment_gloves")]
-	public EntitySet<character> characters2
-	{
-		get
-		{
-			return this._characters2;
-		}
-		set
-		{
-			this._characters2.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character3", Storage="_characters3", ThisKey="ID", OtherKey="char_item_equipment_gloves")]
-	public EntitySet<character> characters3
-	{
-		get
-		{
-			return this._characters3;
-		}
-		set
-		{
-			this._characters3.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character4", Storage="_characters4", ThisKey="ID", OtherKey="char_item_equipment_weapon")]
-	public EntitySet<character> characters4
-	{
-		get
-		{
-			return this._characters4;
-		}
-		set
-		{
-			this._characters4.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character5", Storage="_characters5", ThisKey="ID", OtherKey="char_item_equipment_shield")]
-	public EntitySet<character> characters5
-	{
-		get
-		{
-			return this._characters5;
-		}
-		set
-		{
-			this._characters5.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character6", Storage="_characters6", ThisKey="ID", OtherKey="char_item_equipment_boots")]
-	public EntitySet<character> characters6
-	{
-		get
-		{
-			return this._characters6;
-		}
-		set
-		{
-			this._characters6.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item", Storage="_item_option", ThisKey="item_param1", OtherKey="ID", IsForeignKey=true)]
-	public item_option item_option
-	{
-		get
-		{
-			return this._item_option.Entity;
-		}
-		set
-		{
-			item_option previousValue = this._item_option.Entity;
-			if (((previousValue != value) 
-						|| (this._item_option.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._item_option.Entity = null;
-					previousValue.items.Remove(this);
-				}
-				this._item_option.Entity = value;
-				if ((value != null))
-				{
-					value.items.Add(this);
-					this._item_param1 = value.ID;
-				}
-				else
-				{
-					this._item_param1 = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("item_option");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item1", Storage="_item_option1", ThisKey="item_param2", OtherKey="ID", IsForeignKey=true)]
-	public item_option item_option1
-	{
-		get
-		{
-			return this._item_option1.Entity;
-		}
-		set
-		{
-			item_option previousValue = this._item_option1.Entity;
-			if (((previousValue != value) 
-						|| (this._item_option1.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._item_option1.Entity = null;
-					previousValue.items1.Remove(this);
-				}
-				this._item_option1.Entity = value;
-				if ((value != null))
-				{
-					value.items1.Add(this);
-					this._item_param2 = value.ID;
-				}
-				else
-				{
-					this._item_param2 = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("item_option1");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item2", Storage="_item_option2", ThisKey="item_param3", OtherKey="ID", IsForeignKey=true)]
-	public item_option item_option2
-	{
-		get
-		{
-			return this._item_option2.Entity;
-		}
-		set
-		{
-			item_option previousValue = this._item_option2.Entity;
-			if (((previousValue != value) 
-						|| (this._item_option2.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._item_option2.Entity = null;
-					previousValue.items2.Remove(this);
-				}
-				this._item_option2.Entity = value;
-				if ((value != null))
-				{
-					value.items2.Add(this);
-					this._item_param3 = value.ID;
-				}
-				else
-				{
-					this._item_param3 = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("item_option2");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item3", Storage="_item_option3", ThisKey="item_param4", OtherKey="ID", IsForeignKey=true)]
-	public item_option item_option3
-	{
-		get
-		{
-			return this._item_option3.Entity;
-		}
-		set
-		{
-			item_option previousValue = this._item_option3.Entity;
-			if (((previousValue != value) 
-						|| (this._item_option3.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._item_option3.Entity = null;
-					previousValue.items3.Remove(this);
-				}
-				this._item_option3.Entity = value;
-				if ((value != null))
-				{
-					value.items3.Add(this);
-					this._item_param4 = value.ID;
-				}
-				else
-				{
-					this._item_param4 = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("item_option3");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item4", Storage="_item_option4", ThisKey="item_param5", OtherKey="ID", IsForeignKey=true)]
-	public item_option item_option4
-	{
-		get
-		{
-			return this._item_option4.Entity;
-		}
-		set
-		{
-			item_option previousValue = this._item_option4.Entity;
-			if (((previousValue != value) 
-						|| (this._item_option4.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._item_option4.Entity = null;
-					previousValue.items4.Remove(this);
-				}
-				this._item_option4.Entity = value;
-				if ((value != null))
-				{
-					value.items4.Add(this);
-					this._item_param5 = value.ID;
-				}
-				else
-				{
-					this._item_param5 = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("item_option4");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_markets(market entity)
-	{
-		this.SendPropertyChanging();
-		entity.item = this;
-	}
-	
-	private void detach_markets(market entity)
-	{
-		this.SendPropertyChanging();
-		entity.item = null;
-	}
-	
-	private void attach_characters(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item = this;
-	}
-	
-	private void detach_characters(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item = null;
-	}
-	
-	private void attach_characters1(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item1 = this;
-	}
-	
-	private void detach_characters1(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item1 = null;
-	}
-	
-	private void attach_characters2(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item2 = this;
-	}
-	
-	private void detach_characters2(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item2 = null;
-	}
-	
-	private void attach_characters3(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item3 = this;
-	}
-	
-	private void detach_characters3(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item3 = null;
-	}
-	
-	private void attach_characters4(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item4 = this;
-	}
-	
-	private void detach_characters4(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item4 = null;
-	}
-	
-	private void attach_characters5(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item5 = this;
-	}
-	
-	private void detach_characters5(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item5 = null;
-	}
-	
-	private void attach_characters6(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item6 = this;
-	}
-	
-	private void detach_characters6(character entity)
-	{
-		this.SendPropertyChanging();
-		entity.item6 = null;
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.item_option")]
 public partial class item_option : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -4166,308 +3195,6 @@ public partial class market : INotifyPropertyChanging, INotifyPropertyChanged
 					this._market_item_id = default(int);
 				}
 				this.SendPropertyChanged("item");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.monster")]
-public partial class monster : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _ID;
-	
-	private string _monster_name;
-	
-	private System.Nullable<int> _monster_level;
-	
-	private System.Nullable<int> _monster_money;
-	
-	private System.Nullable<long> _monster_exp;
-	
-	private System.Nullable<int> _monster_is_boss;
-	
-	private System.Nullable<int> _monster_map;
-	
-	private System.Nullable<int> _monster_damage;
-	
-	private System.Nullable<int> _monster_hp;
-	
-	private System.Nullable<int> _monster_defend;
-	
-	private string _monster_drop_list;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void Onmonster_nameChanging(string value);
-    partial void Onmonster_nameChanged();
-    partial void Onmonster_levelChanging(System.Nullable<int> value);
-    partial void Onmonster_levelChanged();
-    partial void Onmonster_moneyChanging(System.Nullable<int> value);
-    partial void Onmonster_moneyChanged();
-    partial void Onmonster_expChanging(System.Nullable<long> value);
-    partial void Onmonster_expChanged();
-    partial void Onmonster_is_bossChanging(System.Nullable<int> value);
-    partial void Onmonster_is_bossChanged();
-    partial void Onmonster_mapChanging(System.Nullable<int> value);
-    partial void Onmonster_mapChanged();
-    partial void Onmonster_damageChanging(System.Nullable<int> value);
-    partial void Onmonster_damageChanged();
-    partial void Onmonster_hpChanging(System.Nullable<int> value);
-    partial void Onmonster_hpChanged();
-    partial void Onmonster_defendChanging(System.Nullable<int> value);
-    partial void Onmonster_defendChanged();
-    partial void Onmonster_drop_listChanging(string value);
-    partial void Onmonster_drop_listChanged();
-    #endregion
-	
-	public monster()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ID
-	{
-		get
-		{
-			return this._ID;
-		}
-		set
-		{
-			if ((this._ID != value))
-			{
-				this.OnIDChanging(value);
-				this.SendPropertyChanging();
-				this._ID = value;
-				this.SendPropertyChanged("ID");
-				this.OnIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_name", DbType="NVarChar(50)")]
-	public string monster_name
-	{
-		get
-		{
-			return this._monster_name;
-		}
-		set
-		{
-			if ((this._monster_name != value))
-			{
-				this.Onmonster_nameChanging(value);
-				this.SendPropertyChanging();
-				this._monster_name = value;
-				this.SendPropertyChanged("monster_name");
-				this.Onmonster_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_level", DbType="Int")]
-	public System.Nullable<int> monster_level
-	{
-		get
-		{
-			return this._monster_level;
-		}
-		set
-		{
-			if ((this._monster_level != value))
-			{
-				this.Onmonster_levelChanging(value);
-				this.SendPropertyChanging();
-				this._monster_level = value;
-				this.SendPropertyChanged("monster_level");
-				this.Onmonster_levelChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_money", DbType="Int")]
-	public System.Nullable<int> monster_money
-	{
-		get
-		{
-			return this._monster_money;
-		}
-		set
-		{
-			if ((this._monster_money != value))
-			{
-				this.Onmonster_moneyChanging(value);
-				this.SendPropertyChanging();
-				this._monster_money = value;
-				this.SendPropertyChanged("monster_money");
-				this.Onmonster_moneyChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_exp", DbType="BigInt")]
-	public System.Nullable<long> monster_exp
-	{
-		get
-		{
-			return this._monster_exp;
-		}
-		set
-		{
-			if ((this._monster_exp != value))
-			{
-				this.Onmonster_expChanging(value);
-				this.SendPropertyChanging();
-				this._monster_exp = value;
-				this.SendPropertyChanged("monster_exp");
-				this.Onmonster_expChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_is_boss", DbType="Int")]
-	public System.Nullable<int> monster_is_boss
-	{
-		get
-		{
-			return this._monster_is_boss;
-		}
-		set
-		{
-			if ((this._monster_is_boss != value))
-			{
-				this.Onmonster_is_bossChanging(value);
-				this.SendPropertyChanging();
-				this._monster_is_boss = value;
-				this.SendPropertyChanged("monster_is_boss");
-				this.Onmonster_is_bossChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_map", DbType="Int")]
-	public System.Nullable<int> monster_map
-	{
-		get
-		{
-			return this._monster_map;
-		}
-		set
-		{
-			if ((this._monster_map != value))
-			{
-				this.Onmonster_mapChanging(value);
-				this.SendPropertyChanging();
-				this._monster_map = value;
-				this.SendPropertyChanged("monster_map");
-				this.Onmonster_mapChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_damage", DbType="Int")]
-	public System.Nullable<int> monster_damage
-	{
-		get
-		{
-			return this._monster_damage;
-		}
-		set
-		{
-			if ((this._monster_damage != value))
-			{
-				this.Onmonster_damageChanging(value);
-				this.SendPropertyChanging();
-				this._monster_damage = value;
-				this.SendPropertyChanged("monster_damage");
-				this.Onmonster_damageChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_hp", DbType="Int")]
-	public System.Nullable<int> monster_hp
-	{
-		get
-		{
-			return this._monster_hp;
-		}
-		set
-		{
-			if ((this._monster_hp != value))
-			{
-				this.Onmonster_hpChanging(value);
-				this.SendPropertyChanging();
-				this._monster_hp = value;
-				this.SendPropertyChanged("monster_hp");
-				this.Onmonster_hpChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_defend", DbType="Int")]
-	public System.Nullable<int> monster_defend
-	{
-		get
-		{
-			return this._monster_defend;
-		}
-		set
-		{
-			if ((this._monster_defend != value))
-			{
-				this.Onmonster_defendChanging(value);
-				this.SendPropertyChanging();
-				this._monster_defend = value;
-				this.SendPropertyChanged("monster_defend");
-				this.Onmonster_defendChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_list", DbType="NVarChar(50)")]
-	public string monster_drop_list
-	{
-		get
-		{
-			return this._monster_drop_list;
-		}
-		set
-		{
-			if ((this._monster_drop_list != value))
-			{
-				this.Onmonster_drop_listChanging(value);
-				this.SendPropertyChanging();
-				this._monster_drop_list = value;
-				this.SendPropertyChanged("monster_drop_list");
-				this.Onmonster_drop_listChanged();
 			}
 		}
 	}
@@ -6223,6 +4950,8 @@ public partial class character : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private EntityRef<clan> _clan;
 	
+	private EntityRef<map> _map;
+	
 	private EntityRef<item> _item;
 	
 	private EntityRef<item> _item1;
@@ -6236,8 +4965,6 @@ public partial class character : INotifyPropertyChanging, INotifyPropertyChanged
 	private EntityRef<item> _item5;
 	
 	private EntityRef<item> _item6;
-	
-	private EntityRef<map> _map;
 	
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -6306,6 +5033,7 @@ public partial class character : INotifyPropertyChanging, INotifyPropertyChanged
 		this._account = default(EntityRef<account>);
 		this._char_title1 = default(EntityRef<char_title>);
 		this._clan = default(EntityRef<clan>);
+		this._map = default(EntityRef<map>);
 		this._item = default(EntityRef<item>);
 		this._item1 = default(EntityRef<item>);
 		this._item2 = default(EntityRef<item>);
@@ -6313,7 +5041,6 @@ public partial class character : INotifyPropertyChanging, INotifyPropertyChanged
 		this._item4 = default(EntityRef<item>);
 		this._item5 = default(EntityRef<item>);
 		this._item6 = default(EntityRef<item>);
-		this._map = default(EntityRef<map>);
 		OnCreated();
 	}
 	
@@ -7019,6 +5746,40 @@ public partial class character : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="map_character", Storage="_map", ThisKey="char_position", OtherKey="ID", IsForeignKey=true)]
+	public map map
+	{
+		get
+		{
+			return this._map.Entity;
+		}
+		set
+		{
+			map previousValue = this._map.Entity;
+			if (((previousValue != value) 
+						|| (this._map.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._map.Entity = null;
+					previousValue.characters.Remove(this);
+				}
+				this._map.Entity = value;
+				if ((value != null))
+				{
+					value.characters.Add(this);
+					this._char_position = value.ID;
+				}
+				else
+				{
+					this._char_position = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("map");
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character", Storage="_item", ThisKey="char_item_equipment_helm", OtherKey="ID", IsForeignKey=true)]
 	public item item
 	{
@@ -7253,40 +6014,6 @@ public partial class character : INotifyPropertyChanging, INotifyPropertyChanged
 					this._char_item_equipment_boots = default(Nullable<int>);
 				}
 				this.SendPropertyChanged("item6");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="map_character", Storage="_map", ThisKey="char_position", OtherKey="ID", IsForeignKey=true)]
-	public map map
-	{
-		get
-		{
-			return this._map.Entity;
-		}
-		set
-		{
-			map previousValue = this._map.Entity;
-			if (((previousValue != value) 
-						|| (this._map.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._map.Entity = null;
-					previousValue.characters.Remove(this);
-				}
-				this._map.Entity = value;
-				if ((value != null))
-				{
-					value.characters.Add(this);
-					this._char_position = value.ID;
-				}
-				else
-				{
-					this._char_position = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("map");
 			}
 		}
 	}
@@ -7984,6 +6711,1351 @@ public partial class tintuc : INotifyPropertyChanging, INotifyPropertyChanged
 					this._news_category = default(Nullable<int>);
 				}
 				this.SendPropertyChanged("category");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.item")]
+public partial class item : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _ID;
+	
+	private string _item_name;
+	
+	private string _item_description;
+	
+	private System.Nullable<int> _item_level;
+	
+	private System.Nullable<int> _item_require_level;
+	
+	private System.Nullable<int> _item_param1;
+	
+	private System.Nullable<int> _item_value1;
+	
+	private System.Nullable<int> _item_param2;
+	
+	private System.Nullable<int> _item_value2;
+	
+	private System.Nullable<int> _item_param3;
+	
+	private System.Nullable<int> _item_value3;
+	
+	private System.Nullable<int> _item_param4;
+	
+	private System.Nullable<int> _item_value4;
+	
+	private System.Nullable<int> _item_param5;
+	
+	private System.Nullable<int> _item_value5;
+	
+	private int _item_isbuying;
+	
+	private int _item_islocked;
+	
+	private string _item_icon;
+	
+	private string _item_username;
+	
+	private int _item_equip;
+	
+	private System.Nullable<int> _item_type;
+	
+	private System.Nullable<byte> _item_rarity;
+	
+	private EntitySet<market> _markets;
+	
+	private EntitySet<character> _characters;
+	
+	private EntitySet<character> _characters1;
+	
+	private EntitySet<character> _characters2;
+	
+	private EntitySet<character> _characters3;
+	
+	private EntitySet<character> _characters4;
+	
+	private EntitySet<character> _characters5;
+	
+	private EntitySet<character> _characters6;
+	
+	private EntityRef<item_option> _item_option;
+	
+	private EntityRef<item_option> _item_option1;
+	
+	private EntityRef<item_option> _item_option2;
+	
+	private EntityRef<item_option> _item_option3;
+	
+	private EntityRef<item_option> _item_option4;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void Onitem_nameChanging(string value);
+    partial void Onitem_nameChanged();
+    partial void Onitem_descriptionChanging(string value);
+    partial void Onitem_descriptionChanged();
+    partial void Onitem_levelChanging(System.Nullable<int> value);
+    partial void Onitem_levelChanged();
+    partial void Onitem_require_levelChanging(System.Nullable<int> value);
+    partial void Onitem_require_levelChanged();
+    partial void Onitem_param1Changing(System.Nullable<int> value);
+    partial void Onitem_param1Changed();
+    partial void Onitem_value1Changing(System.Nullable<int> value);
+    partial void Onitem_value1Changed();
+    partial void Onitem_param2Changing(System.Nullable<int> value);
+    partial void Onitem_param2Changed();
+    partial void Onitem_value2Changing(System.Nullable<int> value);
+    partial void Onitem_value2Changed();
+    partial void Onitem_param3Changing(System.Nullable<int> value);
+    partial void Onitem_param3Changed();
+    partial void Onitem_value3Changing(System.Nullable<int> value);
+    partial void Onitem_value3Changed();
+    partial void Onitem_param4Changing(System.Nullable<int> value);
+    partial void Onitem_param4Changed();
+    partial void Onitem_value4Changing(System.Nullable<int> value);
+    partial void Onitem_value4Changed();
+    partial void Onitem_param5Changing(System.Nullable<int> value);
+    partial void Onitem_param5Changed();
+    partial void Onitem_value5Changing(System.Nullable<int> value);
+    partial void Onitem_value5Changed();
+    partial void Onitem_isbuyingChanging(int value);
+    partial void Onitem_isbuyingChanged();
+    partial void Onitem_islockedChanging(int value);
+    partial void Onitem_islockedChanged();
+    partial void Onitem_iconChanging(string value);
+    partial void Onitem_iconChanged();
+    partial void Onitem_usernameChanging(string value);
+    partial void Onitem_usernameChanged();
+    partial void Onitem_equipChanging(int value);
+    partial void Onitem_equipChanged();
+    partial void Onitem_typeChanging(System.Nullable<int> value);
+    partial void Onitem_typeChanged();
+    partial void Onitem_rarityChanging(System.Nullable<byte> value);
+    partial void Onitem_rarityChanged();
+    #endregion
+	
+	public item()
+	{
+		this._markets = new EntitySet<market>(new Action<market>(this.attach_markets), new Action<market>(this.detach_markets));
+		this._characters = new EntitySet<character>(new Action<character>(this.attach_characters), new Action<character>(this.detach_characters));
+		this._characters1 = new EntitySet<character>(new Action<character>(this.attach_characters1), new Action<character>(this.detach_characters1));
+		this._characters2 = new EntitySet<character>(new Action<character>(this.attach_characters2), new Action<character>(this.detach_characters2));
+		this._characters3 = new EntitySet<character>(new Action<character>(this.attach_characters3), new Action<character>(this.detach_characters3));
+		this._characters4 = new EntitySet<character>(new Action<character>(this.attach_characters4), new Action<character>(this.detach_characters4));
+		this._characters5 = new EntitySet<character>(new Action<character>(this.attach_characters5), new Action<character>(this.detach_characters5));
+		this._characters6 = new EntitySet<character>(new Action<character>(this.attach_characters6), new Action<character>(this.detach_characters6));
+		this._item_option = default(EntityRef<item_option>);
+		this._item_option1 = default(EntityRef<item_option>);
+		this._item_option2 = default(EntityRef<item_option>);
+		this._item_option3 = default(EntityRef<item_option>);
+		this._item_option4 = default(EntityRef<item_option>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int ID
+	{
+		get
+		{
+			return this._ID;
+		}
+		set
+		{
+			if ((this._ID != value))
+			{
+				this.OnIDChanging(value);
+				this.SendPropertyChanging();
+				this._ID = value;
+				this.SendPropertyChanged("ID");
+				this.OnIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_name", DbType="NVarChar(50)")]
+	public string item_name
+	{
+		get
+		{
+			return this._item_name;
+		}
+		set
+		{
+			if ((this._item_name != value))
+			{
+				this.Onitem_nameChanging(value);
+				this.SendPropertyChanging();
+				this._item_name = value;
+				this.SendPropertyChanged("item_name");
+				this.Onitem_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_description", DbType="NText", UpdateCheck=UpdateCheck.Never)]
+	public string item_description
+	{
+		get
+		{
+			return this._item_description;
+		}
+		set
+		{
+			if ((this._item_description != value))
+			{
+				this.Onitem_descriptionChanging(value);
+				this.SendPropertyChanging();
+				this._item_description = value;
+				this.SendPropertyChanged("item_description");
+				this.Onitem_descriptionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_level", DbType="Int")]
+	public System.Nullable<int> item_level
+	{
+		get
+		{
+			return this._item_level;
+		}
+		set
+		{
+			if ((this._item_level != value))
+			{
+				this.Onitem_levelChanging(value);
+				this.SendPropertyChanging();
+				this._item_level = value;
+				this.SendPropertyChanged("item_level");
+				this.Onitem_levelChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_require_level", DbType="Int")]
+	public System.Nullable<int> item_require_level
+	{
+		get
+		{
+			return this._item_require_level;
+		}
+		set
+		{
+			if ((this._item_require_level != value))
+			{
+				this.Onitem_require_levelChanging(value);
+				this.SendPropertyChanging();
+				this._item_require_level = value;
+				this.SendPropertyChanged("item_require_level");
+				this.Onitem_require_levelChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param1", DbType="Int")]
+	public System.Nullable<int> item_param1
+	{
+		get
+		{
+			return this._item_param1;
+		}
+		set
+		{
+			if ((this._item_param1 != value))
+			{
+				if (this._item_option.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onitem_param1Changing(value);
+				this.SendPropertyChanging();
+				this._item_param1 = value;
+				this.SendPropertyChanged("item_param1");
+				this.Onitem_param1Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value1", DbType="Int")]
+	public System.Nullable<int> item_value1
+	{
+		get
+		{
+			return this._item_value1;
+		}
+		set
+		{
+			if ((this._item_value1 != value))
+			{
+				this.Onitem_value1Changing(value);
+				this.SendPropertyChanging();
+				this._item_value1 = value;
+				this.SendPropertyChanged("item_value1");
+				this.Onitem_value1Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param2", DbType="Int")]
+	public System.Nullable<int> item_param2
+	{
+		get
+		{
+			return this._item_param2;
+		}
+		set
+		{
+			if ((this._item_param2 != value))
+			{
+				if (this._item_option1.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onitem_param2Changing(value);
+				this.SendPropertyChanging();
+				this._item_param2 = value;
+				this.SendPropertyChanged("item_param2");
+				this.Onitem_param2Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value2", DbType="Int")]
+	public System.Nullable<int> item_value2
+	{
+		get
+		{
+			return this._item_value2;
+		}
+		set
+		{
+			if ((this._item_value2 != value))
+			{
+				this.Onitem_value2Changing(value);
+				this.SendPropertyChanging();
+				this._item_value2 = value;
+				this.SendPropertyChanged("item_value2");
+				this.Onitem_value2Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param3", DbType="Int")]
+	public System.Nullable<int> item_param3
+	{
+		get
+		{
+			return this._item_param3;
+		}
+		set
+		{
+			if ((this._item_param3 != value))
+			{
+				if (this._item_option2.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onitem_param3Changing(value);
+				this.SendPropertyChanging();
+				this._item_param3 = value;
+				this.SendPropertyChanged("item_param3");
+				this.Onitem_param3Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value3", DbType="Int")]
+	public System.Nullable<int> item_value3
+	{
+		get
+		{
+			return this._item_value3;
+		}
+		set
+		{
+			if ((this._item_value3 != value))
+			{
+				this.Onitem_value3Changing(value);
+				this.SendPropertyChanging();
+				this._item_value3 = value;
+				this.SendPropertyChanged("item_value3");
+				this.Onitem_value3Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param4", DbType="Int")]
+	public System.Nullable<int> item_param4
+	{
+		get
+		{
+			return this._item_param4;
+		}
+		set
+		{
+			if ((this._item_param4 != value))
+			{
+				if (this._item_option3.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onitem_param4Changing(value);
+				this.SendPropertyChanging();
+				this._item_param4 = value;
+				this.SendPropertyChanged("item_param4");
+				this.Onitem_param4Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value4", DbType="Int")]
+	public System.Nullable<int> item_value4
+	{
+		get
+		{
+			return this._item_value4;
+		}
+		set
+		{
+			if ((this._item_value4 != value))
+			{
+				this.Onitem_value4Changing(value);
+				this.SendPropertyChanging();
+				this._item_value4 = value;
+				this.SendPropertyChanged("item_value4");
+				this.Onitem_value4Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_param5", DbType="Int")]
+	public System.Nullable<int> item_param5
+	{
+		get
+		{
+			return this._item_param5;
+		}
+		set
+		{
+			if ((this._item_param5 != value))
+			{
+				if (this._item_option4.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onitem_param5Changing(value);
+				this.SendPropertyChanging();
+				this._item_param5 = value;
+				this.SendPropertyChanged("item_param5");
+				this.Onitem_param5Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_value5", DbType="Int")]
+	public System.Nullable<int> item_value5
+	{
+		get
+		{
+			return this._item_value5;
+		}
+		set
+		{
+			if ((this._item_value5 != value))
+			{
+				this.Onitem_value5Changing(value);
+				this.SendPropertyChanging();
+				this._item_value5 = value;
+				this.SendPropertyChanged("item_value5");
+				this.Onitem_value5Changed();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_isbuying", DbType="Int NOT NULL")]
+	public int item_isbuying
+	{
+		get
+		{
+			return this._item_isbuying;
+		}
+		set
+		{
+			if ((this._item_isbuying != value))
+			{
+				this.Onitem_isbuyingChanging(value);
+				this.SendPropertyChanging();
+				this._item_isbuying = value;
+				this.SendPropertyChanged("item_isbuying");
+				this.Onitem_isbuyingChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_islocked", DbType="Int NOT NULL")]
+	public int item_islocked
+	{
+		get
+		{
+			return this._item_islocked;
+		}
+		set
+		{
+			if ((this._item_islocked != value))
+			{
+				this.Onitem_islockedChanging(value);
+				this.SendPropertyChanging();
+				this._item_islocked = value;
+				this.SendPropertyChanged("item_islocked");
+				this.Onitem_islockedChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_icon", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string item_icon
+	{
+		get
+		{
+			return this._item_icon;
+		}
+		set
+		{
+			if ((this._item_icon != value))
+			{
+				this.Onitem_iconChanging(value);
+				this.SendPropertyChanging();
+				this._item_icon = value;
+				this.SendPropertyChanged("item_icon");
+				this.Onitem_iconChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_username", DbType="NVarChar(50)")]
+	public string item_username
+	{
+		get
+		{
+			return this._item_username;
+		}
+		set
+		{
+			if ((this._item_username != value))
+			{
+				this.Onitem_usernameChanging(value);
+				this.SendPropertyChanging();
+				this._item_username = value;
+				this.SendPropertyChanged("item_username");
+				this.Onitem_usernameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_equip", DbType="Int NOT NULL")]
+	public int item_equip
+	{
+		get
+		{
+			return this._item_equip;
+		}
+		set
+		{
+			if ((this._item_equip != value))
+			{
+				this.Onitem_equipChanging(value);
+				this.SendPropertyChanging();
+				this._item_equip = value;
+				this.SendPropertyChanged("item_equip");
+				this.Onitem_equipChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_type", DbType="Int")]
+	public System.Nullable<int> item_type
+	{
+		get
+		{
+			return this._item_type;
+		}
+		set
+		{
+			if ((this._item_type != value))
+			{
+				this.Onitem_typeChanging(value);
+				this.SendPropertyChanging();
+				this._item_type = value;
+				this.SendPropertyChanged("item_type");
+				this.Onitem_typeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_rarity", DbType="TinyInt")]
+	public System.Nullable<byte> item_rarity
+	{
+		get
+		{
+			return this._item_rarity;
+		}
+		set
+		{
+			if ((this._item_rarity != value))
+			{
+				this.Onitem_rarityChanging(value);
+				this.SendPropertyChanging();
+				this._item_rarity = value;
+				this.SendPropertyChanged("item_rarity");
+				this.Onitem_rarityChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_market", Storage="_markets", ThisKey="ID", OtherKey="market_item_id")]
+	public EntitySet<market> markets
+	{
+		get
+		{
+			return this._markets;
+		}
+		set
+		{
+			this._markets.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character", Storage="_characters", ThisKey="ID", OtherKey="char_item_equipment_helm")]
+	public EntitySet<character> characters
+	{
+		get
+		{
+			return this._characters;
+		}
+		set
+		{
+			this._characters.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character1", Storage="_characters1", ThisKey="ID", OtherKey="char_item_equipment_armor")]
+	public EntitySet<character> characters1
+	{
+		get
+		{
+			return this._characters1;
+		}
+		set
+		{
+			this._characters1.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character2", Storage="_characters2", ThisKey="ID", OtherKey="char_item_equipment_gloves")]
+	public EntitySet<character> characters2
+	{
+		get
+		{
+			return this._characters2;
+		}
+		set
+		{
+			this._characters2.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character3", Storage="_characters3", ThisKey="ID", OtherKey="char_item_equipment_gloves")]
+	public EntitySet<character> characters3
+	{
+		get
+		{
+			return this._characters3;
+		}
+		set
+		{
+			this._characters3.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character4", Storage="_characters4", ThisKey="ID", OtherKey="char_item_equipment_weapon")]
+	public EntitySet<character> characters4
+	{
+		get
+		{
+			return this._characters4;
+		}
+		set
+		{
+			this._characters4.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character5", Storage="_characters5", ThisKey="ID", OtherKey="char_item_equipment_shield")]
+	public EntitySet<character> characters5
+	{
+		get
+		{
+			return this._characters5;
+		}
+		set
+		{
+			this._characters5.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_character6", Storage="_characters6", ThisKey="ID", OtherKey="char_item_equipment_boots")]
+	public EntitySet<character> characters6
+	{
+		get
+		{
+			return this._characters6;
+		}
+		set
+		{
+			this._characters6.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item", Storage="_item_option", ThisKey="item_param1", OtherKey="ID", IsForeignKey=true)]
+	public item_option item_option
+	{
+		get
+		{
+			return this._item_option.Entity;
+		}
+		set
+		{
+			item_option previousValue = this._item_option.Entity;
+			if (((previousValue != value) 
+						|| (this._item_option.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._item_option.Entity = null;
+					previousValue.items.Remove(this);
+				}
+				this._item_option.Entity = value;
+				if ((value != null))
+				{
+					value.items.Add(this);
+					this._item_param1 = value.ID;
+				}
+				else
+				{
+					this._item_param1 = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("item_option");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item1", Storage="_item_option1", ThisKey="item_param2", OtherKey="ID", IsForeignKey=true)]
+	public item_option item_option1
+	{
+		get
+		{
+			return this._item_option1.Entity;
+		}
+		set
+		{
+			item_option previousValue = this._item_option1.Entity;
+			if (((previousValue != value) 
+						|| (this._item_option1.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._item_option1.Entity = null;
+					previousValue.items1.Remove(this);
+				}
+				this._item_option1.Entity = value;
+				if ((value != null))
+				{
+					value.items1.Add(this);
+					this._item_param2 = value.ID;
+				}
+				else
+				{
+					this._item_param2 = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("item_option1");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item2", Storage="_item_option2", ThisKey="item_param3", OtherKey="ID", IsForeignKey=true)]
+	public item_option item_option2
+	{
+		get
+		{
+			return this._item_option2.Entity;
+		}
+		set
+		{
+			item_option previousValue = this._item_option2.Entity;
+			if (((previousValue != value) 
+						|| (this._item_option2.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._item_option2.Entity = null;
+					previousValue.items2.Remove(this);
+				}
+				this._item_option2.Entity = value;
+				if ((value != null))
+				{
+					value.items2.Add(this);
+					this._item_param3 = value.ID;
+				}
+				else
+				{
+					this._item_param3 = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("item_option2");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item3", Storage="_item_option3", ThisKey="item_param4", OtherKey="ID", IsForeignKey=true)]
+	public item_option item_option3
+	{
+		get
+		{
+			return this._item_option3.Entity;
+		}
+		set
+		{
+			item_option previousValue = this._item_option3.Entity;
+			if (((previousValue != value) 
+						|| (this._item_option3.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._item_option3.Entity = null;
+					previousValue.items3.Remove(this);
+				}
+				this._item_option3.Entity = value;
+				if ((value != null))
+				{
+					value.items3.Add(this);
+					this._item_param4 = value.ID;
+				}
+				else
+				{
+					this._item_param4 = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("item_option3");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="item_option_item4", Storage="_item_option4", ThisKey="item_param5", OtherKey="ID", IsForeignKey=true)]
+	public item_option item_option4
+	{
+		get
+		{
+			return this._item_option4.Entity;
+		}
+		set
+		{
+			item_option previousValue = this._item_option4.Entity;
+			if (((previousValue != value) 
+						|| (this._item_option4.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._item_option4.Entity = null;
+					previousValue.items4.Remove(this);
+				}
+				this._item_option4.Entity = value;
+				if ((value != null))
+				{
+					value.items4.Add(this);
+					this._item_param5 = value.ID;
+				}
+				else
+				{
+					this._item_param5 = default(Nullable<int>);
+				}
+				this.SendPropertyChanged("item_option4");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_markets(market entity)
+	{
+		this.SendPropertyChanging();
+		entity.item = this;
+	}
+	
+	private void detach_markets(market entity)
+	{
+		this.SendPropertyChanging();
+		entity.item = null;
+	}
+	
+	private void attach_characters(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item = this;
+	}
+	
+	private void detach_characters(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item = null;
+	}
+	
+	private void attach_characters1(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item1 = this;
+	}
+	
+	private void detach_characters1(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item1 = null;
+	}
+	
+	private void attach_characters2(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item2 = this;
+	}
+	
+	private void detach_characters2(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item2 = null;
+	}
+	
+	private void attach_characters3(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item3 = this;
+	}
+	
+	private void detach_characters3(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item3 = null;
+	}
+	
+	private void attach_characters4(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item4 = this;
+	}
+	
+	private void detach_characters4(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item4 = null;
+	}
+	
+	private void attach_characters5(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item5 = this;
+	}
+	
+	private void detach_characters5(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item5 = null;
+	}
+	
+	private void attach_characters6(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item6 = this;
+	}
+	
+	private void detach_characters6(character entity)
+	{
+		this.SendPropertyChanging();
+		entity.item6 = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.monster")]
+public partial class monster : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _ID;
+	
+	private string _monster_name;
+	
+	private System.Nullable<int> _monster_level;
+	
+	private System.Nullable<int> _monster_money;
+	
+	private System.Nullable<long> _monster_exp;
+	
+	private System.Nullable<int> _monster_is_boss;
+	
+	private System.Nullable<int> _monster_map;
+	
+	private System.Nullable<int> _monster_damage;
+	
+	private System.Nullable<int> _monster_hp;
+	
+	private System.Nullable<int> _monster_defend;
+	
+	private System.Nullable<int> _monster_drop_normal;
+	
+	private System.Nullable<int> _monster_drop_rare;
+	
+	private System.Nullable<int> _monster_drop_epic;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void Onmonster_nameChanging(string value);
+    partial void Onmonster_nameChanged();
+    partial void Onmonster_levelChanging(System.Nullable<int> value);
+    partial void Onmonster_levelChanged();
+    partial void Onmonster_moneyChanging(System.Nullable<int> value);
+    partial void Onmonster_moneyChanged();
+    partial void Onmonster_expChanging(System.Nullable<long> value);
+    partial void Onmonster_expChanged();
+    partial void Onmonster_is_bossChanging(System.Nullable<int> value);
+    partial void Onmonster_is_bossChanged();
+    partial void Onmonster_mapChanging(System.Nullable<int> value);
+    partial void Onmonster_mapChanged();
+    partial void Onmonster_damageChanging(System.Nullable<int> value);
+    partial void Onmonster_damageChanged();
+    partial void Onmonster_hpChanging(System.Nullable<int> value);
+    partial void Onmonster_hpChanged();
+    partial void Onmonster_defendChanging(System.Nullable<int> value);
+    partial void Onmonster_defendChanged();
+    partial void Onmonster_drop_normalChanging(System.Nullable<int> value);
+    partial void Onmonster_drop_normalChanged();
+    partial void Onmonster_drop_rareChanging(System.Nullable<int> value);
+    partial void Onmonster_drop_rareChanged();
+    partial void Onmonster_drop_epicChanging(System.Nullable<int> value);
+    partial void Onmonster_drop_epicChanged();
+    #endregion
+	
+	public monster()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int ID
+	{
+		get
+		{
+			return this._ID;
+		}
+		set
+		{
+			if ((this._ID != value))
+			{
+				this.OnIDChanging(value);
+				this.SendPropertyChanging();
+				this._ID = value;
+				this.SendPropertyChanged("ID");
+				this.OnIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_name", DbType="NVarChar(50)")]
+	public string monster_name
+	{
+		get
+		{
+			return this._monster_name;
+		}
+		set
+		{
+			if ((this._monster_name != value))
+			{
+				this.Onmonster_nameChanging(value);
+				this.SendPropertyChanging();
+				this._monster_name = value;
+				this.SendPropertyChanged("monster_name");
+				this.Onmonster_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_level", DbType="Int")]
+	public System.Nullable<int> monster_level
+	{
+		get
+		{
+			return this._monster_level;
+		}
+		set
+		{
+			if ((this._monster_level != value))
+			{
+				this.Onmonster_levelChanging(value);
+				this.SendPropertyChanging();
+				this._monster_level = value;
+				this.SendPropertyChanged("monster_level");
+				this.Onmonster_levelChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_money", DbType="Int")]
+	public System.Nullable<int> monster_money
+	{
+		get
+		{
+			return this._monster_money;
+		}
+		set
+		{
+			if ((this._monster_money != value))
+			{
+				this.Onmonster_moneyChanging(value);
+				this.SendPropertyChanging();
+				this._monster_money = value;
+				this.SendPropertyChanged("monster_money");
+				this.Onmonster_moneyChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_exp", DbType="BigInt")]
+	public System.Nullable<long> monster_exp
+	{
+		get
+		{
+			return this._monster_exp;
+		}
+		set
+		{
+			if ((this._monster_exp != value))
+			{
+				this.Onmonster_expChanging(value);
+				this.SendPropertyChanging();
+				this._monster_exp = value;
+				this.SendPropertyChanged("monster_exp");
+				this.Onmonster_expChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_is_boss", DbType="Int")]
+	public System.Nullable<int> monster_is_boss
+	{
+		get
+		{
+			return this._monster_is_boss;
+		}
+		set
+		{
+			if ((this._monster_is_boss != value))
+			{
+				this.Onmonster_is_bossChanging(value);
+				this.SendPropertyChanging();
+				this._monster_is_boss = value;
+				this.SendPropertyChanged("monster_is_boss");
+				this.Onmonster_is_bossChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_map", DbType="Int")]
+	public System.Nullable<int> monster_map
+	{
+		get
+		{
+			return this._monster_map;
+		}
+		set
+		{
+			if ((this._monster_map != value))
+			{
+				this.Onmonster_mapChanging(value);
+				this.SendPropertyChanging();
+				this._monster_map = value;
+				this.SendPropertyChanged("monster_map");
+				this.Onmonster_mapChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_damage", DbType="Int")]
+	public System.Nullable<int> monster_damage
+	{
+		get
+		{
+			return this._monster_damage;
+		}
+		set
+		{
+			if ((this._monster_damage != value))
+			{
+				this.Onmonster_damageChanging(value);
+				this.SendPropertyChanging();
+				this._monster_damage = value;
+				this.SendPropertyChanged("monster_damage");
+				this.Onmonster_damageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_hp", DbType="Int")]
+	public System.Nullable<int> monster_hp
+	{
+		get
+		{
+			return this._monster_hp;
+		}
+		set
+		{
+			if ((this._monster_hp != value))
+			{
+				this.Onmonster_hpChanging(value);
+				this.SendPropertyChanging();
+				this._monster_hp = value;
+				this.SendPropertyChanged("monster_hp");
+				this.Onmonster_hpChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_defend", DbType="Int")]
+	public System.Nullable<int> monster_defend
+	{
+		get
+		{
+			return this._monster_defend;
+		}
+		set
+		{
+			if ((this._monster_defend != value))
+			{
+				this.Onmonster_defendChanging(value);
+				this.SendPropertyChanging();
+				this._monster_defend = value;
+				this.SendPropertyChanged("monster_defend");
+				this.Onmonster_defendChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_normal", DbType="Int")]
+	public System.Nullable<int> monster_drop_normal
+	{
+		get
+		{
+			return this._monster_drop_normal;
+		}
+		set
+		{
+			if ((this._monster_drop_normal != value))
+			{
+				this.Onmonster_drop_normalChanging(value);
+				this.SendPropertyChanging();
+				this._monster_drop_normal = value;
+				this.SendPropertyChanged("monster_drop_normal");
+				this.Onmonster_drop_normalChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_rare", DbType="Int")]
+	public System.Nullable<int> monster_drop_rare
+	{
+		get
+		{
+			return this._monster_drop_rare;
+		}
+		set
+		{
+			if ((this._monster_drop_rare != value))
+			{
+				this.Onmonster_drop_rareChanging(value);
+				this.SendPropertyChanging();
+				this._monster_drop_rare = value;
+				this.SendPropertyChanged("monster_drop_rare");
+				this.Onmonster_drop_rareChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_epic", DbType="Int")]
+	public System.Nullable<int> monster_drop_epic
+	{
+		get
+		{
+			return this._monster_drop_epic;
+		}
+		set
+		{
+			if ((this._monster_drop_epic != value))
+			{
+				this.Onmonster_drop_epicChanging(value);
+				this.SendPropertyChanging();
+				this._monster_drop_epic = value;
+				this.SendPropertyChanged("monster_drop_epic");
+				this.Onmonster_drop_epicChanged();
 			}
 		}
 	}

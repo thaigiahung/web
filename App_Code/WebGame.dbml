@@ -1,24 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="webgame" Class="WebGameDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\webgame.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="webgameConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.account" Member="accounts">
-    <Type Name="account">
-      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="idcard" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="fail_login" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="date_lock" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ip" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="role" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Association Name="account_char_task" Member="char_tasks" ThisKey="username" OtherKey="username" Type="char_task" />
-      <Association Name="account_inventory" Member="inventories" ThisKey="username" OtherKey="username" Type="inventory" />
-      <Association Name="account_character" Member="characters" ThisKey="username" OtherKey="username" Type="character" />
-    </Type>
-  </Table>
   <Table Name="dbo.task" Member="tasks">
     <Type Name="task">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -39,7 +20,7 @@
     <Type Name="category">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="cat_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="category_new" Member="news" ThisKey="ID" OtherKey="news_category" Type="new" />
+      <Association Name="category_tintuc" Member="tintucs" ThisKey="ID" OtherKey="news_category" Type="tintuc" />
     </Type>
   </Table>
   <Table Name="dbo.char_level" Member="char_levels">
@@ -54,8 +35,8 @@
       <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="task_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="task_value" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="account_char_task" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
       <Association Name="task_char_task" Member="task" ThisKey="task_id" OtherKey="ID" Type="task" IsForeignKey="true" />
+      <Association Name="account_char_task" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.char_title" Member="char_titles">
@@ -103,44 +84,6 @@
       <Association Name="account_inventory" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.item" Member="items">
-    <Type Name="item">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="item_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="item_description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="item_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_require_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_param1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_value1" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_param2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_value2" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_param3" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_value3" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_param4" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_value4" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_param5" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_value5" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="item_isbuying" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="item_islocked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="item_icon" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="item_username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="item_equip" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="item_type" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="item_market" Member="markets" ThisKey="ID" OtherKey="market_item_id" Type="market" />
-      <Association Name="item_character" Member="characters" ThisKey="ID" OtherKey="char_item_equipment_helm" Type="character" />
-      <Association Name="item_character1" Member="characters1" ThisKey="ID" OtherKey="char_item_equipment_armor" Type="character" />
-      <Association Name="item_character2" Member="characters2" ThisKey="ID" OtherKey="char_item_equipment_gloves" Type="character" />
-      <Association Name="item_character3" Member="characters3" ThisKey="ID" OtherKey="char_item_equipment_gloves" Type="character" />
-      <Association Name="item_character4" Member="characters4" ThisKey="ID" OtherKey="char_item_equipment_weapon" Type="character" />
-      <Association Name="item_character5" Member="characters5" ThisKey="ID" OtherKey="char_item_equipment_shield" Type="character" />
-      <Association Name="item_character6" Member="characters6" ThisKey="ID" OtherKey="char_item_equipment_boots" Type="character" />
-      <Association Name="item_option_item" Member="item_option" ThisKey="item_param1" OtherKey="ID" Type="item_option" IsForeignKey="true" />
-      <Association Name="item_option_item1" Member="item_option1" ThisKey="item_param2" OtherKey="ID" Type="item_option" IsForeignKey="true" />
-      <Association Name="item_option_item2" Member="item_option2" ThisKey="item_param3" OtherKey="ID" Type="item_option" IsForeignKey="true" />
-      <Association Name="item_option_item3" Member="item_option3" ThisKey="item_param4" OtherKey="ID" Type="item_option" IsForeignKey="true" />
-      <Association Name="item_option_item4" Member="item_option4" ThisKey="item_param5" OtherKey="ID" Type="item_option" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.item_option" Member="item_options">
     <Type Name="item_option">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -186,30 +129,6 @@
       <Column Name="market_item_price" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="market_expire" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="item_market" Member="item" ThisKey="market_item_id" OtherKey="ID" Type="item" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.monster" Member="monsters">
-    <Type Name="monster">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="monster_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="monster_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_money" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_exp" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="monster_is_boss" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_map" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_damage" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_hp" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_defend" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_drop_list" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.news" Member="news">
-    <Type Name="new">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="news_title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="news_category" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="news_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="category_new" Member="category" ThisKey="news_category" OtherKey="ID" Type="category" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.original_item" Member="original_items">
@@ -329,9 +248,9 @@
       <Column Name="char_avatar" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="char_kill" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="char_skin" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="account_character" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
       <Association Name="char_title_character" Member="char_title1" ThisKey="char_title" OtherKey="ID" Type="char_title" IsForeignKey="true" />
       <Association Name="clan_character" Member="clan" ThisKey="char_clan_id" OtherKey="ID" Type="clan" IsForeignKey="true" />
+      <Association Name="map_character" Member="map" ThisKey="char_position" OtherKey="ID" Type="map" IsForeignKey="true" />
       <Association Name="item_character" Member="item" ThisKey="char_item_equipment_helm" OtherKey="ID" Type="item" IsForeignKey="true" />
       <Association Name="item_character1" Member="item1" ThisKey="char_item_equipment_armor" OtherKey="ID" Type="item" IsForeignKey="true" />
       <Association Name="item_character2" Member="item2" ThisKey="char_item_equipment_gloves" OtherKey="ID" Type="item" IsForeignKey="true" />
@@ -339,7 +258,7 @@
       <Association Name="item_character4" Member="item4" ThisKey="char_item_equipment_weapon" OtherKey="ID" Type="item" IsForeignKey="true" />
       <Association Name="item_character5" Member="item5" ThisKey="char_item_equipment_shield" OtherKey="ID" Type="item" IsForeignKey="true" />
       <Association Name="item_character6" Member="item6" ThisKey="char_item_equipment_boots" OtherKey="ID" Type="item" IsForeignKey="true" />
-      <Association Name="map_character" Member="map" ThisKey="char_position" OtherKey="ID" Type="map" IsForeignKey="true" />
+      <Association Name="account_character" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Hero" Member="Hero1s">
@@ -368,6 +287,91 @@
       <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SelectedIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IdSelectedHero" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tintuc" Member="tintucs">
+    <Type Name="tintuc">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="news_title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="news_category" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="news_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="news_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="category_tintuc" Member="category" ThisKey="news_category" OtherKey="ID" Type="category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.item" Member="items">
+    <Type Name="item">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="item_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="item_description" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="item_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_require_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_param1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_value1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_param2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_value2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_param3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_value3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_param4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_value4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_param5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_value5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_isbuying" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="item_islocked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="item_icon" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="item_username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="item_equip" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="item_type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="item_rarity" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Association Name="item_market" Member="markets" ThisKey="ID" OtherKey="market_item_id" Type="market" />
+      <Association Name="item_character" Member="characters" ThisKey="ID" OtherKey="char_item_equipment_helm" Type="character" />
+      <Association Name="item_character1" Member="characters1" ThisKey="ID" OtherKey="char_item_equipment_armor" Type="character" />
+      <Association Name="item_character2" Member="characters2" ThisKey="ID" OtherKey="char_item_equipment_gloves" Type="character" />
+      <Association Name="item_character3" Member="characters3" ThisKey="ID" OtherKey="char_item_equipment_gloves" Type="character" />
+      <Association Name="item_character4" Member="characters4" ThisKey="ID" OtherKey="char_item_equipment_weapon" Type="character" />
+      <Association Name="item_character5" Member="characters5" ThisKey="ID" OtherKey="char_item_equipment_shield" Type="character" />
+      <Association Name="item_character6" Member="characters6" ThisKey="ID" OtherKey="char_item_equipment_boots" Type="character" />
+      <Association Name="item_option_item" Member="item_option" ThisKey="item_param1" OtherKey="ID" Type="item_option" IsForeignKey="true" />
+      <Association Name="item_option_item1" Member="item_option1" ThisKey="item_param2" OtherKey="ID" Type="item_option" IsForeignKey="true" />
+      <Association Name="item_option_item2" Member="item_option2" ThisKey="item_param3" OtherKey="ID" Type="item_option" IsForeignKey="true" />
+      <Association Name="item_option_item3" Member="item_option3" ThisKey="item_param4" OtherKey="ID" Type="item_option" IsForeignKey="true" />
+      <Association Name="item_option_item4" Member="item_option4" ThisKey="item_param5" OtherKey="ID" Type="item_option" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.monster" Member="monsters">
+    <Type Name="monster">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="monster_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="monster_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_money" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_exp" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="monster_is_boss" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_map" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_damage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_hp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_defend" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_drop_normal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_drop_rare" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_drop_epic" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.account" Member="accounts">
+    <Type Name="account">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="idcard" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fail_login" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_lock" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ip" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="role" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="account_char_task" Member="char_tasks" ThisKey="username" OtherKey="username" Type="char_task" />
+      <Association Name="account_inventory" Member="inventories" ThisKey="username" OtherKey="username" Type="inventory" />
+      <Association Name="account_character" Member="characters" ThisKey="username" OtherKey="username" Type="character" />
     </Type>
   </Table>
 </Database>

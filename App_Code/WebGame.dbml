@@ -39,7 +39,7 @@
     <Type Name="category">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="cat_name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="category_new" Member="news" ThisKey="ID" OtherKey="news_category" Type="new" />
+      <Association Name="category_tintuc" Member="tintucs" ThisKey="ID" OtherKey="news_category" Type="tintuc" />
     </Type>
   </Table>
   <Table Name="dbo.char_level" Member="char_levels">
@@ -203,15 +203,6 @@
       <Column Name="monster_drop_list" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.news" Member="news">
-    <Type Name="new">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="news_title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="news_category" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="news_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="category_new" Member="category" ThisKey="news_category" OtherKey="ID" Type="category" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.original_item" Member="original_items">
     <Type Name="original_item">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -368,6 +359,16 @@
       <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SelectedIndex" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IdSelectedHero" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tintuc" Member="tintucs">
+    <Type Name="tintuc">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="news_title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="news_category" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="news_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="news_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="category_tintuc" Member="category" ThisKey="news_category" OtherKey="ID" Type="category" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

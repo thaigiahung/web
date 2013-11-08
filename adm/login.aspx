@@ -51,7 +51,6 @@
 							</div>
 							<div class="clearfix"></div>
 					        <hr />
-					        <h3><a href="#">Quên mật khẩu?</a></h3>
                         </fieldset>
                     </div><!--/span-->
 			    </div><!--/row-->			

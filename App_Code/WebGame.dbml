@@ -1,24 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="webgame" Class="WebGameDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\webgame.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="webgameConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.account" Member="accounts">
-    <Type Name="account">
-      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="idcard" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="fail_login" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="date_lock" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ip" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="role" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
-      <Association Name="account_char_task" Member="char_tasks" ThisKey="username" OtherKey="username" Type="char_task" />
-      <Association Name="account_inventory" Member="inventories" ThisKey="username" OtherKey="username" Type="inventory" />
-      <Association Name="account_character" Member="characters" ThisKey="username" OtherKey="username" Type="character" />
-    </Type>
-  </Table>
   <Table Name="dbo.task" Member="tasks">
     <Type Name="task">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -54,8 +35,8 @@
       <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="task_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="task_value" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="account_char_task" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
       <Association Name="task_char_task" Member="task" ThisKey="task_id" OtherKey="ID" Type="task" IsForeignKey="true" />
+      <Association Name="account_char_task" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.char_title" Member="char_titles">
@@ -267,7 +248,6 @@
       <Column Name="char_avatar" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="char_kill" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="char_skin" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Association Name="account_character" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
       <Association Name="char_title_character" Member="char_title1" ThisKey="char_title" OtherKey="ID" Type="char_title" IsForeignKey="true" />
       <Association Name="clan_character" Member="clan" ThisKey="char_clan_id" OtherKey="ID" Type="clan" IsForeignKey="true" />
       <Association Name="map_character" Member="map" ThisKey="char_position" OtherKey="ID" Type="map" IsForeignKey="true" />
@@ -278,6 +258,7 @@
       <Association Name="item_character4" Member="item4" ThisKey="char_item_equipment_weapon" OtherKey="ID" Type="item" IsForeignKey="true" />
       <Association Name="item_character5" Member="item5" ThisKey="char_item_equipment_shield" OtherKey="ID" Type="item" IsForeignKey="true" />
       <Association Name="item_character6" Member="item6" ThisKey="char_item_equipment_boots" OtherKey="ID" Type="item" IsForeignKey="true" />
+      <Association Name="account_character" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Hero" Member="Hero1s">
@@ -372,6 +353,25 @@
       <Column Name="monster_drop_normal" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="monster_drop_rare" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="monster_drop_epic" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.account" Member="accounts">
+    <Type Name="account">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="idcard" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fail_login" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_lock" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ip" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="role" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="account_char_task" Member="char_tasks" ThisKey="username" OtherKey="username" Type="char_task" />
+      <Association Name="account_inventory" Member="inventories" ThisKey="username" OtherKey="username" Type="inventory" />
+      <Association Name="account_character" Member="characters" ThisKey="username" OtherKey="username" Type="character" />
     </Type>
   </Table>
 </Database>

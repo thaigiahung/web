@@ -116,12 +116,12 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
   partial void Insertitem(item instance);
   partial void Updateitem(item instance);
   partial void Deleteitem(item instance);
-  partial void Insertmonster(monster instance);
-  partial void Updatemonster(monster instance);
-  partial void Deletemonster(monster instance);
   partial void Insertaccount(account instance);
   partial void Updateaccount(account instance);
   partial void Deleteaccount(account instance);
+  partial void Insertmonster(monster instance);
+  partial void Updatemonster(monster instance);
+  partial void Deletemonster(monster instance);
   #endregion
 	
 	public WebGameDataContext() : 
@@ -386,19 +386,19 @@ public partial class WebGameDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<monster> monsters
-	{
-		get
-		{
-			return this.GetTable<monster>();
-		}
-	}
-	
 	public System.Data.Linq.Table<account> accounts
 	{
 		get
 		{
 			return this.GetTable<account>();
+		}
+	}
+	
+	public System.Data.Linq.Table<monster> monsters
+	{
+		get
+		{
+			return this.GetTable<monster>();
 		}
 	}
 }
@@ -7321,356 +7321,6 @@ public partial class item : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.monster")]
-public partial class monster : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _ID;
-	
-	private string _monster_name;
-	
-	private System.Nullable<int> _monster_level;
-	
-	private System.Nullable<int> _monster_money;
-	
-	private System.Nullable<long> _monster_exp;
-	
-	private System.Nullable<int> _monster_is_boss;
-	
-	private System.Nullable<int> _monster_map;
-	
-	private System.Nullable<int> _monster_damage;
-	
-	private System.Nullable<int> _monster_hp;
-	
-	private System.Nullable<int> _monster_defend;
-	
-	private System.Nullable<int> _monster_drop_normal;
-	
-	private System.Nullable<int> _monster_drop_rare;
-	
-	private System.Nullable<int> _monster_drop_epic;
-	
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void Onmonster_nameChanging(string value);
-    partial void Onmonster_nameChanged();
-    partial void Onmonster_levelChanging(System.Nullable<int> value);
-    partial void Onmonster_levelChanged();
-    partial void Onmonster_moneyChanging(System.Nullable<int> value);
-    partial void Onmonster_moneyChanged();
-    partial void Onmonster_expChanging(System.Nullable<long> value);
-    partial void Onmonster_expChanged();
-    partial void Onmonster_is_bossChanging(System.Nullable<int> value);
-    partial void Onmonster_is_bossChanged();
-    partial void Onmonster_mapChanging(System.Nullable<int> value);
-    partial void Onmonster_mapChanged();
-    partial void Onmonster_damageChanging(System.Nullable<int> value);
-    partial void Onmonster_damageChanged();
-    partial void Onmonster_hpChanging(System.Nullable<int> value);
-    partial void Onmonster_hpChanged();
-    partial void Onmonster_defendChanging(System.Nullable<int> value);
-    partial void Onmonster_defendChanged();
-    partial void Onmonster_drop_normalChanging(System.Nullable<int> value);
-    partial void Onmonster_drop_normalChanged();
-    partial void Onmonster_drop_rareChanging(System.Nullable<int> value);
-    partial void Onmonster_drop_rareChanged();
-    partial void Onmonster_drop_epicChanging(System.Nullable<int> value);
-    partial void Onmonster_drop_epicChanged();
-    #endregion
-	
-	public monster()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int ID
-	{
-		get
-		{
-			return this._ID;
-		}
-		set
-		{
-			if ((this._ID != value))
-			{
-				this.OnIDChanging(value);
-				this.SendPropertyChanging();
-				this._ID = value;
-				this.SendPropertyChanged("ID");
-				this.OnIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_name", DbType="NVarChar(50)")]
-	public string monster_name
-	{
-		get
-		{
-			return this._monster_name;
-		}
-		set
-		{
-			if ((this._monster_name != value))
-			{
-				this.Onmonster_nameChanging(value);
-				this.SendPropertyChanging();
-				this._monster_name = value;
-				this.SendPropertyChanged("monster_name");
-				this.Onmonster_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_level", DbType="Int")]
-	public System.Nullable<int> monster_level
-	{
-		get
-		{
-			return this._monster_level;
-		}
-		set
-		{
-			if ((this._monster_level != value))
-			{
-				this.Onmonster_levelChanging(value);
-				this.SendPropertyChanging();
-				this._monster_level = value;
-				this.SendPropertyChanged("monster_level");
-				this.Onmonster_levelChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_money", DbType="Int")]
-	public System.Nullable<int> monster_money
-	{
-		get
-		{
-			return this._monster_money;
-		}
-		set
-		{
-			if ((this._monster_money != value))
-			{
-				this.Onmonster_moneyChanging(value);
-				this.SendPropertyChanging();
-				this._monster_money = value;
-				this.SendPropertyChanged("monster_money");
-				this.Onmonster_moneyChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_exp", DbType="BigInt")]
-	public System.Nullable<long> monster_exp
-	{
-		get
-		{
-			return this._monster_exp;
-		}
-		set
-		{
-			if ((this._monster_exp != value))
-			{
-				this.Onmonster_expChanging(value);
-				this.SendPropertyChanging();
-				this._monster_exp = value;
-				this.SendPropertyChanged("monster_exp");
-				this.Onmonster_expChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_is_boss", DbType="Int")]
-	public System.Nullable<int> monster_is_boss
-	{
-		get
-		{
-			return this._monster_is_boss;
-		}
-		set
-		{
-			if ((this._monster_is_boss != value))
-			{
-				this.Onmonster_is_bossChanging(value);
-				this.SendPropertyChanging();
-				this._monster_is_boss = value;
-				this.SendPropertyChanged("monster_is_boss");
-				this.Onmonster_is_bossChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_map", DbType="Int")]
-	public System.Nullable<int> monster_map
-	{
-		get
-		{
-			return this._monster_map;
-		}
-		set
-		{
-			if ((this._monster_map != value))
-			{
-				this.Onmonster_mapChanging(value);
-				this.SendPropertyChanging();
-				this._monster_map = value;
-				this.SendPropertyChanged("monster_map");
-				this.Onmonster_mapChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_damage", DbType="Int")]
-	public System.Nullable<int> monster_damage
-	{
-		get
-		{
-			return this._monster_damage;
-		}
-		set
-		{
-			if ((this._monster_damage != value))
-			{
-				this.Onmonster_damageChanging(value);
-				this.SendPropertyChanging();
-				this._monster_damage = value;
-				this.SendPropertyChanged("monster_damage");
-				this.Onmonster_damageChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_hp", DbType="Int")]
-	public System.Nullable<int> monster_hp
-	{
-		get
-		{
-			return this._monster_hp;
-		}
-		set
-		{
-			if ((this._monster_hp != value))
-			{
-				this.Onmonster_hpChanging(value);
-				this.SendPropertyChanging();
-				this._monster_hp = value;
-				this.SendPropertyChanged("monster_hp");
-				this.Onmonster_hpChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_defend", DbType="Int")]
-	public System.Nullable<int> monster_defend
-	{
-		get
-		{
-			return this._monster_defend;
-		}
-		set
-		{
-			if ((this._monster_defend != value))
-			{
-				this.Onmonster_defendChanging(value);
-				this.SendPropertyChanging();
-				this._monster_defend = value;
-				this.SendPropertyChanged("monster_defend");
-				this.Onmonster_defendChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_normal", DbType="Int")]
-	public System.Nullable<int> monster_drop_normal
-	{
-		get
-		{
-			return this._monster_drop_normal;
-		}
-		set
-		{
-			if ((this._monster_drop_normal != value))
-			{
-				this.Onmonster_drop_normalChanging(value);
-				this.SendPropertyChanging();
-				this._monster_drop_normal = value;
-				this.SendPropertyChanged("monster_drop_normal");
-				this.Onmonster_drop_normalChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_rare", DbType="Int")]
-	public System.Nullable<int> monster_drop_rare
-	{
-		get
-		{
-			return this._monster_drop_rare;
-		}
-		set
-		{
-			if ((this._monster_drop_rare != value))
-			{
-				this.Onmonster_drop_rareChanging(value);
-				this.SendPropertyChanging();
-				this._monster_drop_rare = value;
-				this.SendPropertyChanged("monster_drop_rare");
-				this.Onmonster_drop_rareChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_epic", DbType="Int")]
-	public System.Nullable<int> monster_drop_epic
-	{
-		get
-		{
-			return this._monster_drop_epic;
-		}
-		set
-		{
-			if ((this._monster_drop_epic != value))
-			{
-				this.Onmonster_drop_epicChanging(value);
-				this.SendPropertyChanging();
-				this._monster_drop_epic = value;
-				this.SendPropertyChanged("monster_drop_epic");
-				this.Onmonster_drop_epicChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.account")]
 public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -8078,6 +7728,380 @@ public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		this.SendPropertyChanging();
 		entity.account = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.monster")]
+public partial class monster : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _ID;
+	
+	private string _monster_name;
+	
+	private System.Nullable<int> _monster_level;
+	
+	private System.Nullable<int> _monster_money;
+	
+	private System.Nullable<long> _monster_exp;
+	
+	private System.Nullable<int> _monster_is_boss;
+	
+	private System.Nullable<int> _monster_map;
+	
+	private System.Nullable<int> _monster_damage;
+	
+	private System.Nullable<int> _monster_hp;
+	
+	private System.Nullable<int> _monster_defend;
+	
+	private System.Nullable<int> _monster_drop_normal;
+	
+	private System.Nullable<int> _monster_drop_rare;
+	
+	private System.Nullable<int> _monster_drop_epic;
+	
+	private string _monster_img;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void Onmonster_nameChanging(string value);
+    partial void Onmonster_nameChanged();
+    partial void Onmonster_levelChanging(System.Nullable<int> value);
+    partial void Onmonster_levelChanged();
+    partial void Onmonster_moneyChanging(System.Nullable<int> value);
+    partial void Onmonster_moneyChanged();
+    partial void Onmonster_expChanging(System.Nullable<long> value);
+    partial void Onmonster_expChanged();
+    partial void Onmonster_is_bossChanging(System.Nullable<int> value);
+    partial void Onmonster_is_bossChanged();
+    partial void Onmonster_mapChanging(System.Nullable<int> value);
+    partial void Onmonster_mapChanged();
+    partial void Onmonster_damageChanging(System.Nullable<int> value);
+    partial void Onmonster_damageChanged();
+    partial void Onmonster_hpChanging(System.Nullable<int> value);
+    partial void Onmonster_hpChanged();
+    partial void Onmonster_defendChanging(System.Nullable<int> value);
+    partial void Onmonster_defendChanged();
+    partial void Onmonster_drop_normalChanging(System.Nullable<int> value);
+    partial void Onmonster_drop_normalChanged();
+    partial void Onmonster_drop_rareChanging(System.Nullable<int> value);
+    partial void Onmonster_drop_rareChanged();
+    partial void Onmonster_drop_epicChanging(System.Nullable<int> value);
+    partial void Onmonster_drop_epicChanged();
+    partial void Onmonster_imgChanging(string value);
+    partial void Onmonster_imgChanged();
+    #endregion
+	
+	public monster()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int ID
+	{
+		get
+		{
+			return this._ID;
+		}
+		set
+		{
+			if ((this._ID != value))
+			{
+				this.OnIDChanging(value);
+				this.SendPropertyChanging();
+				this._ID = value;
+				this.SendPropertyChanged("ID");
+				this.OnIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_name", DbType="NVarChar(50)")]
+	public string monster_name
+	{
+		get
+		{
+			return this._monster_name;
+		}
+		set
+		{
+			if ((this._monster_name != value))
+			{
+				this.Onmonster_nameChanging(value);
+				this.SendPropertyChanging();
+				this._monster_name = value;
+				this.SendPropertyChanged("monster_name");
+				this.Onmonster_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_level", DbType="Int")]
+	public System.Nullable<int> monster_level
+	{
+		get
+		{
+			return this._monster_level;
+		}
+		set
+		{
+			if ((this._monster_level != value))
+			{
+				this.Onmonster_levelChanging(value);
+				this.SendPropertyChanging();
+				this._monster_level = value;
+				this.SendPropertyChanged("monster_level");
+				this.Onmonster_levelChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_money", DbType="Int")]
+	public System.Nullable<int> monster_money
+	{
+		get
+		{
+			return this._monster_money;
+		}
+		set
+		{
+			if ((this._monster_money != value))
+			{
+				this.Onmonster_moneyChanging(value);
+				this.SendPropertyChanging();
+				this._monster_money = value;
+				this.SendPropertyChanged("monster_money");
+				this.Onmonster_moneyChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_exp", DbType="BigInt")]
+	public System.Nullable<long> monster_exp
+	{
+		get
+		{
+			return this._monster_exp;
+		}
+		set
+		{
+			if ((this._monster_exp != value))
+			{
+				this.Onmonster_expChanging(value);
+				this.SendPropertyChanging();
+				this._monster_exp = value;
+				this.SendPropertyChanged("monster_exp");
+				this.Onmonster_expChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_is_boss", DbType="Int")]
+	public System.Nullable<int> monster_is_boss
+	{
+		get
+		{
+			return this._monster_is_boss;
+		}
+		set
+		{
+			if ((this._monster_is_boss != value))
+			{
+				this.Onmonster_is_bossChanging(value);
+				this.SendPropertyChanging();
+				this._monster_is_boss = value;
+				this.SendPropertyChanged("monster_is_boss");
+				this.Onmonster_is_bossChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_map", DbType="Int")]
+	public System.Nullable<int> monster_map
+	{
+		get
+		{
+			return this._monster_map;
+		}
+		set
+		{
+			if ((this._monster_map != value))
+			{
+				this.Onmonster_mapChanging(value);
+				this.SendPropertyChanging();
+				this._monster_map = value;
+				this.SendPropertyChanged("monster_map");
+				this.Onmonster_mapChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_damage", DbType="Int")]
+	public System.Nullable<int> monster_damage
+	{
+		get
+		{
+			return this._monster_damage;
+		}
+		set
+		{
+			if ((this._monster_damage != value))
+			{
+				this.Onmonster_damageChanging(value);
+				this.SendPropertyChanging();
+				this._monster_damage = value;
+				this.SendPropertyChanged("monster_damage");
+				this.Onmonster_damageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_hp", DbType="Int")]
+	public System.Nullable<int> monster_hp
+	{
+		get
+		{
+			return this._monster_hp;
+		}
+		set
+		{
+			if ((this._monster_hp != value))
+			{
+				this.Onmonster_hpChanging(value);
+				this.SendPropertyChanging();
+				this._monster_hp = value;
+				this.SendPropertyChanged("monster_hp");
+				this.Onmonster_hpChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_defend", DbType="Int")]
+	public System.Nullable<int> monster_defend
+	{
+		get
+		{
+			return this._monster_defend;
+		}
+		set
+		{
+			if ((this._monster_defend != value))
+			{
+				this.Onmonster_defendChanging(value);
+				this.SendPropertyChanging();
+				this._monster_defend = value;
+				this.SendPropertyChanged("monster_defend");
+				this.Onmonster_defendChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_normal", DbType="Int")]
+	public System.Nullable<int> monster_drop_normal
+	{
+		get
+		{
+			return this._monster_drop_normal;
+		}
+		set
+		{
+			if ((this._monster_drop_normal != value))
+			{
+				this.Onmonster_drop_normalChanging(value);
+				this.SendPropertyChanging();
+				this._monster_drop_normal = value;
+				this.SendPropertyChanged("monster_drop_normal");
+				this.Onmonster_drop_normalChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_rare", DbType="Int")]
+	public System.Nullable<int> monster_drop_rare
+	{
+		get
+		{
+			return this._monster_drop_rare;
+		}
+		set
+		{
+			if ((this._monster_drop_rare != value))
+			{
+				this.Onmonster_drop_rareChanging(value);
+				this.SendPropertyChanging();
+				this._monster_drop_rare = value;
+				this.SendPropertyChanged("monster_drop_rare");
+				this.Onmonster_drop_rareChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_drop_epic", DbType="Int")]
+	public System.Nullable<int> monster_drop_epic
+	{
+		get
+		{
+			return this._monster_drop_epic;
+		}
+		set
+		{
+			if ((this._monster_drop_epic != value))
+			{
+				this.Onmonster_drop_epicChanging(value);
+				this.SendPropertyChanging();
+				this._monster_drop_epic = value;
+				this.SendPropertyChanged("monster_drop_epic");
+				this.Onmonster_drop_epicChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monster_img", DbType="NVarChar(200)")]
+	public string monster_img
+	{
+		get
+		{
+			return this._monster_img;
+		}
+		set
+		{
+			if ((this._monster_img != value))
+			{
+				this.Onmonster_imgChanging(value);
+				this.SendPropertyChanging();
+				this._monster_img = value;
+				this.SendPropertyChanged("monster_img");
+				this.Onmonster_imgChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 }
 #pragma warning restore 1591

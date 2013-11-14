@@ -338,23 +338,6 @@
       <Association Name="item_option_item4" Member="item_option4" ThisKey="item_param5" OtherKey="ID" Type="item_option" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.monster" Member="monsters">
-    <Type Name="monster">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="monster_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="monster_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_money" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_exp" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="monster_is_boss" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_map" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_damage" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_hp" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_defend" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_drop_normal" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_drop_rare" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="monster_drop_epic" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.account" Member="accounts">
     <Type Name="account">
       <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
@@ -372,6 +355,24 @@
       <Association Name="account_char_task" Member="char_tasks" ThisKey="username" OtherKey="username" Type="char_task" />
       <Association Name="account_inventory" Member="inventories" ThisKey="username" OtherKey="username" Type="inventory" />
       <Association Name="account_character" Member="characters" ThisKey="username" OtherKey="username" Type="character" />
+    </Type>
+  </Table>
+  <Table Name="dbo.monster" Member="monsters">
+    <Type Name="monster">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="monster_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="monster_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_money" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_exp" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="monster_is_boss" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_map" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_damage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_hp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_defend" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_drop_normal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_drop_rare" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_drop_epic" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monster_img" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

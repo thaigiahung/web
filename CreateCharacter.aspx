@@ -230,7 +230,7 @@
                         <asp:Timer ID="Timer1" runat="server" Interval="100" ontick="Timer1_Tick" 
                             Enabled="True">
                         </asp:Timer>
-                        <asp:Label ID="lbIdHero" runat="server" Visible="False"></asp:Label>
+                        <asp:Label ID="lbIdHero" runat="server" Visible="False">1</asp:Label>
                         <asp:Label ID="lbSelectedIndex" runat="server" Visible="False"></asp:Label>
                        
                     </td>

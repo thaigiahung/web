@@ -13,14 +13,14 @@ public partial class adm_news : System.Web.UI.Page
             if (Request.QueryString["act"] == "delete" && Request.QueryString["id"] != "")
             {
                 WebGameDataContext db = new WebGameDataContext();
-                var q = from n in db.news
+                var q = from n in db.tintucs
                         where n.ID == int.Parse(Request.QueryString["id"])
                         select n;
                 if(q.Count() > 0)
                 {
                     try
                     {
-                        db.news.DeleteOnSubmit(q.First());
+                        db.tintucs.DeleteOnSubmit(q.First());
                         db.SubmitChanges();
                         Func.Alert("Xóa bài viết thành công!");
                         Func.Move("news.aspx");
@@ -56,7 +56,7 @@ public partial class adm_news : System.Web.UI.Page
                     WebGameDataContext db = new WebGameDataContext();
                     var w = from n in db.categories
                             select n;
-                    var r = from n in db.news
+                    var r = from n in db.tintucs
                             where n.ID == int.Parse(Request.QueryString["id"].ToString())
                             select n;
                     if (r.Count() > 0)
@@ -84,14 +84,14 @@ public partial class adm_news : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         WebGameDataContext db = new WebGameDataContext();
-        news ndb = new news();
+        tintuc ndb = new tintuc();
         ndb.news_title = txtTitle.Text;
         ndb.news_content = txtContent.Text;
         ndb.news_category = int.Parse(ddlCategory.SelectedValue);
         ndb.news_date = DateTime.Now;
         try
         {
-            db.news.InsertOnSubmit(ndb);
+            db.tintucs.InsertOnSubmit(ndb);
             db.SubmitChanges();
             Func.Alert("Đăng bài mới thành công!");
             Func.Move("news.aspx");
@@ -105,7 +105,7 @@ public partial class adm_news : System.Web.UI.Page
     protected void btnEdit_Click(object sender, EventArgs e)
     {
         WebGameDataContext db = new WebGameDataContext();
-        var r = from n in db.news
+        var r = from n in db.tintucs
                 where n.ID == int.Parse(Request.QueryString["id"].ToString())
                 select n;
         if (r.Count() > 0)

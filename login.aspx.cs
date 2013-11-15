@@ -24,9 +24,23 @@ public partial class login : User
 
             string UN = txtUN.Text;
             string PW = FormsAuthentication.HashPasswordForStoringInConfigFile(txtPW.Text, "MD5");
-            account user = db.accounts.Single(n => n.username == UN);
-            Pass.Text = PW;
-            
+            account user = db.accounts.SingleOrDefault(n => n.username == UN);
+
+            if (user == null || txtPW == null || txtUN == null)
+            {
+                if (user == null)
+                {
+                    LbMessages.Visible = true;
+                    LbMessages.Text = "tài khoản không tồn tại";
+                }
+                else
+                    if (txtUN == null || txtPW == null)
+                    {
+                        LbMessages.Visible = true;
+                        LbMessages.Text = "Sai tên đăng nhập hoặc mật khẩu";
+                    }
+            }
+            else
             try
             {
                 if (PW == user.password)
@@ -52,10 +66,10 @@ public partial class login : User
                             cha = db.characters.SingleOrDefault(n => n.username == user.username);
                             if (cha == null)
                             {
-                                Response.AddHeader("REFRESH", "0;URL=CreateCharacter.aspx");
+                                Response.Redirect("CreateCharacter.aspx");
                             }
                             else
-                                Response.AddHeader("REFRESH", "1;URL=Default.aspx");
+                                Response.Redirect("Default.aspx");
                         }
                     }
                 }
@@ -72,7 +86,7 @@ public partial class login : User
                     }
                     else
                     {
-                        if (user.fail_login < 3 && user.ip == currentIp)
+                        if (user.fail_login <= 2 && user.ip == currentIp)
                         {
                             user.fail_login = user.fail_login + 1;
                             user.ip = currentIp;
@@ -90,6 +104,7 @@ public partial class login : User
                                 user.fail_login = 1;
 
                             }
+                            
 
 
                         }

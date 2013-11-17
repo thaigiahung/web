@@ -8,7 +8,11 @@
 	</ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cph_content" Runat="Server">
-    
+    <div align="right">
+        <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+        <asp:ImageButton ID="btnSearch" ImageUrl="~/resources/img/search.jpg" 
+            runat="server" onclick="btnSearch_Click" Width="30px" />
+    </div>
     <asp:GridView ID="gvAccount" runat="server" AllowPaging="True" 
         AutoGenerateColumns="False" CellPadding="4" DataKeyNames="username" 
         DataSourceID="sqlAccount" ForeColor="#333333" GridLines="None" 
@@ -41,8 +45,9 @@
         ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
         DeleteCommand="DELETE FROM [account] WHERE [username] = @username" 
         InsertCommand="INSERT INTO [account] ([ID], [username], [password], [email], [name], [phone], [idcard], [status], [fail_login], [date_lock], [ip], [role]) VALUES (@ID, @username, @password, @email, @name, @phone, @idcard, @status, @fail_login, @date_lock, @ip, @role)" 
-        SelectCommand="SELECT * FROM [account]" 
-        UpdateCommand="UPDATE [account] SET [ID] = @ID, [password] = @password, [email] = @email, [name] = @name, [phone] = @phone, [idcard] = @idcard, [status] = @status, [fail_login] = @fail_login, [date_lock] = @date_lock, [ip] = @ip, [role] = @role WHERE [username] = @username">
+        SelectCommand="SELECT * FROM [account]"
+        UpdateCommand="UPDATE [account] SET [password] = @password, [email] = @email, [name] = @name, [phone] = @phone, [idcard] = @idcard, [status] = @status, [fail_login] = @fail_login, [date_lock] = @date_lock, [ip] = @ip, [role] = @role WHERE [username] = @username">
+        
         <DeleteParameters>
             <asp:Parameter Name="username" Type="String" />
         </DeleteParameters>
@@ -61,7 +66,6 @@
             <asp:Parameter Name="role" Type="Byte" />
         </InsertParameters>
         <UpdateParameters>
-            <asp:Parameter Name="ID" Type="Object" />
             <asp:Parameter Name="password" Type="String" />
             <asp:Parameter Name="email" Type="String" />
             <asp:Parameter Name="name" Type="String" />

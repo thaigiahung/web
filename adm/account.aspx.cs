@@ -9,8 +9,8 @@ using System.Web.Security;
 public partial class adm_account : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
-    {
-
+    {       
+        
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
@@ -38,5 +38,10 @@ public partial class adm_account : System.Web.UI.Page
         {
             lblError.Text = ex.Message;
         }
+    }
+
+    protected void btnSearch_Click(object sender, ImageClickEventArgs e)
+    {
+        sqlAccount.SelectCommand = "SELECT * FROM [account] WHERE [username] LIKE '%" + txtSearch.Text + "%' OR [email] LIKE '%" + txtSearch.Text + "%' OR [name] LIKE N'%" + txtSearch.Text + "%' OR [phone] LIKE '%" + txtSearch.Text + "%'";
     }
 }

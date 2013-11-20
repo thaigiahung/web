@@ -99,8 +99,24 @@
                 </ul>
             </div>
             <div id="groupButtonTop">
-                <a href="http://lienminh.garena.vn/download" id="btnDownload">Chơi Ngay</a>
-                <a href="http://taikhoan.lienminh.garena.vn/register.php" id="btnRegister">Đăng ký</a>
+                <asp:MultiView ActiveViewIndex="1" ID="MultiView1" runat="server">
+                    <asp:View ID="View1" runat="server">
+                        <a href="login.aspx">Đăng Nhập</a>
+                    </asp:View>
+                    <asp:View ID="View2" runat="server">
+                        <a href="map.aspx">Chơi Ngay</a>
+                    </asp:View>
+                </asp:MultiView>
+                
+                <asp:MultiView ActiveViewIndex="1" ID="MultiView2" runat="server">
+                    <asp:View ID="View3" runat="server">
+                        <a href="signup.aspx">Đăng Ký</a>
+                    </asp:View>
+                    <asp:View ID="View4" runat="server">
+                        <asp:LinkButton ID="btnSignout" runat="server" onclick="btnSignout_Click">Đăng Xuất</asp:LinkButton>
+                    </asp:View>
+                </asp:MultiView>
+                
             </div>
         </div>
     </header>

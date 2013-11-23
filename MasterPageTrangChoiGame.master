@@ -1,0 +1,102 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MasterPageTrangChoiGame.master.cs" Inherits="MasterPageTrangChoiGame" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+   
+    <table class="default-1-1" >
+        <tr>
+            <td valign=top >
+                <asp:DataList ID="DataList1" runat="server" DataKeyField="ID" 
+                    DataSourceID="SqlDataSource1">
+                    <ItemTemplate>
+                       
+                        <table class="default-1-1">
+                            <tr>
+                                <td rowspan="3" >
+                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("char_skin") %>' 
+                                         Height="100%" />
+                                    </td>
+
+                                <td valign=top style="border-right-style:solid; border-top-style:solid">
+                                    <br />
+                                    <strong style="font-size: large">Tên:</strong> 
+                                    <asp:Label ID="lbName" runat="server" Text='<%# Eval("username") %>' Font-Size="Large"></asp:Label>
+                                    <br />
+                                    <br />
+                                    <strong style="font-size: large">Cấp:</strong> 
+                                    <asp:Label ID="lbLevel" runat="server" Text='<%# Eval("char_level") %>' Font-Size="Large"></asp:Label>
+                                    <br />
+                                    <br />
+                                    <strong style="font-size: large">Năng lượng:</strong> 
+                                    <asp:Label ID="lbEnergy" runat="server" Text='<%# Eval("char_energy") %>' Font-Size="Large"></asp:Label>
+                                    <br />
+                                    <br />
+                                    <strong style="font-size: large">Kinh nghiệm:</strong> 
+                                    <asp:Label ID="lbExp" runat="server" Text='<%# Eval("char_exp") %>' Font-Size="Large"></asp:Label><strong style="font-size: large">/</strong><asp:Label ID="lbExpMax"
+                                        runat="server" Text='<%# Eval("char_require_exp") %>' Font-Size="Large"></asp:Label>
+                                        <br />
+                                        <br />
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td valign=top style=" border-top-style:solid; border-right-style:solid">
+                                <br />
+                                <br />
+                                <strong style="font-size: x-large; font-weight: bold; color: #FF0000"  >Chỉ số</strong>
+                                <br /><br />
+                                <strong style="font-size: large">Máu:</strong> 
+                                    <asp:Label ID="lbHP" runat="server" Text='<%# Eval("char_hp") %>' 
+                                        Font-Size="Large"></asp:Label>
+                                    <br />
+                                    <br />
+                                <strong style="font-size: large">Sức đánh:</strong> 
+                                    <asp:Label ID="lbDamage" runat="server" Text='<%# Eval("char_damage") %>' 
+                                        Font-Size="Large"></asp:Label>
+                                    <br />
+                                    <br />
+                                <strong style="font-size: large">Sức đỡ:</strong> 
+                                    <asp:Label ID="lbDefence" runat="server" Text='<%# Eval("char_defend") %>' 
+                                        Font-Size="Large"></asp:Label>
+                                    <br />
+                                    <br />
+                                <strong style="font-size: large">Tiền:</strong> 
+                                    <asp:Label ID="lbMoney" runat="server" Text='<%# Eval("char_money") %>' 
+                                        Font-Size="Large"></asp:Label>
+                                    <br />
+                                    <br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=top style=" border-top-style:solid; padding-left:20px; ; border-right-style:solid;border-bottom-style:solid; padding-top:20px;" >
+                                
+                                    <asp:ImageButton ID="imgBag" runat="server" 
+                                        ImageUrl="~/resources/img/GoldBag.png"  Height="100" Width="100" 
+                                         PostBackUrl="~/TuiDo.aspx" />
+                                    </td>
+                            </tr>
+                        </table>
+                       
+                    </ItemTemplate>
+                </asp:DataList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                    
+                    SelectCommand="SELECT character.ID, character.username, character.char_name, character.char_level, character.char_exp, character.char_energy, character.char_damage, character.char_defend, character.char_critical, character.char_hp, character.char_clan_id, character.char_money, character.char_friend_list, character.char_position, character.char_item_equipment_helm, character.char_item_equipment_armor, character.char_item_equipment_gloves, character.char_item_equipment_weapon, character.char_item_equipment_shield, character.char_item_equipment_boots, character.char_baggage_event, character.char_baggage_quest, character.char_baggage, character.char_cash, character.char_title, character.char_avatar, character.char_kill, character.char_skin, char_level.char_require_exp FROM character INNER JOIN char_level ON character.char_level = char_level.char_level WHERE (character.username = @username)">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="username" SessionField="User" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+                </td>
+            <td width="60%"  >
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                    
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+   
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+</asp:Content>
+

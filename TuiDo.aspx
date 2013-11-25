@@ -4,8 +4,62 @@
     <table>
         <tr>
             <td height="70%">
-                <asp:Image ID="Image1" runat="server" 
-                    ImageUrl="~/resources/img/hero/caitlyn.png" Height="500px" Width="200px" />
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            Nón</td>
+                        <td>
+                            :</td>
+                        <td>
+                            <asp:ImageButton ID="btnHelmet" runat="server" ImageUrl="~/resources/img/item/helmet.gif" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Áo</td>
+                        <td>
+                            :</td>
+                        <td>
+                            <asp:ImageButton ID="btnArmor" runat="server" ImageUrl="~/resources/img/item/armor.gif" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Giày</td>
+                        <td>
+                            :</td>
+                        <td>
+                            <asp:ImageButton ID="btnBoots" runat="server" ImageUrl="~/resources/img/item/boots.gif" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Bao tay</td>
+                        <td>
+                            :</td>
+                        <td>
+                            <asp:ImageButton ID="btnGloves" runat="server" ImageUrl="~/resources/img/item/gloves.gif" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Vũ khí</td>
+                        <td>
+                            :</td>
+                        <td>
+                            <asp:ImageButton ID="btnWeapon" runat="server" ImageUrl="~/resources/img/item/weapon.gif" />    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Khiêng</td>
+                        <td>
+                            :</td>
+                        <td>
+                            <asp:ImageButton ID="btnShield" runat="server" ImageUrl="~/resources/img/item/shield.gif" />    
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
         <tr>

@@ -11,5 +11,6 @@ public partial class TuiDo : System.Web.UI.Page
     {
         Session["User"] = "hung";
 
+        
     }
 }

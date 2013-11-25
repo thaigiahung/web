@@ -11,7 +11,8 @@
                         <td>
                             :</td>
                         <td>
-                            <asp:ImageButton ID="btnHelmet" runat="server" ImageUrl="~/resources/img/item/helmet.gif" />
+                            <asp:ImageButton ID="btnHelmet" runat="server" 
+                                ImageUrl="~/resources/img/item/helmet.gif" onclick="btnHelmet_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -66,9 +67,10 @@
             <td height="30%">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-        SelectCommand="SELECT char_inventory.UserName, char_inventory.ItemId, item.ID, item.item_name, item.item_description, item.item_level, item.item_require_level, item.item_param1, item.item_value1, item.item_param2, item.item_value2, item.item_param3, item.item_value3, item.item_param4, item.item_value4, item.item_param5, item.item_value5, item.item_isbuying, item.item_islocked, item.item_icon, item.item_username, item.item_equip, item.item_type, item.item_rarity FROM char_inventory INNER JOIN item ON char_inventory.ItemId = item.ID WHERE (char_inventory.UserName = @username) And char_inventory.status = 0">
+        
+                    SelectCommand="SELECT ID, item_name, item_description, item_level, item_require_level, item_param1, item_value1, item_param2, item_value2, item_param3, item_value3, item_param4, item_value4, item_param5, item_value5, item_isbuying, item_islocked, item_icon, item_username, item_equip, item_type, item_rarity FROM item WHERE (item_username = @user ) AND (item_equip = 0)">
         <SelectParameters>
-            <asp:SessionParameter Name="username" SessionField="User" />
+            <asp:SessionParameter Name="user" SessionField="User" />
         </SelectParameters>
     </asp:SqlDataSource>
                  <asp:ListView ID="ListView1" runat="server" DataKeyNames="ID" 
@@ -78,7 +80,7 @@
                              <asp:ImageButton ID="imgItem2" runat="server" Height="80px" 
                                  ImageUrl='<%# Eval("item_icon") %>' Width="80px" />
                              <br />
-                             <asp:Label ID="lbItemId2" runat="server" Text='<%# Eval("ItemId") %>' 
+                             <asp:Label ID="lbItemId2" runat="server" Text='<%# Eval("ID") %>' 
                                  Visible="False"></asp:Label>
                              <br /></td>
                      </AlternatingItemTemplate>
@@ -264,7 +266,7 @@
                              <asp:ImageButton ID="imgItem1" runat="server" Height="80px" 
                                  ImageUrl='<%# Eval("item_icon") %>' Width="80px" />
                              <br />
-                             <asp:Label ID="lbItemId" runat="server" Text='<%# Eval("ItemId") %>' 
+                             <asp:Label ID="lbItemId" runat="server" Text='<%# Eval("ID") %>' 
                                  Visible="False"></asp:Label>
                              <br />
                          </td>

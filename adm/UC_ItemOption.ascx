@@ -1,6 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UC_ItemOption.ascx.cs" Inherits="adm_ItemOption_UC" %>
 <table style="width:100%;">
     <tr>
+        <td class="style1" colspan="2" align="right">
+            <asp:TextBox ID="searchbox" runat="server" Width="150px"></asp:TextBox>
+            <asp:Button ID="btnSearch" runat="server" CausesValidation="False" 
+                onclick="btnSearch_Click" Text="Search" Width="50px" />
+        </td>
+    </tr>
+    <tr>
         <td>
             <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
                 AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SQL_Gridview">

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class adm_admin_itemevent : System.Web.UI.UserControl
+public partial class adm_UC_Hero : System.Web.UI.UserControl
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -14,6 +14,6 @@ public partial class adm_admin_itemevent : System.Web.UI.UserControl
     protected void btnSearch_Click(object sender, EventArgs e)
     {
         string s = searchbox.Text;
-        SQL_GridView.SelectCommand = "SELECT * FROM [itemevent] WHERE itemevent_name LIKE '%" + s + "%'";
+        GridView_Hero.SelectCommand = "SELECT * FROM [Hero] WHERE Name LIKE '%" + s + "%'";
     }
 }

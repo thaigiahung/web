@@ -11,4 +11,9 @@ public partial class adm_UC_Market : System.Web.UI.UserControl
     {
 
     }
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        string s = searchbox.Text;
+        SQL_GridView.SelectCommand = "SELECT * FROM item i JOIN market m on i.ID = m.market_item_id WHERE i.item_name LIKE '%" + s + "%'";
+    }
 }

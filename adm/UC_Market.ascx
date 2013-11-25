@@ -8,6 +8,13 @@
 
 <table class="style1">
     <tr>
+        <td class="style1" colspan="2" align="right">
+            <asp:TextBox ID="searchbox" runat="server" Width="150px"></asp:TextBox>
+            <asp:Button ID="btnSearch" runat="server" CausesValidation="False" 
+                onclick="btnSearch_Click" Text="Search" Width="50px" />
+        </td>
+    </tr>
+    <tr>
         <td>
             <asp:SqlDataSource ID="SQL_GridView" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
@@ -150,6 +157,10 @@
                         CommandName="New" Text="New" />
                 </ItemTemplate>
             </asp:FormView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                SelectCommand="SELECT FROM item INNER JOIN market ON item.ID = market.market_item_id">
+            </asp:SqlDataSource>
         </td>
     </tr>
 </table>

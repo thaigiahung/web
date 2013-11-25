@@ -11,4 +11,9 @@ public partial class adm_UC_ItemEventOption : System.Web.UI.UserControl
     {
 
     }
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        string s = searchbox.Text;
+        SQL_GridView.SelectCommand = "SELECT * FROM [itemevent_option] WHERE eventopt_name LIKE '%" + s + "%'";
+    }
 }

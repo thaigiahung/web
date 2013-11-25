@@ -9,10 +9,10 @@
             </td>
         </tr>
         <tr>
-            <td hei height="30%">
+            <td height="30%">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-        SelectCommand="SELECT char_inventory.UserName, char_inventory.ItemId, item.ID, item.item_name, item.item_description, item.item_level, item.item_require_level, item.item_param1, item.item_value1, item.item_param2, item.item_value2, item.item_param3, item.item_value3, item.item_param4, item.item_value4, item.item_param5, item.item_value5, item.item_isbuying, item.item_islocked, item.item_icon, item.item_username, item.item_equip, item.item_type, item.item_rarity FROM char_inventory INNER JOIN item ON char_inventory.ItemId = item.ID WHERE (char_inventory.UserName = @username)">
+        SelectCommand="SELECT char_inventory.UserName, char_inventory.ItemId, item.ID, item.item_name, item.item_description, item.item_level, item.item_require_level, item.item_param1, item.item_value1, item.item_param2, item.item_value2, item.item_param3, item.item_value3, item.item_param4, item.item_value4, item.item_param5, item.item_value5, item.item_isbuying, item.item_islocked, item.item_icon, item.item_username, item.item_equip, item.item_type, item.item_rarity FROM char_inventory INNER JOIN item ON char_inventory.ItemId = item.ID WHERE (char_inventory.UserName = @username) And char_inventory.status = 0">
         <SelectParameters>
             <asp:SessionParameter Name="username" SessionField="User" />
         </SelectParameters>

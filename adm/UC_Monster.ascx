@@ -4,11 +4,22 @@
     {
         width: 100%;
     }
+    .style2
+    {
+        width: 58%;
+    }
 </style>
 
 <table class="style1" align="center">
     <tr>
-        <td width="60%" align="center">
+        <td class="style1" colspan="2" align="right">
+            <asp:TextBox ID="searchbox" runat="server" Width="150px"></asp:TextBox>
+            <asp:Button ID="btnSearch" runat="server" CausesValidation="False" 
+                onclick="btnSearch_Click" Text="Search" Width="50px" />
+        </td>
+    </tr>
+    <tr>
+        <td align="center" class="style2">
             <asp:SqlDataSource ID="SQLSelectMonster" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
                 SelectCommand="SELECT * FROM [monster]"></asp:SqlDataSource>
@@ -89,13 +100,25 @@
                     <asp:TextBox ID="monster_levelTextBox" runat="server" 
                         Text='<%# Bind("monster_level") %>' />
                     <br />
+                    <asp:RangeValidator ID="RangeValidator2" runat="server" 
+                        ControlToValidate="monster_levelTextBox" ErrorMessage="Gia tri thap nhat la 1" 
+                        MaximumValue="9999" MinimumValue="1"></asp:RangeValidator>
+                    <br />
                     monster_money:
                     <asp:TextBox ID="monster_moneyTextBox" runat="server" 
                         Text='<%# Bind("monster_money") %>' />
                     <br />
+                    <asp:RangeValidator ID="RangeValidator3" runat="server" 
+                        ControlToValidate="monster_moneyTextBox" ErrorMessage="Gia tri thap nhat la 0" 
+                        MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
+                    <br />
                     monster_exp:
                     <asp:TextBox ID="monster_expTextBox" runat="server" 
                         Text='<%# Bind("monster_exp") %>' />
+                    <br />
+                    <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                        ControlToValidate="monster_expTextBox" ErrorMessage="Gia tri thap nhat la 0" 
+                        MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
                     monster_is_boss:
                     <asp:TextBox ID="monster_is_bossTextBox" runat="server" 
@@ -109,13 +132,25 @@
                     <asp:TextBox ID="monster_damageTextBox" runat="server" 
                         Text='<%# Bind("monster_damage") %>' />
                     <br />
+                    <asp:RangeValidator ID="RangeValidator4" runat="server" 
+                        ControlToValidate="monster_damageTextBox" ErrorMessage="Gia tri thap nhat la 0" 
+                        MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
+                    <br />
                     monster_hp:
                     <asp:TextBox ID="monster_hpTextBox" runat="server" 
                         Text='<%# Bind("monster_hp") %>' />
                     <br />
+                    <asp:RangeValidator ID="RangeValidator5" runat="server" 
+                        ControlToValidate="monster_hpTextBox" ErrorMessage="Gia tri thap nhat la 0" 
+                        MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
+                    <br />
                     monster_defend:
                     <asp:TextBox ID="monster_defendTextBox" runat="server" 
                         Text='<%# Bind("monster_defend") %>' />
+                    <br />
+                    <asp:RangeValidator ID="RangeValidator6" runat="server" 
+                        ControlToValidate="monster_defendTextBox" ErrorMessage="Gia tri thap nhat la 0" 
+                        MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
                     monster_drop_normal:<asp:SqlDataSource ID="SQLItem_Edit" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
@@ -150,15 +185,24 @@
                     <br />
                     monster_level:
                     <asp:TextBox ID="monster_levelTextBox" runat="server" 
-                        Text='<%# Bind("monster_level") %>' />
+                        Text='1' />
+                    <br />
+                    <asp:RangeValidator ID="RangeValidator7" runat="server" 
+                        ErrorMessage="Gia tri thap nhat la 1" MaximumValue="9999" MinimumValue="1"></asp:RangeValidator>
                     <br />
                     monster_money:
                     <asp:TextBox ID="monster_moneyTextBox" runat="server" 
-                        Text='<%# Bind("monster_money") %>' />
+                        Text='0' />
+                    <br />
+                    <asp:RangeValidator ID="RangeValidator8" runat="server" 
+                        ErrorMessage="RangeValidator"></asp:RangeValidator>
                     <br />
                     monster_exp:
                     <asp:TextBox ID="monster_expTextBox" runat="server" 
-                        Text='<%# Bind("monster_exp") %>' />
+                        Text='0' />
+                    <br />
+                    <asp:RangeValidator ID="RangeValidator9" runat="server" 
+                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
                     monster_is_boss:
                     <asp:TextBox ID="monster_is_bossTextBox" runat="server" 
@@ -170,15 +214,24 @@
                     <br />
                     monster_damage:
                     <asp:TextBox ID="monster_damageTextBox" runat="server" 
-                        Text='<%# Bind("monster_damage") %>' />
+                        Text='0' />
+                    <br />
+                    <asp:RangeValidator ID="RangeValidator10" runat="server" 
+                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
                     monster_hp:
                     <asp:TextBox ID="monster_hpTextBox" runat="server" 
-                        Text='<%# Bind("monster_hp") %>' />
+                        Text='0' />
+                    <br />
+                    <asp:RangeValidator ID="RangeValidator11" runat="server" 
+                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
                     monster_defend:
                     <asp:TextBox ID="monster_defendTextBox" runat="server" 
-                        Text='<%# Bind("monster_defend") %>' />
+                        Text='0' />
+                    <br />
+                    <asp:RangeValidator ID="RangeValidator12" runat="server" 
+                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
                     monster_drop_normal:<asp:SqlDataSource ID="SQLItemDrop_Insert" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
@@ -195,8 +248,7 @@
                     </asp:DropDownList>
                     <br />
                     monster_drop_epic:<br />
-                    &nbsp;
-                    <asp:DropDownList ID="DropDownList16" runat="server" 
+                    &nbsp;<asp:DropDownList ID="DropDownList16" runat="server" 
                         DataSourceID="SQLItemDrop_Insert" DataTextField="item_name" DataValueField="ID" 
                         SelectedValue='<%# Bind("monster_drop_epic") %>'>
                     </asp:DropDownList>

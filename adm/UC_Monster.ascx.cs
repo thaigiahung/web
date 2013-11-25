@@ -11,4 +11,9 @@ public partial class adm_UC_Monster : System.Web.UI.UserControl
     {
 
     }
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        string s = searchbox.Text;
+        SQLSelectMonster.SelectCommand = "SELECT * FROM [monster] WHERE monster_name LIKE '%" + s + "%'";
+    }
 }

@@ -11,4 +11,19 @@ public partial class adm_WebUserControl : System.Web.UI.UserControl
     {
 
     }
+    protected void DropDown1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+    protected void item_value1TextBox_TextChanged(object sender, EventArgs e)
+    {
+        //string ddl;
+        
+    }
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        string s = searchbox.Text;
+        SQLDataSelect.SelectCommand = "SELECT * FROM [item] WHERE item_name LIKE '%" + s + "%'";
+        //searchbox.Text = "SELECT * FROM [item] WHERE item_name='s'";
+    }
 }

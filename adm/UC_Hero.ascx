@@ -12,6 +12,13 @@
 
 <table class="style1">
     <tr>
+        <td class="style1" colspan="2" align="right">
+            <asp:TextBox ID="searchbox" runat="server" Width="150px"></asp:TextBox>
+            <asp:Button ID="btnSearch" runat="server" CausesValidation="False" 
+                onclick="btnSearch_Click" Text="Search" Width="50px" />
+        </td>
+    </tr>
+    <tr>
         <td class="style2">
             <asp:SqlDataSource ID="GridView_Hero" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 

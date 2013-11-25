@@ -74,16 +74,6 @@
       <Column Name="value" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.inventory" Member="inventories">
-    <Type Name="inventory">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="inv_quantum" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="inv_item" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="inv_money" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="account_inventory" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.item_option" Member="item_options">
     <Type Name="item_option">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -353,8 +343,8 @@
       <Column Name="ip" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="role" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="account_char_task" Member="char_tasks" ThisKey="username" OtherKey="username" Type="char_task" />
-      <Association Name="account_inventory" Member="inventories" ThisKey="username" OtherKey="username" Type="inventory" />
       <Association Name="account_character" Member="characters" ThisKey="username" OtherKey="username" Type="character" />
+      <Association Name="account_inventory" Member="inventories" ThisKey="username" OtherKey="username" Type="inventory" />
     </Type>
   </Table>
   <Table Name="dbo.monster" Member="monsters">
@@ -373,6 +363,25 @@
       <Column Name="monster_drop_rare" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="monster_drop_epic" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="monster_img" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.inventory" Member="inventories">
+    <Type Name="inventory">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="inv_quantum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="inv_item" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="inv_money" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdItem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="account_inventory" Member="account" ThisKey="username" OtherKey="username" Type="account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.char_inventory" Member="char_inventories">
+    <Type Name="char_inventory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ItemId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

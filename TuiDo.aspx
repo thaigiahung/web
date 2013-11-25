@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageTrangChoiGame.master" AutoEventWireup="true" CodeFile="TuiDo.aspx.cs" Inherits="TuiDo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder3" Runat="Server">
+    
     <table>
         <tr>
             <td height="70%">

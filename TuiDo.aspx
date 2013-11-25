@@ -21,7 +21,8 @@
                         <td>
                             :</td>
                         <td>
-                            <asp:ImageButton ID="btnArmor" runat="server" ImageUrl="~/resources/img/item/armor.gif" />
+                            <asp:ImageButton ID="btnArmor" runat="server" 
+                                ImageUrl="~/resources/img/item/armor.gif" onclick="btnArmor_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -30,7 +31,8 @@
                         <td>
                             :</td>
                         <td>
-                            <asp:ImageButton ID="btnBoots" runat="server" ImageUrl="~/resources/img/item/boots.gif" />
+                            <asp:ImageButton ID="btnBoots" runat="server" 
+                                ImageUrl="~/resources/img/item/boots.gif" onclick="btnBoots_Click" />
                         </td>
                     </tr>
                     <tr>
@@ -39,7 +41,8 @@
                         <td>
                             :</td>
                         <td>
-                            <asp:ImageButton ID="btnGloves" runat="server" ImageUrl="~/resources/img/item/gloves.gif" />    
+                            <asp:ImageButton ID="btnGloves" runat="server" 
+                                ImageUrl="~/resources/img/item/gloves.gif" onclick="btnGloves_Click" />    
                         </td>
                     </tr>
                     <tr>
@@ -48,7 +51,8 @@
                         <td>
                             :</td>
                         <td>
-                            <asp:ImageButton ID="btnWeapon" runat="server" ImageUrl="~/resources/img/item/weapon.gif" />    
+                            <asp:ImageButton ID="btnWeapon" runat="server" 
+                                ImageUrl="~/resources/img/item/weapon.gif" onclick="btnWeapon_Click" />    
                         </td>
                     </tr>
                     <tr>
@@ -57,7 +61,8 @@
                         <td>
                             :</td>
                         <td>
-                            <asp:ImageButton ID="btnShield" runat="server" ImageUrl="~/resources/img/item/shield.gif" />    
+                            <asp:ImageButton ID="btnShield" runat="server" 
+                                ImageUrl="~/resources/img/item/shield.gif" onclick="btnShield_Click" />    
                         </td>
                     </tr>
                 </table>

@@ -10,6 +10,7 @@ public partial class login : User
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        this.txtUN.Focus();
         if (Session["User"] != null)
         {
             Response.Redirect("Default.aspx");
@@ -105,8 +106,6 @@ public partial class login : User
 
                             }
                             
-
-
                         }
                     }
                 }

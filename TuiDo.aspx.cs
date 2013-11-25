@@ -57,6 +57,7 @@ public partial class TuiDo : System.Web.UI.Page
             db.SubmitChanges();
             btnHelmet.ToolTip = null;
         }
+        ListView1.DataBind();
     }
     protected void btnArmor_Click(object sender, ImageClickEventArgs e)
     {
@@ -67,6 +68,7 @@ public partial class TuiDo : System.Web.UI.Page
             db.SubmitChanges();
             btnArmor.ToolTip = null;
         }
+        ListView1.DataBind();
     }
     protected void btnBoots_Click(object sender, ImageClickEventArgs e)
     {
@@ -77,6 +79,7 @@ public partial class TuiDo : System.Web.UI.Page
             db.SubmitChanges();
             btnBoots.ToolTip = null;
         }
+        ListView1.DataBind();
     }
     protected void btnGloves_Click(object sender, ImageClickEventArgs e)
     {
@@ -87,6 +90,7 @@ public partial class TuiDo : System.Web.UI.Page
             db.SubmitChanges();
             btnGloves.ToolTip = null;
         }
+        ListView1.DataBind();
     }
     protected void btnWeapon_Click(object sender, ImageClickEventArgs e)
     {
@@ -97,6 +101,7 @@ public partial class TuiDo : System.Web.UI.Page
             db.SubmitChanges();
             btnWeapon.ToolTip = null;
         }
+        ListView1.DataBind();
     }
     protected void btnShield_Click(object sender, ImageClickEventArgs e)
     {
@@ -106,6 +111,50 @@ public partial class TuiDo : System.Web.UI.Page
             userShield.item_equip = 0;
             db.SubmitChanges();
             btnShield.ToolTip = null;
+        }
+        ListView1.DataBind();
+    }
+    protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
+    {
+        if (e.CommandName == "TrangBi1")
+        {
+            int selectedRow = e.Item.DataItemIndex;
+            ImageButton item = (ImageButton)ListView1.Items[selectedRow].FindControl("imgItem1");
+            Label lblItemId = (Label)ListView1.Items[selectedRow].FindControl("lbItemId1");
+            Label lblItemType = (Label)ListView1.Items[selectedRow].FindControl("lblItemType1");            
+             
+            //Tìm ra item có id được user chọn
+            item selectedItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.ID == Convert.ToInt32(lblItemId.Text));
+
+            //Kiểm tra hiện tại có mang loại trang bị này chưa
+            item userItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.item_equip == 1 && i.item_type == Convert.ToInt32(lblItemType.Text));
+            if (userItem != null) //Nếu đã có thì phải tháo ra và gắn cái được chọn vào
+            { 
+                userItem.item_equip = 0;                
+            }
+            selectedItem.item_equip = 1;
+            db.SubmitChanges();
+            ListView1.DataBind();
+        }
+        else if (e.CommandName == "TrangBi2")
+        {
+            int selectedRow = e.Item.DataItemIndex;
+            ImageButton item = (ImageButton)ListView1.Items[selectedRow].FindControl("imgItem2");
+            Label lblItemId = (Label)ListView1.Items[selectedRow].FindControl("lbItemId2");
+            Label lblItemType = (Label)ListView1.Items[selectedRow].FindControl("lblItemType2");
+
+            //Tìm ra item có id được user chọn
+            item selectedItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.ID == Convert.ToInt32(lblItemId.Text));
+
+            //Kiểm tra hiện tại có mang loại trang bị này chưa
+            item userItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.item_equip == 1 && i.item_type == Convert.ToInt32(lblItemType.Text));
+            if (userItem != null) //Nếu đã có thì phải tháo ra và gắn cái được chọn vào
+            {
+                userItem.item_equip = 0;
+            }
+            selectedItem.item_equip = 1;
+            db.SubmitChanges();
+            ListView1.DataBind();
         }
     }
 }

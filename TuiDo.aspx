@@ -79,14 +79,15 @@
         </SelectParameters>
     </asp:SqlDataSource>
                  <asp:ListView ID="ListView1" runat="server" DataKeyNames="ID" 
-                     DataSourceID="SqlDataSource1" GroupItemCount="5">
+                     DataSourceID="SqlDataSource1" GroupItemCount="5" 
+                    onitemcommand="ListView1_ItemCommand">
                      <AlternatingItemTemplate>
                          <td runat="server" style="">
                              <asp:ImageButton ID="imgItem2" runat="server" Height="80px" 
-                                 ImageUrl='<%# Eval("item_icon") %>' Width="80px" />
+                                 ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi2"/>
                              <br />
-                             <asp:Label ID="lbItemId2" runat="server" Text='<%# Eval("ID") %>' 
-                                 Visible="False"></asp:Label>
+                             <asp:Label ID="lbItemId2" runat="server" Text='<%# Eval("ID") %>' Visible="False"></asp:Label>
+                             <asp:Label ID="lblItemType2" runat="server" Text='<%# Eval("item_type") %>' Visible="False"></asp:Label>
                              <br /></td>
                      </AlternatingItemTemplate>
                      <EditItemTemplate>
@@ -269,10 +270,10 @@
                      <ItemTemplate>
                          <td runat="server" style="">
                              <asp:ImageButton ID="imgItem1" runat="server" Height="80px" 
-                                 ImageUrl='<%# Eval("item_icon") %>' Width="80px" />
+                                 ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi1"  />
                              <br />
-                             <asp:Label ID="lbItemId" runat="server" Text='<%# Eval("ID") %>' 
-                                 Visible="False"></asp:Label>
+                             <asp:Label ID="lbItemId1" runat="server" Text='<%# Eval("ID") %>' Visible="False"></asp:Label>
+                             <asp:Label ID="lblItemType1" runat="server" Text='<%# Eval("item_type") %>' Visible="False"></asp:Label>
                              <br />
                          </td>
                      </ItemTemplate>

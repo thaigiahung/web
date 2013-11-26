@@ -84,8 +84,12 @@
                     onitemcommand="ListView1_ItemCommand">
                      <AlternatingItemTemplate>
                          <td runat="server" style="">
-                             <asp:ImageButton ID="imgItem2" runat="server" Height="80px" 
-                                 ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi2"/>
+                            <asp:ImageButton ID="imgItem2" runat="server" Height="80px" ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi2" 
+                            ToolTip='<%# "Đánh: " +  Eval("item_value1") +"\n"+
+                                            "Đỡ: " +  Eval("item_value2") +"\n"+
+                                            "Máu: " +  Eval("item_value3") +"\n"
+                                     %>'
+                         />
                              <br />
                              <asp:Label ID="lbItemId2" runat="server" Text='<%# Eval("ID") %>' Visible="False"></asp:Label>
                              <asp:Label ID="lblItemType2" runat="server" Text='<%# Eval("item_type") %>' Visible="False"></asp:Label>
@@ -271,7 +275,12 @@
                      <ItemTemplate>
                          <td runat="server" style="">
                              <asp:ImageButton ID="imgItem1" runat="server" Height="80px" 
-                                 ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi1"  />
+                                 ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi1" 
+                                 ToolTip='<%# "Đánh: " +  Eval("item_value1") +"\n"+
+                                            "Đỡ: " +  Eval("item_value2") +"\n"+
+                                            "Máu: " +  Eval("item_value3") +"\n"
+                                        %>'  
+                             />
                              <br />
                              <asp:Label ID="lbItemId1" runat="server" Text='<%# Eval("ID") %>' Visible="False"></asp:Label>
                              <asp:Label ID="lblItemType1" runat="server" Text='<%# Eval("item_type") %>' Visible="False"></asp:Label>

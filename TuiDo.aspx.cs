@@ -22,7 +22,7 @@ public partial class TuiDo : System.Web.UI.Page
             if (userHelmet != null)
             {
                 btnHelmet.ImageUrl = userHelmet.item_icon;
-                btnHelmet.ToolTip = "Máu   : " + userHelmet.item_value2 + "\nĐỡ      : " + userHelmet.item_value3;
+                btnHelmet.ToolTip = "Đánh   : " + userHelmet.item_value1 +"\nĐỡ   : " + userHelmet.item_value2 + "\nMáu      : " + userHelmet.item_value3;
             }
 
             //Áo
@@ -30,7 +30,7 @@ public partial class TuiDo : System.Web.UI.Page
             if (userArmor != null)
             {
                 btnArmor.ImageUrl = userArmor.item_icon;
-                btnArmor.ToolTip = "Máu   : " + userArmor.item_value2 + "\nĐỡ      : " + userArmor.item_value3;
+                btnArmor.ToolTip = "Đánh   : " + userArmor.item_value1 + "\nĐỡ   : " + userArmor.item_value2 + "\nMáu      : " + userArmor.item_value3;
             }
 
             //Giày
@@ -38,7 +38,7 @@ public partial class TuiDo : System.Web.UI.Page
             if (userBoots != null)
             {
                 btnBoots.ImageUrl = userBoots.item_icon;
-                btnBoots.ToolTip = "Đánh  : " + userBoots.item_value1 + "\nMáu     : " + userBoots.item_value3;
+                btnBoots.ToolTip = "Đánh   : " + userBoots.item_value1 + "\nĐỡ   : " + userBoots.item_value2 + "\nMáu      : " + userBoots.item_value3;
             }
 
             //Bao tay
@@ -46,7 +46,7 @@ public partial class TuiDo : System.Web.UI.Page
             if (userGloves != null)
             {
                 btnGloves.ImageUrl = userGloves.item_icon;
-                btnGloves.ToolTip = "Đánh  : " + userGloves.item_value1 + "\nMáu     : " + userGloves.item_value3;
+                btnGloves.ToolTip = "Đánh   : " + userGloves.item_value1 + "\nĐỡ   : " + userGloves.item_value2 + "\nMáu      : " + userGloves.item_value3;
             }
 
             //Vũ khí
@@ -54,7 +54,7 @@ public partial class TuiDo : System.Web.UI.Page
             if (userWeapon != null)
             {
                 btnWeapon.ImageUrl = userWeapon.item_icon;
-                btnWeapon.ToolTip = "Đánh  : " + userWeapon.item_value1;
+                btnWeapon.ToolTip = "Đánh   : " + userWeapon.item_value1 + "\nĐỡ   : " + userWeapon.item_value2 + "\nMáu      : " + userWeapon.item_value3;
             }
 
             //Khiên
@@ -62,7 +62,7 @@ public partial class TuiDo : System.Web.UI.Page
             if (userShield != null)
             {
                 btnShield.ImageUrl = userShield.item_icon;
-                btnShield.ToolTip = "Đỡ  : " + userShield.item_value2;
+                btnShield.ToolTip = "Đánh   : " + userShield.item_value1 + "\nĐỡ   : " + userShield.item_value2 + "\nMáu      : " + userShield.item_value3;
             }
         }
     }
@@ -85,7 +85,7 @@ public partial class TuiDo : System.Web.UI.Page
         {
             userArmor.item_equip = 0;
             db.SubmitChanges();
-            btnArmor.ImageUrl = "~/resources/img/item/helmet.gif";
+            btnArmor.ImageUrl = "~/resources/img/item/armor.gif";
             btnArmor.ToolTip = null;
         }
         ListView1.DataBind();
@@ -97,7 +97,7 @@ public partial class TuiDo : System.Web.UI.Page
         {
             userBoots.item_equip = 0;
             db.SubmitChanges();
-            btnBoots.ImageUrl = "~/resources/img/item/helmet.gif";
+            btnBoots.ImageUrl = "~/resources/img/item/boots.gif";
             btnBoots.ToolTip = null;
         }
         ListView1.DataBind();
@@ -109,7 +109,7 @@ public partial class TuiDo : System.Web.UI.Page
         {
             userGloves.item_equip = 0;
             db.SubmitChanges();
-            btnGloves.ImageUrl = "~/resources/img/item/helmet.gif";
+            btnGloves.ImageUrl = "~/resources/img/item/gloves.gif";
             btnGloves.ToolTip = null;
         }
         ListView1.DataBind();
@@ -121,7 +121,7 @@ public partial class TuiDo : System.Web.UI.Page
         {
             userWeapon.item_equip = 0;
             db.SubmitChanges();
-            btnWeapon.ImageUrl = "~/resources/img/item/helmet.gif";
+            btnWeapon.ImageUrl = "~/resources/img/item/weapon.gif";
             btnWeapon.ToolTip = null;
         }
         ListView1.DataBind();
@@ -133,7 +133,7 @@ public partial class TuiDo : System.Web.UI.Page
         {
             userShield.item_equip = 0;
             db.SubmitChanges();
-            btnShield.ImageUrl = "~/resources/img/item/helmet.gif";
+            btnShield.ImageUrl = "~/resources/img/item/shield.gif";
             btnShield.ToolTip = null;
         }
         ListView1.DataBind();

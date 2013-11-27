@@ -260,7 +260,7 @@ public partial class CreateCharacter : System.Web.UI.Page
         character nhanvat = new character();
         nhanvat.username = username;
         nhanvat.char_level = 1;
-        nhanvat.char_exp = 30;
+        nhanvat.char_exp = 0;
         var items = from y in db.Heros
                     where y.IdHero == idherochon
                     select y;// lay duoc hero trong table hero

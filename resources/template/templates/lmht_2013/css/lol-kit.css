@@ -224,7 +224,8 @@ table.table-hover tbody tr:hover td{background-color:#e5e5e5;}
 
 .content-border{box-sizing:border-box;padding:4px;margin-top:20px;background-color:transparent;-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#1A000000,endColorstr=#1A000000);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#1A000000,endColorstr=#1A000000);background-color:rgba(0,0,0,0.1);border-left:1px solid rgba(84,84,84,0.3);border-top:1px solid rgba(84,84,84,0.3);border-bottom:1px solid rgba(255,255,255,0.6);border-right:1px solid rgba(255,255,255,0.6)}
 .content-border>*{-webkit-box-shadow:0 0 2px 0 #868686;-moz-box-shadow:0 0 2px 0 #868686;box-shadow:0 0 2px 0 #868686;background-color:#dedede;}
-.content-border img{max-width:100%;height:auto;vertical-align:middle;}
+.content-border img{max-width:100%;vertical-align:middle;
+}
 div.content-border{width:100%;}
 .content-border:first-child{margin-top:0;}
 span.content-border{display:inline-block;width:auto;}

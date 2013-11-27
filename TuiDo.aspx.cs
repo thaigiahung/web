@@ -5,12 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class TuiDo : System.Web.UI.Page
+public partial class TuiDo : User
 {
     WebGameDataContext db = new WebGameDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["User"] = "hung";
         if (Session["User"] == null)
         {
             Response.Redirect("~/login.aspx");

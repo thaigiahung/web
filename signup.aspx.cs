@@ -67,12 +67,13 @@ public partial class signup : User
                 client.Credentials = new NetworkCredential(email, password);
                 client.Send(message);
 
-
-
+                Label1.Text= "Tài khoản của bạn đã được tạo thành công, kiểm tra Email để kích hoạt tài khoản";
+                
+                Response.AddHeader("REFRESH", "3;URL=Default.aspx");
             }
             catch (Exception ex)
             {
-                Label1.Text = ex.Message;
+                
             }
         
     }

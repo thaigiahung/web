@@ -160,7 +160,11 @@
             <td><asp:Button ID="btnSubmit" runat="server" Text="Đăng Kí" 
                     onclick="btnSubmit_Click" /></td>
             <td>
-                <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></td>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3">
+                <asp:Label ID="Label1" runat="server"></asp:Label></td>
         </tr>
     </table>
 

@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="fight.aspx.cs" Inherits="fight" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <%--<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">--%>
     <style>
         .fire 
         {
@@ -16,12 +19,20 @@
             position: absolute;
         }
     </style>
+    <%--<script>
+        $(function () {
+            $("#progressbarHero").progressbar({
+//                value: $j("#<%=lbHeroHP.ClientID %>").val() / $j("#<%=lbFullHeroHP.ClientID %>").val()
+                value: 100
+            });
+        });
+  </script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:Label ID="lbflag" runat="server" Text="0"></asp:Label>
-    <asp:Label ID="lbmark" runat="server" Text="0"></asp:Label>
-    <asp:Label ID="UHP" runat="server" Text=""></asp:Label>
-    <asp:Label ID="MHP" runat="server" Text=""></asp:Label>
+    <asp:Label ID="lbflag" runat="server" Text="0" Visible="False"></asp:Label>
+    <asp:Label ID="lbmark" runat="server" Text="0" Visible="False"></asp:Label>
+    <asp:Label ID="UHP" runat="server" Text="" Visible="False"></asp:Label>
+    <asp:Label ID="MHP" runat="server" Text="" Visible="False"></asp:Label>
     <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
     
@@ -48,7 +59,8 @@
                     <asp:Label ID="lbHeroName" runat="server" CssClass="fire"></asp:Label>
                     
             </td>
-            <td rowspan="3" valign="middle" align="center" style="width: 191px">VS.</td>
+            <td rowspan="3" valign="middle" align="center" 
+                style="width: 191px; font-family: Gungsuh; font-weight: bold; color: #930000; font-size: x-large;">VS.</td>
             <td colspan="2" align="center" style="background-color:Black" rowspan="2">
                 <asp:Label ID="lbMonsterName" runat="server" CssClass="fire"></asp:Label>
             </td>
@@ -82,6 +94,8 @@
                 <asp:Image ID="ImgHero" runat="server" Height="200px" />
             </td>
             <td align="center">
+                <asp:Button ID="btnFightAgain" runat="server" onclick="btnFightAgain_Click" 
+                    Text="Đánh tiếp" Visible="False" />
                 <asp:Button ID="btnFight" runat="server" Text="Đánh" Width="70px" 
                     onclick="btnFight_Click" />
                 <asp:Button ID="btnCancel" runat="server" Text="Rút lui" Width="70px" 
@@ -104,11 +118,16 @@
             <td></td>
             <td></td>
             <td>
+                
                 <asp:Label ID="lbHeroHP" runat="server" Text="Label"></asp:Label>
+                &nbsp;/
+                <asp:Label ID="lbFullHeroHP" runat="server" Text="Label"></asp:Label>
             </td>
             <td></td>
             <td>
                 <asp:Label ID="lbMonsterHP" runat="server" Text="Label"></asp:Label>
+                &nbsp;/
+                <asp:Label ID="lbFullMonsterHP" runat="server" Text="Label"></asp:Label>
             </td>
             <td></td>
             <td></td>
@@ -116,11 +135,11 @@
         <tr>
             <td></td>
             <td></td>
-            <td></td>
-            <td>
-                <asp:Label ID="message" runat="server" Text="Label"></asp:Label>
+            <td colspan="3">
+                <asp:Label ID="messagelv" runat="server"></asp:Label>
+                <br />
+                <asp:Label ID="messagereward" runat="server"></asp:Label>
             </td>
-            <td></td>
             <td></td>
             <td></td>
         </tr>

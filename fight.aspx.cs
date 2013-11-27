@@ -30,7 +30,7 @@ public partial class fight : User
         }
         else
         {
-            string monsterid = "1"; //Request.QueryString["id"];
+            string monsterid = Request.QueryString["id"];
             account user = db.accounts.SingleOrDefault(n => n.username == Session["User"]);
             character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
             monster mon = db.monsters.SingleOrDefault(m => m.ID.ToString() == monsterid);
@@ -110,8 +110,11 @@ public partial class fight : User
             {
                 UHP.Text = temp_HeroHP.ToString();
                 MHP.Text = temp_MonsterHP.ToString();
+
                 lbHeroHP.Text = UHP.Text;
                 lbMonsterHP.Text = MHP.Text;
+                lbFullHeroHP.Text = UHP.Text;
+                lbFullMonsterHP.Text = MHP.Text;
             }
             //else
             //{
@@ -126,137 +129,9 @@ public partial class fight : User
 
         btnFight.Visible = false;
         btnCancel.Visible = false;
-        
-        
-        //for (int i = 0; i < 10; i++)
-        //{
-        //    int dmg1 = temp_HeroDamage - temp_MonsterDefend;
-        //    if (dmg1 > 0)
-        //    {
-        //        temp_MonsterHP = temp_MonsterHP - dmg1;
-        //        lbMonsterHP.Text = temp_MonsterHP.ToString();
-
-        //    }
-        //    damageMonster.Visible = true;
-        //    UpdatePanel1.Update();
-        //    Thread.Sleep(2000);
-        //    damageMonster.Visible = false;
-        //    damageHero.Visible = false;
-        //}
-        //flag = 1;
-
-        
-        //while (temp_MonsterHP > 0 && temp_HeroHP > 0)
-        //{
-        //    if (flag == 0)
-        //    {
-        //        int dmg1 = temp_HeroDamage - temp_MonsterDefend;
-        //        if (dmg1 > 0)
-        //        {
-        //            temp_MonsterHP = temp_MonsterHP - dmg1;
-        //            lbMonsterHP.Text = temp_MonsterHP.ToString();
-                    
-        //        }
-        //        damageMonster.Visible = true;
-        //        UpdatePanel1.Update();
-        //        flag = 1;
-        //    }
-        //    else
-        //    {
-        //        int dmg = temp_MonsterDamage - temp_HeroDefend;
-        //        if (dmg > 0)
-        //        {
-        //            temp_HeroHP = temp_HeroHP - dmg;
-        //            lbHeroHP.Text = temp_HeroHP.ToString();
-                    
-        //        }
-        //        damageHero.Visible = true;
-        //        UpdatePanel1.Update();
-        //        flag = 0;
-        //    }
-
-        //    System.Threading.Thread.Sleep(2000);
-        //    damageMonster.Visible = false;
-        //    damageHero.Visible = false;
-
-        //}
-
-        //do
-        //{
-        //    if (flag == 0)
-        //    {
-        //        int dmg1 = temp_HeroDamage - temp_MonsterDefend;
-        //        if (dmg1 > 0)
-        //            temp_MonsterHP = temp_MonsterHP - dmg1;
-
-        //        damageMonster.Visible = true;
-        //        lbMonsterHP.Text = temp_MonsterHP.ToString();
-        //        flag = 1;
-                
-        //    }
-        //    else
-        //    {
-        //        int dmg = temp_MonsterDamage - temp_HeroDefend;
-        //        if (dmg > 0)
-        //            temp_HeroHP = temp_HeroHP - dmg;
-                
-        //        damageHero.Visible = true;
-        //        lbHeroHP.Text = temp_HeroHP.ToString();
-        //        flag = 0;
-                
-        //    }
-            
-            
-        //    damageMonster.Visible = true;
-        //    damageHero.Visible = false;
-           
-        //}
-        //while (temp_MonsterHP > 0 && temp_HeroHP > 0);
-
-        //for (int i = 0; i < 1000; i++)
-        //{
-        //    if (temp_MonsterHP > 0 && temp_HeroHP > 0)
-        //    {
-        //        if (flag == 0)
-        //        {
-        //            int dmg1 = temp_HeroDamage - temp_MonsterDefend;
-        //            if (dmg1 > 0)
-        //                temp_MonsterHP = temp_MonsterHP - dmg1;
-        //            damageMonster.Visible = true;
-        //            lbMonsterHP.Text = temp_MonsterHP.ToString();
-        //            flag = 1;
-        //            UpdatePanel1.Update();
-        //        }
-        //        else
-        //        {
-        //            int dmg = temp_MonsterDamage - temp_HeroDefend;
-        //            if (dmg > 0)
-        //                temp_HeroHP = temp_HeroHP - dmg;
-        //            damageHero.Visible = true;
-        //            lbHeroHP.Text = temp_HeroHP.ToString();
-        //            flag = 0;
-        //            UpdatePanel1.Update();
-                    
-        //        }
-        //        Thread.Sleep(2000);
-        //        UpdatePanel1.Update();
-        //        damageMonster.Visible = true;
-        //        damageHero.Visible = false;
-        //    }
-        //    else
-        //    {
-
-        //        damageMonster.Visible = true;
-        //        damageHero.Visible = false;
-        //        UpdatePanel1.Update();
-        //        break;
-        //    }
-        //}
-
+      
         Timer1.Enabled = true;
-              
-  
-                
+                        
     }
     protected void btnCancel_Click(object sender, EventArgs e)
     {
@@ -286,7 +161,16 @@ public partial class fight : User
                 damageHero.Visible = false;
 
                 lbflag.Text = "1";
-                
+                if (temp_HeroHP < 0)
+                {
+                    lbHeroHP.Text = "0";
+                    
+                }
+                if (temp_MonsterHP < 0)
+                {
+                    lbMonsterHP.Text = "0";
+                    
+                }
                 return;
 
             }
@@ -302,51 +186,111 @@ public partial class fight : User
                 damageHero.Visible = true;
 
                 lbflag.Text = "0";
-                
+                if (temp_HeroHP < 0)
+                {
+                    lbHeroHP.Text = "0";
+
+                }
+                if (temp_MonsterHP < 0)
+                {
+                    lbMonsterHP.Text = "0";
+
+                }
                 return;
             }
         }
         else
         {
-            if (temp_HeroHP < 0)
+            
+            Timer1.Enabled = false;
+            if(Convert.ToInt32(MHP.Text)<=0)
             {
-                lbHeroHP.Text = "0";
-                Timer1.Enabled = false;
+                dropItemExp(Session["User"].ToString(), Request.QueryString["id"]);
             }
-            if (temp_MonsterHP < 0)
-            {
-                lbMonsterHP.Text = "0";
-                Timer1.Enabled = false;
-            }
+            else
+                if(Convert.ToInt32(UHP.Text)<=0)
+                {
+                    punish(Session["User"].ToString());
+                }
+           
+        }
+        btnFightAgain.Text = "Đánh tiếp";
+        btnFightAgain.Visible = true;
+        btnCancel.Text = "Quay lại";
+        btnCancel.Visible = true;
+         
+        
+    }
+    public void punish(string hero)
+    {
+        character cha = db.characters.SingleOrDefault(c => c.username == hero);
+        int sub = Convert.ToInt32(cha.char_exp) * 5 / 100;
+        cha.char_exp = cha.char_exp - sub;
+
+        db.SubmitChanges();
+    }
+    public void dropItemExp(string hero, string monster)
+    {
+        account user = db.accounts.SingleOrDefault(n => n.username == hero);
+        character cha = db.characters.SingleOrDefault(c => c.username == hero);
+        monster mon = db.monsters.SingleOrDefault(m => m.ID.ToString() == monster);
+
+        cha.char_exp = cha.char_exp + mon.monster_exp;
+        cha.char_money = cha.char_money + mon.monster_money;
+        char_level lv = db.char_levels.SingleOrDefault(l => l.char_level1 == cha.char_level);
+        if (cha.char_exp >= lv.char_require_exp)
+        {
+            cha.char_level = cha.char_level +1;
+            cha.char_exp = 0;
+            messagelv.Text = "Chúc mừng, bạn đã thăng cấp " + cha.char_level;
         }
         
-        //    if (temp_MonsterHP > 0 && temp_HeroHP > 0)
-        //    {
-        //        if (flag == 0)
-        //        {
-        //            int dmg1 = temp_HeroDamage - temp_MonsterDefend;
-        //            if (dmg1 > 0)
-        //                temp_MonsterHP = temp_MonsterHP - dmg1;
-        //            damageMonster.Visible = true;
-        //            lbMonsterHP.Text = temp_MonsterHP.ToString();
-        //            flag = 1;
-        //            UpdatePanel1.Update();
-        //        }
-        //        else
-        //        {
-        //            int dmg = temp_MonsterDamage - temp_HeroDefend;
-        //            if (dmg > 0)
-        //                temp_HeroHP = temp_HeroHP - dmg;
-        //            damageHero.Visible = true;
-        //            lbHeroHP.Text = temp_HeroHP.ToString();
-        //            flag = 0;
-        //            UpdatePanel1.Update();
+        Random rand = new Random();
+        
+        int low = Convert.ToInt32(cha.char_level) - 5;
+        if (low <= 0)
+        {
+            low = 1;
+        }
+        int high = Convert.ToInt32(cha.char_level) + 5;
+        int itemlv = rand.Next(low, high);
 
-        //        }
-        //        Thread.Sleep(2000);
-        //        UpdatePanel1.Update();
-        //        damageMonster.Visible = true;
-        //        damageHero.Visible = false;
-        //    }
+        original_item[] itels = db.original_items.Where(i => i.item_level == itemlv).ToArray();
+
+
+        original_item sourceItem = new original_item();
+        sourceItem = itels[rand.Next(0,itels.Count()-1)];
+        
+        item reward = getOpt(sourceItem);
+        messagereward.Text = "Bạn đã nhận được một " + itels[0].item_name +", " + mon.monster_exp + " exp và " + mon.monster_money + " vàng";
+        //message.Text = itels[1].item_name;
+        //message.Text = itels[2].item_name;
+        db.items.InsertOnSubmit(reward);
+        db.SubmitChanges();
+    }
+    public item getOpt(original_item sourceItem)
+    {
+        Random rand = new Random();
+        int opt1 = rand.Next(-5, 5);
+        int opt2 = rand.Next(-5, 5);
+        int opt3 = rand.Next(-5, 5);
+
+        item reward = new item();
+        reward.item_value1 = sourceItem.item_value1 + opt1;
+        reward.item_value2 = sourceItem.item_value2 + opt2;
+        reward.item_value3 = sourceItem.item_value3 + opt3;
+        reward.item_username = Session["User"].ToString();
+        reward.item_type = sourceItem.item_type;
+        reward.item_require_level = sourceItem.item_level;
+        reward.item_icon = sourceItem.item_icon;
+        reward.item_name = sourceItem.item_name;
+        reward.item_description = sourceItem.item_description;
+        reward.item_equip = 0;
+
+        return reward;
+    }
+    protected void btnFightAgain_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.RawUrl);
     }
 }

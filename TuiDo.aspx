@@ -16,9 +16,8 @@
                         <table class="default-1-1">
                             <tr>
                                 <td rowspan="3" >
-                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("char_skin") %>' 
-                                         Height="100%" />
-                                    </td>
+                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("char_skin") %>' Height="100%" />
+                                </td>
 
                                 <td valign=top style="border-right-style:solid; border-top-style:solid">
                                     <br />
@@ -39,7 +38,7 @@
                                         runat="server" Text='<%# Eval("char_require_exp") %>' Font-Size="Large"></asp:Label>
                                         <br />
                                         <br />
-                                    </td>
+                                </td>
                             </tr>
                             <tr>
                                 <td valign=top style=" border-top-style:solid; border-right-style:solid">
@@ -95,78 +94,56 @@
                         <td height="70%">
                             <table style="width:100%;">
                                 <tr>
-                                    <td>
-                                        Nón</td>
-                                    <td>
-                                        :</td>
+                                    <td style="text-align: center; font-size: medium"><b>Nón</b></td>
+                                    <td style="text-align: center; font-size: medium;"><b>Áo</b></td>
+                                    <td style="text-align: center; font-size: medium;"><b>Giày</b></td>
+                                    <td style="text-align: center; font-size: medium;"><b>Bao tay</b></td>
+                                    <td style="text-align: center; font-size: medium;"><b>Vũ khí</b></td>
+                                    <td style="text-align: center; font-size: medium;"><b>Khiên</b></td>
+                                </tr>
+                                <tr>
                                     <td>
                                         <asp:ImageButton ID="btnHelmet" runat="server" 
                                             ImageUrl="~/resources/img/item/helmet.gif" onclick="btnHelmet_Click" />
                                     </td>
-                                </tr>
-                                <tr>
                                     <td>
-                                        Áo</td>
-                                    <td>
-                                        :</td>
-                                    <td>
-                                        <asp:ImageButton ID="btnArmor" runat="server" 
+                                        :<asp:ImageButton ID="btnArmor" runat="server" 
                                             ImageUrl="~/resources/img/item/armor.gif" onclick="btnArmor_Click" />
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Giày</td>
-                                    <td>
-                                        :</td>
                                     <td>
                                         <asp:ImageButton ID="btnBoots" runat="server" 
                                             ImageUrl="~/resources/img/item/boots.gif" onclick="btnBoots_Click" />
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Bao tay</td>
-                                    <td>
-                                        :</td>
                                     <td>
                                         <asp:ImageButton ID="btnGloves" runat="server" 
                                             ImageUrl="~/resources/img/item/gloves.gif" onclick="btnGloves_Click" />    
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Vũ khí</td>
-                                    <td>
-                                        :</td>
                                     <td>
                                         <asp:ImageButton ID="btnWeapon" runat="server" 
                                             ImageUrl="~/resources/img/item/weapon.gif" onclick="btnWeapon_Click" />    
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Khiêng</td>
-                                    <td>
-                                        :</td>
                                     <td>
                                         <asp:ImageButton ID="btnShield" runat="server" 
-                                            ImageUrl="~/resources/img/item/shield.gif" onclick="btnShield_Click" />    
+                                            ImageUrl="~/resources/img/item/shield.gif" onclick="btnShield_Click" /> 
                                     </td>
                                 </tr>
-                            </table>
+                                </table>
                         </td>
                     </tr>
                     <tr>
                         <td height="30%">
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                                ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
         
-                                SelectCommand="SELECT ID, item_name, item_description, item_level, item_require_level, item_param1, item_value1, item_param2, item_value2, item_param3, item_value3, item_param4, item_value4, item_param5, item_value5, item_isbuying, item_islocked, item_icon, item_username, item_equip, item_type, item_rarity FROM item WHERE (item_username = @user ) AND (item_equip = 0)">
-                    <SelectParameters>
-                        <asp:SessionParameter Name="user" SessionField="User" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
+                                            SelectCommand="SELECT ID, item_name, item_description, item_level, item_require_level, item_param1, item_value1, item_param2, item_value2, item_param3, item_value3, item_param4, item_value4, item_param5, item_value5, item_isbuying, item_islocked, item_icon, item_username, item_equip, item_type, item_rarity FROM item WHERE (item_username = @user ) AND (item_equip = 0)">
+                                <SelectParameters>
+                                    <asp:SessionParameter Name="user" SessionField="User" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                            <br />
+                            <span style="font-size: medium"><strong>Túi đồ</strong></span>
+                            <br />
+                            
                              <asp:ListView ID="ListView1" runat="server" DataKeyNames="ID" 
                                  DataSourceID="SqlDataSource1" GroupItemCount="5" 
                                 onitemcommand="ListView1_ItemCommand">

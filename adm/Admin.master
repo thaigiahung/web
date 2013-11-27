@@ -4,15 +4,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="utf-8" />
+    
+    
+    <!--
+    <meta charset="utf-8">
+    -->
+    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style type="text/css">
-        .sidebar-nav
-        {
-            margin-left: 40px;
-        }
-    </style>
-    </head>
+    
     <title>Web game</title>
 
     <!-- start: CSS -->
@@ -26,6 +25,59 @@
     <!-- start: Favicon -->
 	<link rel="shortcut icon" href="../resources/admin_template/img/favicon.ico" />
 	<!-- end: Favicon -->
+
+            <!-- start: JavaScript-->
+		<script src="../resources/admin_template/js/jquery-1.7.2.min.js"></script>
+	    <script src="../resources/admin_template/js/jquery-ui-1.8.21.custom.min.js"></script>
+	
+		<script src="../resources/admin_template/js/modernizr.js"></script>
+	
+		<script src="../resources/admin_template/js/bootstrap.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.cookie.js"></script>
+	
+		<script src='../resources/admin_template/js/fullcalendar.min.js'></script>
+	
+		<script src='../resources/admin_template/js/jquery.dataTables.min.js'></script>
+
+		<script src="../resources/admin_template/js/excanvas.js"></script>
+	    <script src="../resources/admin_template/js/jquery.flot.js"></script>
+	    <script src="../resources/admin_template/js/jquery.flot.pie.js"></script>
+	    <script src="../resources/admin_template/js/jquery.flot.stack.js"></script>
+	    <script src="../resources/admin_template/js/jquery.flot.resize.min.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.chosen.min.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.uniform.min.js"></script>
+		
+		<script src="../resources/admin_template/js/jquery.cleditor.min.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.noty.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.elfinder.min.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.raty.min.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.iphone.toggle.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.uploadify-3.1.min.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.gritter.min.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.imagesloaded.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.masonry.min.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.knob.modified.js"></script>
+	
+		<script src="../resources/admin_template/js/jquery.sparkline.min.js"></script>
+	
+		<script src="../resources/admin_template/js/counter.js"></script>
+	
+		<script src="../resources/admin_template/js/retina.js"></script>
+
+		<script src="../resources/admin_template/js/custom.js"></script>
+	    <!-- end: JavaScript-->
 
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -41,7 +93,7 @@
 					    <span class="icon-bar"></span>
 					    <span class="icon-bar"></span>
 				    </a>
-				    <a class="brand" href="./index.html"><span>Acme, Inc</span></a>
+				    <a class="brand" href="~/adm/default.aspx"><span>Acme, Inc</span></a>
 								
 				    <!-- start: Header Menu -->
 				    <div class="nav-no-collapse header-nav">
@@ -108,7 +160,7 @@
 								</li>	
 							</ul>
 						    </li>
-						    <!-- start: Notifications Dropdown -->
+						    <!-- start: Notifications Dropdown
 						    <li class="dropdown hidden-phone">
 							    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 								    <i class="halflings-icon white tasks"></i>
@@ -166,7 +218,7 @@
 								</li>	
 							</ul>
 						    </li>
-						    <!-- end: Notifications Dropdown -->
+						     end: Notifications Dropdown -->
 
 						    <!-- start: Message Dropdown -->
 						    <li class="dropdown hidden-phone">
@@ -261,7 +313,7 @@
 								</li>	
 							</ul>
 						    </li>
-						    <!-- end: Message Dropdown -->
+						    <!--end: Message Dropdown -->
 
 						    <li>
 							    <a class="btn" href="#">
@@ -275,9 +327,11 @@
 								    <span class="caret"></span>
 							    </a>
 							    <ul class="dropdown-menu">
-								    <li><a href="#"><i class="halflings-icon white user"></i> Profile</a></li>
-								    <li><a href="./login.html"><i class="halflings-icon white off"></i> Logout</a></li>
-							    </ul>
+								    <li><a href="account.aspx"><i class="halflings-icon white user"></i> Profile</a></li>
+								    <!--
+                                    <li><a href="~/adm/login.aspx"><i class="halflings-icon white off"></i> Logout</a></li>
+							        -->
+                                </ul>
 						    </li>
 						    <!-- end: User Dropdown -->
 					    </ul>
@@ -286,18 +340,21 @@
                 </div>
 		    </div>
 	    </div>
+        <!-- end: Header -->
+
         <div class="container-fluid">
 		    <div class="row-fluid">
 				
+			    <!-- start: Main Menu -->
 			    <div id="sidebar-left" class="span1">
 				    <div class="nav-collapse sidebar-nav">                    
                         <asp:ContentPlaceHolder ID="cph_menu" runat="server">
-                            <asp:HyperLink ID="HyperLink1" runat="server" 
-                                NavigateUrl="~/adm/admin_itempage.aspx">Items</asp:HyperLink>
                         </asp:ContentPlaceHolder>
-					    <%--<ul class="nav nav-tabs nav-stacked main-menu">
-						    <li class="active"><a href="./index.html"><i class="fa-icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
-						    <li><a href="./infrastructure.html"><i class="fa-icon-hdd"></i><span class="hidden-tablet"> Infrastructure</span></a></li>
+					    <ul class="nav nav-tabs nav-stacked main-menu">
+						    <!--
+                            <li class="active"><a href="./index.html"><i class="fa-icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
+						    
+                            <li><a href="./infrastructure.html"><i class="fa-icon-hdd"></i><span class="hidden-tablet"> Infrastructure</span></a></li>
 						    <li><a href="./messages.html"><i class="fa-icon-envelope"></i><span class="hidden-tablet"> Messages</span></a></li>
 						    <li><a href="./tasks.html"><i class="fa-icon-tasks"></i><span class="hidden-tablet"> Tasks</span></a></li>
 						    <li><a href="./ui.html"><i class="fa-icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
@@ -310,18 +367,18 @@
 						    <li><a href="./calendar.html"><i class="fa-icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
 						    <li><a href="./file-manager.html"><i class="fa-icon-folder-open"></i><span class="hidden-tablet"> File Manager</span></a></li>
 						    <li><a href="./icon.html"><i class="fa-icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
-						    <li><a href="./login.html"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
-					    </ul>--%>
-				    &nbsp;|<br />
-                        <asp:HyperLink ID="HyperLink2" runat="server" 
-                            NavigateUrl="~/adm/admin_itemoption.aspx">Items Option</asp:HyperLink>
-&nbsp;|<br />
-                        <asp:HyperLink ID="HyperLink3" runat="server" 
-                            NavigateUrl="~/adm/admin_itemevent.aspx">Event Items</asp:HyperLink>
-&nbsp;|
-                        <br />
-                        <asp:HyperLink ID="HyperLink4" runat="server" 
-                            NavigateUrl="~/adm/admin_itemeventoption.aspx">Event Items Option</asp:HyperLink>
+						    
+                            <li><a href="login.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
+                            -->
+                            <li><a href="admin_hero.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Hero</span></a></li>
+                            <li><a href="admin_itemevent.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Item Event</span></a></li>
+                            <li><a href="admin_itemeventoption.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Event Option</span></a></li>
+					        <li><a href="admin_itempage.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Item</span></a></li>
+                            <li><a href="admin_market.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Market</span></a></li>
+                            <li><a href="admin_monster.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Monster</span></a></li>
+                            <li><a href="admin_original.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Original Item</span></a></li>
+                        
+                        </ul>
 				    </div>
 			    </div>
 			    <!-- end: Main Menu -->
@@ -342,12 +399,12 @@
        
 			    <!-- end: Content -->
 			    </div><!--/#content.span10-->
-			</div>
-            <!--/fluid-row-->
+			</div><!--/fluid-row-->
 				
 		    <div class="modal hide fade" id="myModal">
 			    <div class="modal-header">
-				    <button type="button" class="close" data-dismiss="modal">×	    <h3>Settings</h3>
+				    <button type="button" class="close" data-dismiss="modal">×</button>
+				    <h3>Settings</h3>
 			    </div>
 			    <div class="modal-body">
 				    <p>Here settings can be configured...</p>
@@ -360,67 +417,20 @@
 		
 		    <div class="clearfix"></div>
 		
+        <!--
 		    <footer>
 			    <p>
 				    <span style="text-align:left;float:left">&copy; <a href="./index.html" target="_blank">creativeLabs</a> 2013</span>
-				    <span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="#">Acme Dashboard</a></span>
-			    </p>
+				    
+                    <span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="#">Acme Dashboard</a></span>
+			       
+                </p>
 
-		    </footer>				
+		    </footer>
+             -->				
 	    </div><!--/.fluid-container-->
 
-        <!-- start: JavaScript-->
-		<script src="../resources/admin_template/js/jquery-1.7.2.min.js"></script>
-	    <script src="../resources/admin_template/js/jquery-ui-1.8.21.custom.min.js"></script>
-	
-		<script src="../resources/admin_template/js/modernizr.js"></script>
-	
-		<script src="../resources/admin_template/js/bootstrap.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.cookie.js"></script>
-	
-		<script src='../resources/admin_template/js/fullcalendar.min.js'></script>
-	
-		<script src='../resources/admin_template/js/jquery.dataTables.min.js'></script>
 
-		<script src="../resources/admin_template/js/excanvas.js"></script>
-	    <script src="../resources/admin_template/js/jquery.flot.js"></script>
-	    <script src="../resources/admin_template/js/jquery.flot.pie.js"></script>
-	    <script src="../resources/admin_template/js/jquery.flot.stack.js"></script>
-	    <script src="../resources/admin_template/js/jquery.flot.resize.min.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.chosen.min.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.uniform.min.js"></script>
-		
-		<script src="../resources/admin_template/js/jquery.cleditor.min.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.noty.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.elfinder.min.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.raty.min.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.iphone.toggle.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.uploadify-3.1.min.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.gritter.min.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.imagesloaded.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.masonry.min.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.knob.modified.js"></script>
-	
-		<script src="../resources/admin_template/js/jquery.sparkline.min.js"></script>
-	
-		<script src="../resources/admin_template/js/counter.js"></script>
-	
-		<script src="../resources/admin_template/js/retina.js"></script>
-
-		<script src="../resources/admin_template/js/custom.js"></script>
-	    <!-- end: JavaScript-->
     </form>
 </body>
 </html>

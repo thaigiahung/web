@@ -97,10 +97,11 @@
 <asp:SqlDataSource ID="SqlDataEdit" runat="server" 
     ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
     DeleteCommand="DELETE FROM [item] WHERE [ID] = @ID" 
-    InsertCommand="INSERT INTO [item] ([item_name], [item_description], [item_level], [item_require_level], [item_param1], [item_value1], [item_param2], [item_value2], [item_param3], [item_value3], [item_param4], [item_value4], [item_param5], [item_value5], [item_isbuying], [item_islocked], [item_icon], [item_username], [item_equip], [item_type]) VALUES (@item_name, @item_description, @item_level, @item_require_level, @item_param1, @item_value1, @item_param2, @item_value2, @item_param3, @item_value3, @item_param4, @item_value4, @item_param5, @item_value5, @item_isbuying, @item_islocked, @item_icon, @item_username, @item_equip, @item_type)" 
+    InsertCommand="INSERT INTO [item] ([item_name], [item_description], [item_level], [item_require_level], [item_param1], [item_value1], [item_param2], [item_value2], [item_param3], [item_value3], [item_param4], [item_value4], [item_param5], [item_value5], [item_isbuying], [item_islocked], [item_icon], [item_username], [item_equip], [item_type], [item_rarity]) VALUES (@item_name, @item_description, @item_level, @item_require_level, @item_param1, @item_value1, @item_param2, @item_value2, @item_param3, @item_value3, @item_param4, @item_value4, @item_param5, @item_value5, @item_isbuying, @item_islocked, @item_icon, @item_username, @item_equip, @item_type, @item_rarity)" 
     SelectCommand="SELECT * FROM [item] WHERE ([ID] = @ID)" 
     
-                UpdateCommand="UPDATE [item] SET [item_name] = @item_name, [item_description] = @item_description, [item_level] = @item_level, [item_require_level] = @item_require_level, [item_param1] = @item_param1, [item_value1] = @item_value1, [item_param2] = @item_param2, [item_value2] = @item_value2, [item_param3] = @item_param3, [item_value3] = @item_value3, [item_param4] = @item_param4, [item_value4] = @item_value4, [item_param5] = @item_param5, [item_value5] = @item_value5, [item_isbuying] = @item_isbuying, [item_islocked] = @item_islocked, [item_icon] = @item_icon, [item_username] = @item_username, [item_equip] = @item_equip, [item_type] = @item_type WHERE [ID] = @ID">
+                
+                UpdateCommand="UPDATE [item] SET [item_name] = @item_name, [item_description] = @item_description, [item_level] = @item_level, [item_require_level] = @item_require_level, [item_param1] = @item_param1, [item_value1] = @item_value1, [item_param2] = @item_param2, [item_value2] = @item_value2, [item_param3] = @item_param3, [item_value3] = @item_value3, [item_param4] = @item_param4, [item_value4] = @item_value4, [item_param5] = @item_param5, [item_value5] = @item_value5, [item_isbuying] = @item_isbuying, [item_islocked] = @item_islocked, [item_icon] = @item_icon, [item_username] = @item_username, [item_equip] = @item_equip, [item_type] = @item_type, [item_rarity] = @item_rarity WHERE [ID] = @ID">
     <DeleteParameters>
         <asp:Parameter Name="ID" Type="Int32" />
     </DeleteParameters>
@@ -125,10 +126,11 @@
         <asp:Parameter Name="item_username" Type="String" />
         <asp:Parameter Name="item_equip" Type="Int32" />
         <asp:Parameter Name="item_type" Type="Int32" />
+        <asp:Parameter Name="item_rarity" />
     </InsertParameters>
     <SelectParameters>
         <asp:ControlParameter ControlID="GridView1" Name="ID" 
-            PropertyName="SelectedValue" Type="Int32" />
+            PropertyName="SelectedValue" Type="Int32" DefaultValue="-1" />
     </SelectParameters>
     <UpdateParameters>
         <asp:Parameter Name="item_name" Type="String" />
@@ -151,6 +153,7 @@
         <asp:Parameter Name="item_username" Type="String" />
         <asp:Parameter Name="item_equip" Type="Int32" />
         <asp:Parameter Name="item_type" Type="Int32" />
+        <asp:Parameter Name="item_rarity" Type="Int32" />
         <asp:Parameter Name="ID" Type="Int32" />
     </UpdateParameters>
 </asp:SqlDataSource>
@@ -176,157 +179,56 @@
                     <asp:TextBox ID="item_require_levelTextBox" runat="server" 
                         Text='<%# Bind("item_require_level") %>' />
                     <br />
-                    <asp:SqlDataSource ID="SQL1" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
-                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
-                        SelectCommand="SELECT * FROM [item_option]" 
-                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
-                        <DeleteParameters>
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                        </InsertParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </UpdateParameters>
-                    </asp:SqlDataSource>
-                    <br />
-                    item_param1:
-                    <asp:DropDownList ID="DropDown1" runat="server" DataSourceID="SQL1" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param1") %>' 
-                        onselectedindexchanged="DropDown1_SelectedIndexChanged">
-                    </asp:DropDownList>
+                    item_type:
+                    <asp:DropDownList ID="DropDownList2" runat="server" 
+                        SelectedValue='<%# Bind("item_type") %>'>
+                        <asp:ListItem Value="0">Helmet</asp:ListItem>
+                        <asp:ListItem Value="1">Armor</asp:ListItem>
+                        <asp:ListItem Value="2">Shield</asp:ListItem>
+                        <asp:ListItem Value="3">Weapon</asp:ListItem>
+                        <asp:ListItem Value="4">Gloves</asp:ListItem>
+                        <asp:ListItem Value="5">Boots</asp:ListItem>
+                   </asp:DropDownList>
                     <br />
                     item_value1:
                     <asp:TextBox ID="item_value1TextBox" runat="server" 
-                        ontextchanged="item_value1TextBox_TextChanged" />
+                        ontextchanged="item_value1TextBox_TextChanged" 
+                        Text='<%# Bind("item_value1") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator1" runat="server" 
                         ControlToValidate="item_value1TextBox" 
                         ErrorMessage="Value must be greater than 0" MaximumValue="9999" 
                         MinimumValue="0"></asp:RangeValidator>
                     <br />
-                    item_param2:
-                    <asp:DropDownList ID="DropDown2" runat="server" DataSourceID="SQL2" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param2") %>'>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SQL2" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
-                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
-                        SelectCommand="SELECT * FROM [item_option]" 
-                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
-                        <DeleteParameters>
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                        </InsertParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </UpdateParameters>
-                    </asp:SqlDataSource>
-                    <br />
                     item_value2:
-                    <asp:TextBox ID="item_value2TextBox" runat="server" />
+                    <asp:TextBox ID="item_value2TextBox" runat="server" 
+                        Text='<%# Bind("item_value2") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator2" runat="server" 
                         ControlToValidate="item_value2TextBox" 
                         ErrorMessage="Value must be greater than 0" MaximumValue="9999" 
                         MinimumValue="0"></asp:RangeValidator>
                     <br />
-                    item_param3:
-                    <asp:DropDownList ID="DropDown3" runat="server" DataSourceID="SQL3" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param3") %>'>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SQL3" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
-                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
-                        SelectCommand="SELECT * FROM [item_option]" 
-                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
-                        <DeleteParameters>
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                        </InsertParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </UpdateParameters>
-                    </asp:SqlDataSource>
-                    <br />
                     item_value3:
-                    <asp:TextBox ID="item_value3TextBox" runat="server" />
+                    <asp:TextBox ID="item_value3TextBox" runat="server" 
+                        Text='<%# Bind("item_value3") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator3" runat="server" 
                         ControlToValidate="item_value3TextBox" 
                         ErrorMessage="Value must be greater than 0" MaximumValue="9999" 
                         MinimumValue="0"></asp:RangeValidator>
                     <br />
-                    item_param4:
-                    <asp:DropDownList ID="DropDown4" runat="server" DataSourceID="SQL4" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param4") %>'>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SQL4" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
-                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
-                        SelectCommand="SELECT * FROM [item_option]" 
-                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
-                        <DeleteParameters>
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                        </InsertParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </UpdateParameters>
-                    </asp:SqlDataSource>
-                    <br />
-                    item_value4:&nbsp;<asp:TextBox ID="item_value4TextBox" runat="server" />
+                    item_value4:&nbsp;<asp:TextBox ID="item_value4TextBox" runat="server" 
+                        Text='<%# Bind("item_value4") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator4" runat="server" 
                         ControlToValidate="item_value4TextBox" 
                         ErrorMessage="Value must be greater than 0" MaximumValue="9999" 
                         MinimumValue="0"></asp:RangeValidator>
                     <br />
-                    item_param5:
-                    <asp:DropDownList ID="DropDown5" runat="server" DataSourceID="SQL5" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param5") %>'>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SQL5" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
-                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
-                        SelectCommand="SELECT * FROM [item_option]" 
-                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
-                        <DeleteParameters>
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                        </InsertParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </UpdateParameters>
-                    </asp:SqlDataSource>
-                    <br />
                     item_value5:
-                    <asp:TextBox ID="item_value5TextBox" runat="server" />
+                    <asp:TextBox ID="item_value5TextBox" runat="server" 
+                        Text='<%# Bind("item_value5") %>' />
                     <asp:RangeValidator ID="RangeValidator5" runat="server" 
                         ControlToValidate="item_value5TextBox" 
                         ErrorMessage="Value must be greater than 0" MaximumValue="9999" 
@@ -340,8 +242,7 @@
                     <asp:TextBox ID="item_islockedTextBox" runat="server" 
                         Text='<%# Bind("item_islocked") %>' />
                     <br />
-                    item_icon:
-                    <asp:TextBox ID="item_iconTextBox" runat="server" 
+                    item_icon: <asp:TextBox ID="item_iconTextBox" runat="server" 
                         Text='<%# Bind("item_icon") %>' />
                     <br />
                     item_username:
@@ -352,12 +253,13 @@
                     <asp:TextBox ID="item_equipTextBox" runat="server" 
                         Text='<%# Bind("item_equip") %>' />
                     <br />
-                    item_type:
-                    <asp:TextBox ID="item_typeTextBox" runat="server" 
-                        Text='<%# Bind("item_type") %>' />
+                    item_rarity:
+                    <asp:TextBox ID="item_rarityTextBox" runat="server" 
+                        Text='<%# Bind("item_rarity") %>' />
                     <br />
                     <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" 
-                        CommandName="Update" Text="Update" />
+                        CommandName="Update" Text="Update" 
+                        PostBackUrl="~/adm/admin_itempage.aspx" />
                     &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" 
                         CausesValidation="False" CommandName="Cancel" Text="Cancel" />
                 </EditItemTemplate>
@@ -378,99 +280,52 @@
                     <asp:TextBox ID="item_require_levelTextBox" runat="server" 
                         Text='<%# Bind("item_require_level") %>' />
                     <br />
-                    item_param1:
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="S1" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param1") %>'>
+                    <br />
+                    item_type:
+                    <asp:DropDownList ID="DropDownList1" runat="server" 
+                        SelectedValue='<%# Bind("item_type") %>' >
+                        <asp:ListItem Value="0">Helmet</asp:ListItem>
+                        <asp:ListItem Value="1">Armor</asp:ListItem>
+                        <asp:ListItem Value="2">Shield</asp:ListItem>
+                        <asp:ListItem Value="3">Weapon</asp:ListItem>
+                        <asp:ListItem Value="4">Gloves</asp:ListItem>
+                        <asp:ListItem Value="5">Boots</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="S1" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        DeleteCommand="DELETE FROM [item_option] WHERE [ID] = @ID" 
-                        InsertCommand="INSERT INTO [item_option] ([opt_name]) VALUES (@opt_name)" 
-                        SelectCommand="SELECT * FROM [item_option]" 
-                        UpdateCommand="UPDATE [item_option] SET [opt_name] = @opt_name WHERE [ID] = @ID">
-                        <DeleteParameters>
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </DeleteParameters>
-                        <InsertParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                        </InsertParameters>
-                        <UpdateParameters>
-                            <asp:Parameter Name="opt_name" Type="String" />
-                            <asp:Parameter Name="ID" Type="Int32" />
-                        </UpdateParameters>
-                    </asp:SqlDataSource>
                     <br />
                     item_value1:
                     <asp:TextBox ID="item_value1TextBox" runat="server" 
-                        Text='0' />
+                        Text='<%# Bind("item_value1") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator6" runat="server" 
                         ControlToValidate="item_value1TextBox" ErrorMessage="Gia tri thap nhat la 0" 
                         MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
-                    item_param2:
-                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="S2" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param2") %>'>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="S2" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        SelectCommand="SELECT * FROM [item_option]"></asp:SqlDataSource>
-                    <br />
                     item_value2:
                     <asp:TextBox ID="item_value2TextBox" runat="server" 
-                        Text='0' />
+                        Text='<%# Bind("item_value2") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator7" runat="server" 
                         ControlToValidate="item_value2TextBox" ErrorMessage="Gia tri thap nhat la 0" 
                         MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
-                    item_param3:
-                    <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="S3" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param3") %>'>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="S3" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        SelectCommand="SELECT * FROM [item_option]"></asp:SqlDataSource>
-                    <br />
                     item_value3:
                     <asp:TextBox ID="item_value3TextBox" runat="server" 
-                        Text='0' />
+                        Text='<%# Bind("item_value3") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator8" runat="server" 
                         ControlToValidate="item_value3TextBox" ErrorMessage="Gia tri thap nhat la 0" 
                         MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
-                    item_param4:
-                    <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="S4" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param4") %>'>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="S4" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        SelectCommand="SELECT * FROM [item_option]"></asp:SqlDataSource>
-                    <br />
                     item_value4:&nbsp;<asp:TextBox ID="item_value4TextBox" runat="server" 
-                        Text='0' />
+                        Text='<%# Bind("item_value4") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator9" runat="server" 
                         ControlToValidate="item_value4TextBox" ErrorMessage="Gia tri thap nhat la 0" 
                         MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
-                    item_param5:
-                    <asp:DropDownList ID="DropDownList5" runat="server" DataSourceID="S5" 
-                        DataTextField="opt_name" DataValueField="ID" 
-                        SelectedValue='<%# Bind("item_param5") %>'>
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="S5" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        SelectCommand="SELECT * FROM [item_option]"></asp:SqlDataSource>
-                    <br />
                     item_value5:
                     <asp:TextBox ID="item_value5TextBox" runat="server" 
-                        Text='0' />
+                        Text='<%# Bind("item_value5") %>' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator10" runat="server" 
                         ControlToValidate="item_value5TextBox" ErrorMessage="Gia tri thap nhat la 0" 
@@ -496,12 +351,13 @@
                     <asp:TextBox ID="item_equipTextBox" runat="server" 
                         Text='<%# Bind("item_equip") %>' />
                     <br />
-                    item_type:
-                    <asp:TextBox ID="item_typeTextBox" runat="server" 
-                        Text='<%# Bind("item_type") %>' />
+                    item_rarity:
+                    <asp:TextBox ID="item_rarityTextBox" runat="server" 
+                        Text='<%# Bind("item_rarity") %>' />
                     <br />
                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" 
-                        CommandName="Insert" Text="Insert" />
+                        CommandName="Insert" Text="Insert"  
+                        PostBackUrl="~/adm/admin_itempage.aspx" />
                     &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" 
                         CausesValidation="False" CommandName="Cancel" Text="Cancel" />
                 </InsertItemTemplate>
@@ -524,40 +380,23 @@
                     <asp:Label ID="item_require_levelLabel" runat="server" 
                         Text='<%# Bind("item_require_level") %>' />
                     <br />
-                    item_param1:
-                    <asp:Label ID="item_param1Label" runat="server" 
-                        Text='<%# Bind("item_param1") %>' />
+                    item_type:
+                    <asp:Label ID="item_typeLabel" runat="server" Text='<%# Bind("item_type") %>' />
                     <br />
                     item_value1:
                     <asp:Label ID="item_value1Label" runat="server" 
                         Text='<%# Bind("item_value1") %>' />
                     <br />
-                    item_param2:
-                    <asp:Label ID="item_param2Label" runat="server" 
-                        Text='<%# Bind("item_param2") %>' />
-                    <br />
                     item_value2:
                     <asp:Label ID="item_value2Label" runat="server" 
                         Text='<%# Bind("item_value2") %>' />
-                    <br />
-                    item_param3:
-                    <asp:Label ID="item_param3Label" runat="server" 
-                        Text='<%# Bind("item_param3") %>' />
                     <br />
                     item_value3:
                     <asp:Label ID="item_value3Label" runat="server" 
                         Text='<%# Bind("item_value3") %>' />
                     <br />
-                    item_param4:
-                    <asp:Label ID="item_param4Label" runat="server" 
-                        Text='<%# Bind("item_param4") %>' />
-                    <br />
                     item_value4:&nbsp;<asp:Label ID="item_value4Label" runat="server" 
                         Text='<%# Bind("item_value4") %>' />
-                    <br />
-                    item_param5:
-                    <asp:Label ID="item_param5Label" runat="server" 
-                        Text='<%# Bind("item_param5") %>' />
                     <br />
                     item_value5:
                     <asp:Label ID="item_value5Label" runat="server" 
@@ -582,8 +421,9 @@
                     <asp:Label ID="item_equipLabel" runat="server" 
                         Text='<%# Bind("item_equip") %>' />
                     <br />
-                    item_type:
-                    <asp:Label ID="item_typeLabel" runat="server" Text='<%# Bind("item_type") %>' />
+                    item_rarity:
+                    <asp:Label ID="item_rarityLabel" runat="server" 
+                        Text='<%# Bind("item_rarity") %>' />
                     <br />
                     <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" 
                         CommandName="Edit" Text="Edit" />

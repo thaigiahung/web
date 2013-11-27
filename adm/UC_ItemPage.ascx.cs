@@ -26,4 +26,5 @@ public partial class adm_WebUserControl : System.Web.UI.UserControl
         SQLDataSelect.SelectCommand = "SELECT * FROM [item] WHERE item_name LIKE '%" + s + "%'";
         //searchbox.Text = "SELECT * FROM [item] WHERE item_name='s'";
     }
+      
 }

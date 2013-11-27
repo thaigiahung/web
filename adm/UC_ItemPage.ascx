@@ -5,7 +5,6 @@
     }
     .style2
     {
-        width: 587px;
     }
 </style>
 <table style="width:100%;" border="1" align="center">
@@ -356,8 +355,7 @@
                         Text='<%# Bind("item_rarity") %>' />
                     <br />
                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" 
-                        CommandName="Insert" Text="Insert"  
-                        PostBackUrl="~/adm/admin_itempage.aspx" />
+                        CommandName="Insert" Text="Insert" />
                     &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" 
                         CausesValidation="False" CommandName="Cancel" Text="Cancel" />
                 </InsertItemTemplate>
@@ -411,7 +409,8 @@
                         Text='<%# Bind("item_islocked") %>' />
                     <br />
                     item_icon:
-                    <asp:Label ID="item_iconLabel" runat="server" Text='<%# Bind("item_icon") %>' />
+                    <asp:Image ID="Image1" runat="server" Height="75px" 
+                        ImageUrl='<%# Bind("item_icon") %>' Width="75px" />
                     <br />
                     item_username:
                     <asp:Label ID="item_usernameLabel" runat="server" 
@@ -433,6 +432,11 @@
                         CommandName="New" Text="New" />
                 </ItemTemplate>
             </asp:FormView>
+        </td>
+    </tr>
+    <tr>
+        <td class="style2" align="center" colspan="2">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/adm/reg_item.aspx">Insert Item</asp:HyperLink>
         </td>
     </tr>
     </table>

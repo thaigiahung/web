@@ -6,7 +6,6 @@
     }
     .style2
     {
-        width: 58%;
     }
 </style>
 
@@ -48,7 +47,8 @@
                 DeleteCommand="DELETE FROM [monster] WHERE [ID] = @ID" 
                 InsertCommand="INSERT INTO [monster] ([monster_name], [monster_level], [monster_money], [monster_exp], [monster_is_boss], [monster_map], [monster_damage], [monster_hp], [monster_defend], [monster_drop_normal], [monster_drop_rare], [monster_drop_epic]) VALUES (@monster_name, @monster_level, @monster_money, @monster_exp, @monster_is_boss, @monster_map, @monster_damage, @monster_hp, @monster_defend, @monster_drop_normal, @monster_drop_rare, @monster_drop_epic)" 
                 SelectCommand="SELECT * FROM [monster] WHERE ([ID] = @ID)" 
-                UpdateCommand="UPDATE [monster] SET [monster_name] = @monster_name, [monster_level] = @monster_level, [monster_money] = @monster_money, [monster_exp] = @monster_exp, [monster_is_boss] = @monster_is_boss, [monster_map] = @monster_map, [monster_damage] = @monster_damage, [monster_hp] = @monster_hp, [monster_defend] = @monster_defend, [monster_drop_normal] = @monster_drop_normal, [monster_drop_rare] = @monster_drop_rare, [monster_drop_epic] = @monster_drop_epic WHERE [ID] = @ID">
+                
+                UpdateCommand="UPDATE [monster] SET [monster_name] = @monster_name, [monster_level] = @monster_level, [monster_money] = @monster_money, [monster_exp] = @monster_exp, [monster_is_boss] = @monster_is_boss, [monster_map] = @monster_map, [monster_damage] = @monster_damage, [monster_hp] = @monster_hp, [monster_defend] = @monster_defend,[monster_img] = @monster_img, [monster_drop_normal] = @monster_drop_normal, [monster_drop_rare] = @monster_drop_rare, [monster_drop_epic] = @monster_drop_epic WHERE [ID] = @ID">
                 <DeleteParameters>
                     <asp:Parameter Name="ID" Type="Int32" />
                 </DeleteParameters>
@@ -80,6 +80,7 @@
                     <asp:Parameter Name="monster_damage" Type="Int32" />
                     <asp:Parameter Name="monster_hp" Type="Int32" />
                     <asp:Parameter Name="monster_defend" Type="Int32" />
+                    <asp:Parameter Name="monster_img" />
                     <asp:Parameter Name="monster_drop_normal" Type="Int32" />
                     <asp:Parameter Name="monster_drop_rare" Type="Int32" />
                     <asp:Parameter Name="monster_drop_epic" Type="Int32" />
@@ -87,7 +88,7 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
             <asp:FormView ID="FormView2" runat="server" DataKeyNames="ID" 
-                DataSourceID="SQLListView">
+                DataSourceID="SQLListView" style="margin-left: 0px">
                 <EditItemTemplate>
                     ID:
                     <asp:Label ID="IDLabel1" runat="server" Text='<%# Eval("ID") %>' />
@@ -152,9 +153,26 @@
                         ControlToValidate="monster_defendTextBox" ErrorMessage="Gia tri thap nhat la 0" 
                         MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
+                    monster_img:
+                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("monster_img") %>'></asp:TextBox>
+                    <br />
                     monster_drop_normal:<asp:SqlDataSource ID="SQLItem_Edit" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
-                        SelectCommand="SELECT [ID], [item_name] FROM [item]"></asp:SqlDataSource>
+                        SelectCommand="SELECT [ID], [item_name] FROM [item]" 
+                        DeleteCommand="DELETE FROM [item] WHERE [ID] = @ID" 
+                        InsertCommand="INSERT INTO [item] ([item_name]) VALUES (@item_name)" 
+                        UpdateCommand="UPDATE [item] SET [item_name] = @item_name WHERE [ID] = @ID">
+                        <DeleteParameters>
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </DeleteParameters>
+                        <InsertParameters>
+                            <asp:Parameter Name="item_name" Type="String" />
+                        </InsertParameters>
+                        <UpdateParameters>
+                            <asp:Parameter Name="item_name" Type="String" />
+                            <asp:Parameter Name="ID" Type="Int32" />
+                        </UpdateParameters>
+                    </asp:SqlDataSource>
                     <br />
                     <asp:DropDownList ID="DropDownList11" runat="server" 
                         DataSourceID="SQLItem_Edit" DataTextField="item_name" DataValueField="ID" 
@@ -188,21 +206,24 @@
                         Text='1' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator7" runat="server" 
-                        ErrorMessage="Gia tri thap nhat la 1" MaximumValue="9999" MinimumValue="1"></asp:RangeValidator>
+                        ErrorMessage="Gia tri thap nhat la 1" MaximumValue="9999" MinimumValue="1" 
+                        ControlToValidate="monster_levelTextBox"></asp:RangeValidator>
                     <br />
                     monster_money:
                     <asp:TextBox ID="monster_moneyTextBox" runat="server" 
                         Text='0' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator8" runat="server" 
-                        ErrorMessage="RangeValidator"></asp:RangeValidator>
+                        ErrorMessage="Gia tri thap nhat la 0" 
+                        ControlToValidate="monster_moneyTextBox" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
                     <br />
                     monster_exp:
                     <asp:TextBox ID="monster_expTextBox" runat="server" 
                         Text='0' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator9" runat="server" 
-                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
+                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0" 
+                        ControlToValidate="monster_expTextBox"></asp:RangeValidator>
                     <br />
                     monster_is_boss:
                     <asp:TextBox ID="monster_is_bossTextBox" runat="server" 
@@ -217,21 +238,24 @@
                         Text='0' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator10" runat="server" 
-                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
+                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0" 
+                        ControlToValidate="monster_damageTextBox"></asp:RangeValidator>
                     <br />
                     monster_hp:
                     <asp:TextBox ID="monster_hpTextBox" runat="server" 
                         Text='0' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator11" runat="server" 
-                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
+                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0" 
+                        ControlToValidate="monster_hpTextBox"></asp:RangeValidator>
                     <br />
                     monster_defend:
                     <asp:TextBox ID="monster_defendTextBox" runat="server" 
                         Text='0' />
                     <br />
                     <asp:RangeValidator ID="RangeValidator12" runat="server" 
-                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0"></asp:RangeValidator>
+                        ErrorMessage="Gia tri thap nhat la 0" MaximumValue="9999" MinimumValue="0" 
+                        ControlToValidate="monster_defendTextBox"></asp:RangeValidator>
                     <br />
                     monster_drop_normal:<asp:SqlDataSource ID="SQLItemDrop_Insert" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
@@ -248,7 +272,7 @@
                     </asp:DropDownList>
                     <br />
                     monster_drop_epic:<br />
-                    &nbsp;<asp:DropDownList ID="DropDownList16" runat="server" 
+                    <asp:DropDownList ID="DropDownList16" runat="server" 
                         DataSourceID="SQLItemDrop_Insert" DataTextField="item_name" DataValueField="ID" 
                         SelectedValue='<%# Bind("monster_drop_epic") %>'>
                     </asp:DropDownList>
@@ -298,6 +322,9 @@
                     <asp:Label ID="monster_defendLabel" runat="server" 
                         Text='<%# Bind("monster_defend") %>' />
                     <br />
+                    monster_img:<asp:Label ID="monster_imgLabel" runat="server" 
+                        Text='<%# Bind("monster_img") %>'></asp:Label>
+                    <br />
                     monster_drop_normal:
                     <asp:Label ID="monster_drop_normalLabel" runat="server" 
                         Text='<%# Bind("monster_drop_normal") %>' />
@@ -320,5 +347,15 @@
             </asp:FormView>
         </td>
     </tr>
-</table>
+    <tr>
+        <td align="center" class="style2" colspan="2">
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td align="center" class="style2" colspan="2">
+            <asp:HyperLink ID="HyperLink1" runat="server" 
+                NavigateUrl="~/adm/reg_monster.aspx">Insert Monster</asp:HyperLink>
+        &nbsp;(With Picture Upload)</td>
+    </tr>
+    </table>
 

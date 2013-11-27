@@ -163,5 +163,122 @@
             </asp:SqlDataSource>
         </td>
     </tr>
+    <tr>
+        <td colspan="2">
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td align="center" colspan="2">
+            Insert Market Item</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                DeleteCommand="DELETE FROM [market] WHERE [ID] = @ID" 
+                InsertCommand="INSERT INTO [market] ([market_item_id], [market_date], [market_item_price], [market_expire]) VALUES (@market_item_id, @market_date, @market_item_price, @market_expire)" 
+                SelectCommand="SELECT * FROM [market]" 
+                UpdateCommand="UPDATE [market] SET [market_item_id] = @market_item_id, [market_date] = @market_date, [market_item_price] = @market_item_price, [market_expire] = @market_expire WHERE [ID] = @ID">
+                <DeleteParameters>
+                    <asp:Parameter Name="ID" Type="Int32" />
+                </DeleteParameters>
+                <InsertParameters>
+                    <asp:Parameter Name="market_item_id" Type="Int32" />
+                    <asp:Parameter Name="market_date" Type="DateTime" />
+                    <asp:Parameter Name="market_item_price" Type="Int32" />
+                    <asp:Parameter Name="market_expire" Type="DateTime" />
+                </InsertParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="market_item_id" Type="Int32" />
+                    <asp:Parameter Name="market_date" Type="DateTime" />
+                    <asp:Parameter Name="market_item_price" Type="Int32" />
+                    <asp:Parameter Name="market_expire" Type="DateTime" />
+                    <asp:Parameter Name="ID" Type="Int32" />
+                </UpdateParameters>
+            </asp:SqlDataSource>
+            <asp:FormView ID="FormView2" runat="server" DataKeyNames="ID" 
+                DataSourceID="SqlDataSource2" DefaultMode="Insert">
+                <EditItemTemplate>
+                    ID:
+                    <asp:Label ID="IDLabel1" runat="server" Text='<%# Eval("ID") %>' />
+                    <br />
+                    market_item_id:
+                    <asp:TextBox ID="market_item_idTextBox" runat="server" 
+                        Text='<%# Bind("market_item_id") %>' />
+                    <br />
+                    market_date:
+                    <asp:TextBox ID="market_dateTextBox" runat="server" 
+                        Text='<%# Bind("market_date") %>' />
+                    <br />
+                    market_item_price:
+                    <asp:TextBox ID="market_item_priceTextBox" runat="server" 
+                        Text='<%# Bind("market_item_price") %>' />
+                    <br />
+                    market_expire:
+                    <asp:TextBox ID="market_expireTextBox" runat="server" 
+                        Text='<%# Bind("market_expire") %>' />
+                    <br />
+                    <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" 
+                        CommandName="Update" Text="Update" />
+                    &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" 
+                        CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    market_item_id:
+                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="S3" 
+                        DataTextField="item_name" DataValueField="ID" 
+                        SelectedValue='<%# Bind("market_item_id") %>'>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="S3" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:webgameConnectionString %>" 
+                        SelectCommand="SELECT [ID], [item_name] FROM [item]"></asp:SqlDataSource>
+                    <br />
+                    market_date:
+                    <asp:TextBox ID="market_dateTextBox" runat="server" 
+                        Text='<%# Bind("market_date") %>' />
+                    <br />
+                    market_item_price:
+                    <asp:TextBox ID="market_item_priceTextBox" runat="server" 
+                        Text='<%# Bind("market_item_price") %>' />
+                    <br />
+                    market_expire:
+                    <asp:TextBox ID="market_expireTextBox" runat="server" 
+                        Text='<%# Bind("market_expire") %>' />
+                    <br />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" 
+                        CommandName="Insert" Text="Insert" />
+&nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" 
+                        CommandName="Cancel" Text="Cancel" />
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    ID:
+                    <asp:Label ID="IDLabel" runat="server" Text='<%# Eval("ID") %>' />
+                    <br />
+                    market_item_id:
+                    <asp:Label ID="market_item_idLabel" runat="server" 
+                        Text='<%# Bind("market_item_id") %>' />
+                    <br />
+                    market_date:
+                    <asp:Label ID="market_dateLabel" runat="server" 
+                        Text='<%# Bind("market_date") %>' />
+                    <br />
+                    market_item_price:
+                    <asp:Label ID="market_item_priceLabel" runat="server" 
+                        Text='<%# Bind("market_item_price") %>' />
+                    <br />
+                    market_expire:
+                    <asp:Label ID="market_expireLabel" runat="server" 
+                        Text='<%# Bind("market_expire") %>' />
+                    <br />
+                    <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" 
+                        CommandName="Edit" Text="Edit" />
+                    &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" 
+                        CommandName="Delete" Text="Delete" />
+                    &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" 
+                        CommandName="New" Text="New" />
+                </ItemTemplate>
+            </asp:FormView>
+        </td>
+    </tr>
 </table>
 

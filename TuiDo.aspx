@@ -150,7 +150,9 @@
                                  <AlternatingItemTemplate>
                                      <td id="Td1" runat="server" style="">
                                         <asp:ImageButton ID="imgItem2" runat="server" Height="80px" ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi2" 
-                                        ToolTip='<%# "Đánh: " +  Eval("item_value1") +"\n"+
+                                        ToolTip='<%# "Tên: " +  Eval("item_name") +"\n"+
+                                                        "Mô tả: " +  Eval("item_description") +"\n"+
+                                                        "Đánh: " +  Eval("item_value1") +"\n"+
                                                         "Đỡ: " +  Eval("item_value2") +"\n"+
                                                         "Máu: " +  Eval("item_value3") +"\n"
                                                  %>'
@@ -341,9 +343,11 @@
                                      <td id="Td5" runat="server" style="">
                                          <asp:ImageButton ID="imgItem1" runat="server" Height="80px" 
                                              ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi1" 
-                                             ToolTip='<%# "Đánh: " +  Eval("item_value1") +"\n"+
-                                                        "Đỡ: " +  Eval("item_value2") +"\n"+
-                                                        "Máu: " +  Eval("item_value3") +"\n"
+                                             ToolTip='<%# "Tên: " +  Eval("item_name") +"\n"+
+                                                            "Mô tả: " +  Eval("item_description") +"\n"+
+                                                            "Đánh: " +  Eval("item_value1") +"\n"+
+                                                            "Đỡ: " +  Eval("item_value2") +"\n"+
+                                                            "Máu: " +  Eval("item_value3") +"\n"
                                                     %>'  
                                          />
                                          <br />

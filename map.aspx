@@ -4,6 +4,7 @@
     <style>
         .imgLv1_1
         {
+            background:transparent;
             position: absolute;
             top: 570px;
             right: 150px;
@@ -12,6 +13,7 @@
         }
         .imgLv1_2
         {
+            background:transparent;
             position: absolute;
             top: 550px;
             right: 260px;
@@ -20,6 +22,7 @@
         }
         .imgLv1_3
         {
+            background:transparent;
             position: absolute;
             top: 500px;
             right: 320px;
@@ -28,6 +31,7 @@
         }
         .imgLv1_4
         {
+            background:transparent;
             position: absolute;
             top: 410px;
             right: 120px;
@@ -39,6 +43,7 @@
         
         .imgLv2_1
         {
+            background:transparent;
             position: absolute;
             top: 380px;
             right: 300px; 
@@ -47,6 +52,7 @@
         }
         .imgLv2_2
         {
+            background:transparent;
             position: absolute;
             top: 350px;
             right: 360px; 
@@ -55,6 +61,7 @@
         }
         .imgLv2_3
         {
+            background:transparent;
             position: absolute;
             top: 300px;
             right: 320px;
@@ -63,6 +70,7 @@
         }
         .imgLv2_4
         {
+            background:transparent;
             position: absolute;
             top: 300px;
             right: 120px;
@@ -74,6 +82,7 @@
         
         .imgLv3_1
         {
+            background:transparent;
             position: absolute;
             top: 150px;
             right: 190px; 
@@ -82,6 +91,7 @@
         }
         .imgLv3_2
         {
+            background:transparent;
             position: absolute;
             top: 140px;
             right: 100px; 
@@ -90,6 +100,7 @@
         }
         .imgLv3_3
         {
+            background:transparent;
             position: absolute;
             top: 60px;
             right: 120px; 
@@ -98,6 +109,7 @@
         }
         .imgLv3_4
         {
+            background:transparent;
             position: absolute;
             top: 60px;
             right: 280px;
@@ -110,6 +122,7 @@
         
         .imgLv4_1
         {
+            background:transparent;
             position: absolute;
             top: 50px;
             right: 390px; 
@@ -118,6 +131,7 @@
         }
         .imgLv4_2
         {
+            background:transparent;
             position: absolute;
             top: 50px;
             right: 470px; 
@@ -126,6 +140,7 @@
         }
         .imgLv4_3
         {
+            background:transparent;
             position: absolute;
             top: 30px;
             right: 550px; 
@@ -134,6 +149,7 @@
         }
         .imgLv4_4
         {
+            background:transparent;
             position: absolute;
             top: 100px;
             right: 550px; 
@@ -146,6 +162,7 @@
         
         .imgLv5_1
         {
+            background:transparent;
             position: absolute;
             top: 190px;
             left: 90px; 
@@ -154,6 +171,7 @@
         }
         .imgLv5_2
         {
+            background:transparent;
             position: absolute;
             top: 210px;
             left: 200px;  
@@ -162,6 +180,7 @@
         }
         .imgLv5_3
         {
+            background:transparent;
             position: absolute;
             top: 380px;
             left: 220px; 
@@ -170,6 +189,7 @@
         }
         .imgLv5_4
         {
+            background:transparent;
             position: absolute;
             top: 520px;
             left: 320px; 

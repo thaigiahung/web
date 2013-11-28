@@ -10,14 +10,90 @@ public partial class TuiDo : User
     WebGameDataContext db = new WebGameDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["User"] = "hung";
         if (Session["User"] == null)
         {
             Response.Redirect("~/login.aspx");
         }
         else
         {
-            //Tìm character của user này
+            if (Session["ShopType"] == null)
+                Session["ShopType"] = 1;
+            //Trường Code
             character userCharacter = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            var cha1 = from n in db.characters
+                       where n.username == Session["User"].ToString()
+                       select n;
+            lbName.Text = Session["User"].ToString();
+            lbMoney.Text = cha1.First().char_money.ToString();
+            if (!IsPostBack)
+            {
+                DropDownList1.SelectedValue = Session["ShopType"].ToString();
+            }
+            if (Request.QueryString["act"] == "buy" && Request.QueryString["id"] != "")
+            {
+                
+                if (userCharacter == null) //Chưa có thì redirect qua trang tạo char
+                {
+                    Response.Redirect("~/CreateCharacter.aspx");
+                }
+                else
+                {
+                    var cha = from n in db.characters
+                              where n.username == Session["User"].ToString()
+                              select n;
+                    var itemshop = from n in db.shops
+                                   where n.ID == int.Parse(Request.QueryString["id"].ToString())
+                                   select n;
+                    if (itemshop.Count() > 0)
+                    {
+                        var item = from n in db.original_items
+                                   where n.ID == itemshop.First().shop_item_id
+                                   select n;
+                        if (cha.First().char_money >= itemshop.First().shop_item_price)
+                        {
+                            cha.First().char_money -= itemshop.First().shop_item_price;
+                            item ai = new item();
+                            ai.item_name = item.First().item_name;
+                            ai.item_description = item.First().item_description;
+                            ai.item_level = item.First().item_level;
+                            ai.item_require_level = 1;
+                            ai.item_value1 = item.First().item_value1;
+                            ai.item_value2 = item.First().item_value2;
+                            ai.item_value3 = item.First().item_value3;
+                            ai.item_username = Session["User"].ToString();
+                            ai.item_type = item.First().item_type;
+                            ai.item_icon = item.First().item_icon;
+                            try
+                            {
+                                db.items.InsertOnSubmit(ai);
+                                db.SubmitChanges();
+                                Func.Alert("Bạn đã mua trang bị <" + item.First().item_name + "> thành công!");
+                                Func.Move("TuiDo.aspx");
+                            }
+                            catch
+                            {
+                                Func.Alert("Có lỗi xảy ra, vui lòng thử lại!");
+                                Func.Move("TuiDo.aspx");
+                            }
+                        }
+                        else
+                        {
+                            Func.Alert("Bạn không đủ tiền!");
+                            Func.Move("TuiDo.aspx");
+                        }
+                    }
+                    else
+                    {
+                        Func.Alert("Trang bị này không tồn tại!");
+                        Func.Move("TuiDo.aspx");
+                    }
+                }
+            }
+
+            //Trường Code
+
+            //Tìm character của user này
             if (userCharacter == null) //Chưa có thì redirect qua trang tạo char
             {
                 Response.Redirect("~/CreateCharacter.aspx");
@@ -28,7 +104,7 @@ public partial class TuiDo : User
                 Label lbDamage = (Label)FormView1.FindControl("lbDamage");
                 Label lbDefence = (Label)FormView1.FindControl("lbDefence");
                 var userItems = db.items.Where(i => i.item_username == Session["User"] && i.item_equip == 1);
-                
+
                 foreach (item ite in userItems)
                 {
                     lbHP.Text = (Convert.ToInt32(lbHP.Text) + ite.item_value3).ToString();
@@ -83,15 +159,15 @@ public partial class TuiDo : User
                     btnShield.ImageUrl = userShield.item_icon;
                     btnShield.ToolTip = "Đánh   : " + userShield.item_value1 + "\nĐỡ   : " + userShield.item_value2 + "\nMáu      : " + userShield.item_value3;
                 }
-            }            
-        }        
+            }
+        }
     }
     protected void btnHelmet_Click(object sender, ImageClickEventArgs e)
     {
         item userHelmet = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.item_equip == 1 && i.item_type == 1);
         if (userHelmet != null)
         {
-            userHelmet.item_equip = 0;            
+            userHelmet.item_equip = 0;
             db.SubmitChanges();
             btnHelmet.ImageUrl = "~/resources/img/item/helmet.gif";
             btnHelmet.ToolTip = null;
@@ -195,18 +271,18 @@ public partial class TuiDo : User
         if (e.CommandName == "TrangBi1")
         {
             int selectedRow = e.Item.DataItemIndex;
-            
+
             Label lblItemId = (Label)ListView1.Items[selectedRow].FindControl("lbItemId1");
-            Label lblItemType = (Label)ListView1.Items[selectedRow].FindControl("lblItemType1");            
-             
+            Label lblItemType = (Label)ListView1.Items[selectedRow].FindControl("lblItemType1");
+
             //Tìm ra item có id được user chọn
             item selectedItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.ID == Convert.ToInt32(lblItemId.Text));
 
             //Kiểm tra hiện tại có mang loại trang bị này chưa
             item userItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.item_equip == 1 && i.item_type == Convert.ToInt32(lblItemType.Text));
             if (userItem != null) //Nếu đã có thì phải tháo ra và gắn cái được chọn vào
-            { 
-                userItem.item_equip = 0;                
+            {
+                userItem.item_equip = 0;
             }
             selectedItem.item_equip = 1;
 
@@ -220,7 +296,7 @@ public partial class TuiDo : User
         else if (e.CommandName == "TrangBi2")
         {
             int selectedRow = e.Item.DataItemIndex;
-            
+
             Label lblItemId = (Label)ListView1.Items[selectedRow].FindControl("lbItemId2");
             Label lblItemType = (Label)ListView1.Items[selectedRow].FindControl("lblItemType2");
 
@@ -242,5 +318,12 @@ public partial class TuiDo : User
             db.SubmitChanges();
             Response.Redirect(Request.RawUrl);
         }
+    }
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Session["ShopType"] = DropDownList1.SelectedValue;
+        ListView1.DataBind();
+        ListView2.DataBind();
     }
 }

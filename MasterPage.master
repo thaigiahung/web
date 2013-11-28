@@ -24,6 +24,8 @@
 </head>
 <body class="clearfix homepage">
     <form id="form1" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder4" runat="server">
+    </asp:ContentPlaceHolder>
     <header id="topheader" class="clearfix">
         <div id="header-content">
             <%--<h1 id="logoLMHT"><a href="/"><img src="resources/template/templates/lmht_2013/images/logo_lmht.png" alt="" /></a></h1>--%>

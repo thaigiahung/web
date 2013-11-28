@@ -177,7 +177,14 @@ public partial class TuiDo : User
             Label lbDefence = (Label)FormView1.FindControl("lbDefence");
             lbHP.Text = (Convert.ToInt32(lbHP.Text) - userHelmet.item_value3).ToString();
             lbDefence.Text = (Convert.ToInt32(lbDefence.Text) - userHelmet.item_value2).ToString();
-        }
+
+            character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            if (cha != null)
+            {
+                cha.char_item_equipment_helm = 1;
+            }
+            db.SubmitChanges();
+        }        
         Response.Redirect(Request.RawUrl);
     }
     protected void btnArmor_Click(object sender, ImageClickEventArgs e)
@@ -195,7 +202,15 @@ public partial class TuiDo : User
             Label lbDefence = (Label)FormView1.FindControl("lbDefence");
             lbHP.Text = (Convert.ToInt32(lbHP.Text) - userArmor.item_value3).ToString();
             lbDefence.Text = (Convert.ToInt32(lbDefence.Text) - userArmor.item_value2).ToString();
+
+            character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            if (cha != null)
+            {
+                cha.char_item_equipment_armor = 1;
+            }
+            db.SubmitChanges();
         }
+
         Response.Redirect(Request.RawUrl);
     }
     protected void btnBoots_Click(object sender, ImageClickEventArgs e)
@@ -213,6 +228,13 @@ public partial class TuiDo : User
             Label lbDamage = (Label)FormView1.FindControl("lbDamage");
             lbHP.Text = (Convert.ToInt32(lbHP.Text) - userBoots.item_value3).ToString();
             lbDamage.Text = (Convert.ToInt32(lbDamage.Text) - userBoots.item_value1).ToString();
+
+            character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            if (cha != null)
+            {
+                cha.char_item_equipment_boots = 1;
+            }
+            db.SubmitChanges();
         }
         Response.Redirect(Request.RawUrl);
     }
@@ -231,6 +253,13 @@ public partial class TuiDo : User
             Label lbDamage = (Label)FormView1.FindControl("lbDamage");
             lbHP.Text = (Convert.ToInt32(lbHP.Text) - userGloves.item_value3).ToString();
             lbDamage.Text = (Convert.ToInt32(lbDamage.Text) - userGloves.item_value1).ToString();
+
+            character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            if (cha != null)
+            {
+                cha.char_item_equipment_gloves = 1;
+            }
+            db.SubmitChanges();
         }
         Response.Redirect(Request.RawUrl);
     }
@@ -247,6 +276,13 @@ public partial class TuiDo : User
             //Tháo ra thì trừ điểm
             Label lbDamage = (Label)FormView1.FindControl("lbDamage");
             lbDamage.Text = (Convert.ToInt32(lbDamage.Text) - userWeapon.item_value1).ToString();
+
+            character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            if (cha != null)
+            {
+                cha.char_item_equipment_weapon = 1;
+            }
+            db.SubmitChanges();
         }
         Response.Redirect(Request.RawUrl);
     }
@@ -263,6 +299,13 @@ public partial class TuiDo : User
             //Tháo ra thì trừ điểm
             Label lbDefence = (Label)FormView1.FindControl("lbDefence");
             lbDefence.Text = (Convert.ToInt32(lbDefence.Text) - userShield.item_value2).ToString();
+
+            character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            if (cha != null)
+            {
+                cha.char_item_equipment_shield = 1;
+            }
+            db.SubmitChanges();
         }
         Response.Redirect(Request.RawUrl);
     }
@@ -277,6 +320,32 @@ public partial class TuiDo : User
 
             //Tìm ra item có id được user chọn
             item selectedItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.ID == Convert.ToInt32(lblItemId.Text));
+
+            character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            if (cha != null)
+            {
+                switch (selectedItem.item_type)
+                {
+                    case 1: //helmet
+                        cha.char_item_equipment_helm = selectedItem.ID;
+                        break;
+                    case 2: //armor
+                        cha.char_item_equipment_armor = selectedItem.ID;
+                        break;
+                    case 3: //shield
+                        cha.char_item_equipment_shield = selectedItem.ID;
+                        break;
+                    case 4: //weapon
+                        cha.char_item_equipment_weapon = selectedItem.ID;
+                        break;
+                    case 5: //gloves
+                        cha.char_item_equipment_gloves = selectedItem.ID;
+                        break;
+                    case 6: //boot
+                        cha.char_item_equipment_boots = selectedItem.ID;
+                        break;
+                }
+            }
 
             //Kiểm tra hiện tại có mang loại trang bị này chưa
             item userItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.item_equip == 1 && i.item_type == Convert.ToInt32(lblItemType.Text));
@@ -302,6 +371,32 @@ public partial class TuiDo : User
 
             //Tìm ra item có id được user chọn
             item selectedItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.ID == Convert.ToInt32(lblItemId.Text));
+
+            character cha = db.characters.SingleOrDefault(c => c.username == Session["User"]);
+            if (cha != null)
+            {
+                switch (Convert.ToInt32(selectedItem.item_type))
+                {
+                    case 1: //helmet
+                        cha.char_item_equipment_helm = selectedItem.ID;
+                        break;
+                    case 2: //armor
+                        cha.char_item_equipment_armor = selectedItem.ID;
+                        break;
+                    case 3: //shield
+                        cha.char_item_equipment_shield = selectedItem.ID;
+                        break;
+                    case 4: //weapon
+                        cha.char_item_equipment_weapon = selectedItem.ID;
+                        break;
+                    case 5: //gloves
+                        cha.char_item_equipment_gloves = selectedItem.ID;
+                        break;
+                    case 6: //boot
+                        cha.char_item_equipment_boots = selectedItem.ID;
+                        break;
+                }
+            }
 
             //Kiểm tra hiện tại có mang loại trang bị này chưa
             item userItem = db.items.SingleOrDefault(i => i.item_username == Session["User"] && i.item_equip == 1 && i.item_type == Convert.ToInt32(lblItemType.Text));

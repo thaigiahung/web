@@ -122,6 +122,7 @@
                             <tr>
                                 <td valign=top style=" border-top-style:solid; padding-left:20px; ; border-right-style:solid;border-bottom-style:solid; padding-top:20px;" >
                                     <input type="button" id="open_popup" name="open_popup" rel="shoponline" href="#popup_shop" value="Cửa hàng"/>
+                                    <asp:Button ID="Button1" PostBackUrl="~/main.aspx" runat="server" Text="Thành chính" />
                                 </td>
                             </tr>
                         </table>
@@ -152,27 +153,27 @@
                                 <tr>
                                     <td>
                                         <asp:ImageButton ID="btnHelmet" runat="server" 
-                                            ImageUrl="~/resources/img/item/helmet.gif" onclick="btnHelmet_Click" />
+                                            ImageUrl="~/resources/img/item/helmet.gif" onclick="btnHelmet_Click" Width="50px"/>
                                     </td>
                                     <td>
                                         :<asp:ImageButton ID="btnArmor" runat="server" 
-                                            ImageUrl="~/resources/img/item/armor.gif" onclick="btnArmor_Click" />
+                                            ImageUrl="~/resources/img/item/armor.gif" onclick="btnArmor_Click" Width="50px"/>
                                     </td>
                                     <td>
                                         <asp:ImageButton ID="btnBoots" runat="server" 
-                                            ImageUrl="~/resources/img/item/boots.gif" onclick="btnBoots_Click" />
+                                            ImageUrl="~/resources/img/item/boots.gif" onclick="btnBoots_Click" Width="50px"/>
                                     </td>
                                     <td>
                                         <asp:ImageButton ID="btnGloves" runat="server" 
-                                            ImageUrl="~/resources/img/item/gloves.gif" onclick="btnGloves_Click" />    
+                                            ImageUrl="~/resources/img/item/gloves.gif" onclick="btnGloves_Click" Width="50px"/>    
                                     </td>
                                     <td>
                                         <asp:ImageButton ID="btnWeapon" runat="server" 
-                                            ImageUrl="~/resources/img/item/weapon.gif" onclick="btnWeapon_Click" />    
+                                            ImageUrl="~/resources/img/item/weapon.gif" onclick="btnWeapon_Click" Width="50px"/>    
                                     </td>
                                     <td>
                                         <asp:ImageButton ID="btnShield" runat="server" 
-                                            ImageUrl="~/resources/img/item/shield.gif" onclick="btnShield_Click" /> 
+                                            ImageUrl="~/resources/img/item/shield.gif" onclick="btnShield_Click" Width="50px"/> 
                                     </td>
                                 </tr>
                                 </table>
@@ -197,7 +198,7 @@
                                 onitemcommand="ListView1_ItemCommand">
                                  <AlternatingItemTemplate>
                                      <td id="Td1" runat="server" style="">
-                                        <asp:ImageButton ID="imgItem2" runat="server" Height="80px" ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi2" 
+                                        <asp:ImageButton ID="imgItem2" runat="server" Height="80px" ImageUrl='<%# Eval("item_icon") %>' Width="50px" CommandName="TrangBi2"
                                         ToolTip='<%# "Tên: " +  Eval("item_name") +"\n"+
                                                         "Mô tả: " +  Eval("item_description") +"\n"+
                                                         "Đánh: " +  Eval("item_value1") +"\n"+
@@ -389,8 +390,8 @@
                                  </InsertItemTemplate>
                                  <ItemTemplate>
                                      <td id="Td5" runat="server" style="">
-                                         <asp:ImageButton ID="imgItem1" runat="server" Height="80px" 
-                                             ImageUrl='<%# Eval("item_icon") %>' Width="80px" CommandName="TrangBi1" 
+                                         <asp:ImageButton ID="imgItem1" runat="server" Height="50px" 
+                                             ImageUrl='<%# Eval("item_icon") %>' Width="50px" CommandName="TrangBi1" 
                                              ToolTip='<%# "Tên: " +  Eval("item_name") +"\n"+
                                                             "Mô tả: " +  Eval("item_description") +"\n"+
                                                             "Đánh: " +  Eval("item_value1") +"\n"+

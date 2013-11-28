@@ -315,8 +315,7 @@ public partial class TuiDo : User
     {
         if (e.CommandName == "TrangBi1")
         {
-            int selectedRow = e.Item.DataItemIndex;
-
+            int selectedRow = e.Item.DisplayIndex;
             Label lblItemId = (Label)ListView1.Items[selectedRow].FindControl("lbItemId1");
             Label lblItemType = (Label)ListView1.Items[selectedRow].FindControl("lblItemType1");
 
@@ -366,8 +365,7 @@ public partial class TuiDo : User
         }
         else if (e.CommandName == "TrangBi2")
         {
-            int selectedRow = e.Item.DataItemIndex;
-
+            int selectedRow = e.Item.DisplayIndex;
             Label lblItemId = (Label)ListView1.Items[selectedRow].FindControl("lbItemId2");
             Label lblItemType = (Label)ListView1.Items[selectedRow].FindControl("lblItemType2");
 

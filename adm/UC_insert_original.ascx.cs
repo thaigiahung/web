@@ -22,8 +22,6 @@ public partial class adm_UC_insert_original : System.Web.UI.UserControl
         int txtvalue1 = Convert.ToInt32(item_value1TextBox.Text);
         int txtvalue2 = Convert.ToInt32(item_value2TextBox.Text);
         int txtvalue3 = Convert.ToInt32(item_value3TextBox.Text);
-        int txtvalue4 = Convert.ToInt32(item_value4TextBox.Text);
-        int txtvalue5 = Convert.ToInt32(item_value5TextBox.Text);
         
         if (data.HasFile)
         {
@@ -43,8 +41,7 @@ public partial class adm_UC_insert_original : System.Web.UI.UserControl
             newItem.item_value1 = txtvalue1;
             newItem.item_value2 = txtvalue2;
             newItem.item_value3 = txtvalue3;
-            newItem.item_value4 = txtvalue4;
-            newItem.item_value5 = txtvalue5;
+
            
             newItem.item_icon = picname;
 

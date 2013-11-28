@@ -13,7 +13,7 @@ public partial class CreateCharacter : System.Web.UI.Page
         string us = Session["User"].ToString();
         if (us == "")//chua dang nhap
         {
-            Response.Redirect("Default.aspx");//link ve trang chu
+            Response.Redirect("~/login.aspx");//link ve trang chu
         }
         else
         {
@@ -23,7 +23,7 @@ public partial class CreateCharacter : System.Web.UI.Page
                         select y;
             if (items.Count() != 0)//user da tao nhan vat
             {
-                Response.Redirect("Default.aspx");//link ve trang chu
+                Response.Redirect("~/main.aspx");//link ve trang chu
             }
         }
        

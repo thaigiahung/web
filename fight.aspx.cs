@@ -22,7 +22,6 @@ public partial class fight : User
 
     public void Page_Load(object sender, EventArgs e)
     {
-        Session["User"] = "hung";
         if (Session["User"] == null)
         {
             Response.Redirect("~/login.aspx");

@@ -7,7 +7,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+    
 </asp:Content>
 
 

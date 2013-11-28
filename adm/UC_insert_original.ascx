@@ -90,22 +90,6 @@
     </tr>
     <tr>
         <td align="right">
-            item_value4:</td>
-        <td>
-            <asp:TextBox ID="item_value4TextBox" runat="server" 
-                        Text='<%# Bind("item_value4") %>' />
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
-            item_value5:</td>
-        <td>
-            <asp:TextBox ID="item_value5TextBox" runat="server" 
-                        Text='<%# Bind("item_value5") %>' />
-        </td>
-    </tr>
-    <tr>
-        <td align="right">
             item_icon:</td>
         <td>
             <asp:FileUpload ID="FileUpload1" runat="server" />

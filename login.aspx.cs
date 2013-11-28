@@ -13,7 +13,7 @@ public partial class login : User
         this.txtUN.Focus();
         if (Session["User"] != null)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("~/main.aspx");
         }
     }
 
@@ -67,10 +67,10 @@ public partial class login : User
                             cha = db.characters.SingleOrDefault(n => n.username == user.username);
                             if (cha == null)
                             {
-                                Response.Redirect("CreateCharacter.aspx");
+                                Response.Redirect("~/CreateCharacter.aspx");
                             }
                             else
-                                Response.Redirect("Default.aspx");
+                                Response.Redirect("~/main.aspx");
                         }
                     }
                 }

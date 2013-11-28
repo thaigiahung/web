@@ -106,7 +106,7 @@
                         <a href="login.aspx">Đăng Nhập</a>
                     </asp:View>
                     <asp:View ID="View2" runat="server">
-                        <a href="map.aspx">Chơi Ngay</a>
+                        <a href="main.aspx">Chơi Ngay</a>
                     </asp:View>
                 </asp:MultiView>
                 
@@ -141,7 +141,7 @@
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
                         </asp:ContentPlaceHolder>
-                            <h2 class="black-bar-header">Trang liên kết</h2>
+                            <h2 class="black-bar-header"></h2>
                             <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
                             </asp:ContentPlaceHolder>
                         </div>

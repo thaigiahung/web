@@ -6,7 +6,7 @@
         {
             background:transparent;
             position: absolute;
-            bottom: 80px;
+            bottom: 50px;
             left: 150px; 
         }
         
@@ -14,7 +14,7 @@
         {
             background:transparent;
             position: absolute;
-            bottom: 80px;
+            bottom: 50px;
             right: 150px; 
         }
     </style>

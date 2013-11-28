@@ -521,10 +521,10 @@
                 AutoPostBack="True" onselectedindexchanged="DropDownList1_SelectedIndexChanged">
                 <asp:ListItem Selected="True" Value="1">Nón</asp:ListItem>
                 <asp:ListItem Value="2">Áo</asp:ListItem>
-                <asp:ListItem Value="3">Bao tay</asp:ListItem>
+                <asp:ListItem Value="5">Bao tay</asp:ListItem>
                 <asp:ListItem Value="4">Vũ khí</asp:ListItem>
-                <asp:ListItem Value="5">Giày</asp:ListItem>
-                <asp:ListItem Value="6">Khiêng</asp:ListItem>
+                <asp:ListItem Value="6">Giày</asp:ListItem>
+                <asp:ListItem Value="3">Khiêng</asp:ListItem>
             </asp:DropDownList>
 <table cellpadding="0" cellspacing="0" border="0" id="Table2">
     <thead>
@@ -568,7 +568,7 @@
 </table>
     <div align="center">
         <asp:DataPager ID="DataPager1" runat="server" PagedControlID="ListView2" 
-            PageSize="5">
+            PageSize="3">
             <Fields>
                 <asp:NumericPagerField ButtonType="Button" NextPageText="Next" 
                     PreviousPageText="Pre" />

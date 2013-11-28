@@ -136,9 +136,9 @@
             <td></td>
             <td></td>
             <td colspan="3">
-                <asp:Label ID="messagelv" runat="server"></asp:Label>
+                <asp:Label ID="messagelv" runat="server" ForeColor="#CC0000"></asp:Label>
                 <br />
-                <asp:Label ID="messagereward" runat="server"></asp:Label>
+                <asp:Label ID="messagereward" runat="server" ForeColor="#00CC00"></asp:Label>
             </td>
             <td></td>
             <td></td>

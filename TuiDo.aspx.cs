@@ -61,6 +61,8 @@ public partial class TuiDo : User
                             ai.item_value1 = item.First().item_value1;
                             ai.item_value2 = item.First().item_value2;
                             ai.item_value3 = item.First().item_value3;
+                            ai.item_value4 = 0;
+                            ai.item_value5 = 0;
                             ai.item_username = Session["User"].ToString();
                             ai.item_type = item.First().item_type;
                             ai.item_icon = item.First().item_icon;
@@ -125,7 +127,7 @@ public partial class TuiDo : User
                 if (userArmor != null)
                 {
                     btnArmor.ImageUrl = userArmor.item_icon;
-                    btnArmor.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userArmor.item_value1 + "\nĐỡ   : " + userArmor.item_value2 + "\nMáu      : " + userArmor.item_value3;
+                    btnArmor.ToolTip = "Tên   : " + userArmor.item_name + "\nMô tả   : " + userArmor.item_description + "\nĐánh   : " + userArmor.item_value1 + "\nĐỡ   : " + userArmor.item_value2 + "\nMáu      : " + userArmor.item_value3;
                 }
 
                 //Giày
@@ -133,7 +135,7 @@ public partial class TuiDo : User
                 if (userBoots != null)
                 {
                     btnBoots.ImageUrl = userBoots.item_icon;
-                    btnBoots.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userBoots.item_value1 + "\nĐỡ   : " + userBoots.item_value2 + "\nMáu      : " + userBoots.item_value3;
+                    btnBoots.ToolTip = "Tên   : " + userBoots.item_name + "\nMô tả   : " + userBoots.item_description + "\nĐánh   : " + userBoots.item_value1 + "\nĐỡ   : " + userBoots.item_value2 + "\nMáu      : " + userBoots.item_value3;
                 }
 
                 //Bao tay
@@ -141,7 +143,7 @@ public partial class TuiDo : User
                 if (userGloves != null)
                 {
                     btnGloves.ImageUrl = userGloves.item_icon;
-                    btnGloves.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userGloves.item_value1 + "\nĐỡ   : " + userGloves.item_value2 + "\nMáu      : " + userGloves.item_value3;
+                    btnGloves.ToolTip = "Tên   : " + userGloves.item_name + "\nMô tả   : " + userGloves.item_description + "\nĐánh   : " + userGloves.item_value1 + "\nĐỡ   : " + userGloves.item_value2 + "\nMáu      : " + userGloves.item_value3;
                 }
 
                 //Vũ khí
@@ -149,7 +151,7 @@ public partial class TuiDo : User
                 if (userWeapon != null)
                 {
                     btnWeapon.ImageUrl = userWeapon.item_icon;
-                    btnWeapon.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userWeapon.item_value1 + "\nĐỡ   : " + userWeapon.item_value2 + "\nMáu      : " + userWeapon.item_value3;
+                    btnWeapon.ToolTip = "Tên   : " + userWeapon.item_name + "\nMô tả   : " + userWeapon.item_description + "\nĐánh   : " + userWeapon.item_value1 + "\nĐỡ   : " + userWeapon.item_value2 + "\nMáu      : " + userWeapon.item_value3;
                 }
 
                 //Khiên
@@ -157,7 +159,7 @@ public partial class TuiDo : User
                 if (userShield != null)
                 {
                     btnShield.ImageUrl = userShield.item_icon;
-                    btnShield.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userShield.item_value1 + "\nĐỡ   : " + userShield.item_value2 + "\nMáu      : " + userShield.item_value3;
+                    btnShield.ToolTip = "Tên   : " + userShield.item_name + "\nMô tả   : " + userShield.item_description + "\nĐánh   : " + userShield.item_value1 + "\nĐỡ   : " + userShield.item_value2 + "\nMáu      : " + userShield.item_value3;
                 }
             }
         }

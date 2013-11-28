@@ -225,7 +225,7 @@ public partial class fight : User
         character cha = db.characters.SingleOrDefault(c => c.username == hero);
         int sub = Convert.ToInt32(cha.char_exp) * 5 / 100;
         cha.char_exp = cha.char_exp - sub;
-
+        messagelv.Text = "Thất bại, bạn đã bị trừ " + sub + " exp";
         db.SubmitChanges();
     }
     public void dropItemExp(string hero, string monster)

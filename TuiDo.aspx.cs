@@ -10,7 +10,7 @@ public partial class TuiDo : User
     WebGameDataContext db = new WebGameDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["User"] = "hung";
+        //Session["User"] = "hung";
         if (Session["User"] == null)
         {
             Response.Redirect("~/login.aspx");
@@ -104,7 +104,7 @@ public partial class TuiDo : User
                 Label lbDamage = (Label)FormView1.FindControl("lbDamage");
                 Label lbDefence = (Label)FormView1.FindControl("lbDefence");
                 var userItems = db.items.Where(i => i.item_username == Session["User"] && i.item_equip == 1);
-
+                
                 foreach (item ite in userItems)
                 {
                     lbHP.Text = (Convert.ToInt32(lbHP.Text) + ite.item_value3).ToString();

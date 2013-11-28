@@ -278,11 +278,18 @@ public partial class CreateCharacter : System.Web.UI.Page
                 nhanvat.char_damage = item1.Damage;
                 nhanvat.char_defend = item1.Defence;
                 nhanvat.char_hp = item1.HP;
+            
             }
         }
         nhanvat.char_money = 100;
         nhanvat.char_cash = 0;
         nhanvat.char_kill = 0;
+        nhanvat.char_item_equipment_armor = 1;
+        nhanvat.char_item_equipment_boots = 1;
+        nhanvat.char_item_equipment_gloves = 1;
+        nhanvat.char_item_equipment_helm = 1;
+        nhanvat.char_item_equipment_shield = 1;
+        nhanvat.char_item_equipment_weapon = 1;
         db.characters.InsertOnSubmit(nhanvat);
         db.SubmitChanges();
 

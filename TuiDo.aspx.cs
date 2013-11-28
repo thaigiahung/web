@@ -117,7 +117,7 @@ public partial class TuiDo : User
                 if (userHelmet != null)
                 {
                     btnHelmet.ImageUrl = userHelmet.item_icon;
-                    btnHelmet.ToolTip = "Đánh   : " + userHelmet.item_value1 + "\nĐỡ   : " + userHelmet.item_value2 + "\nMáu      : " + userHelmet.item_value3;
+                    btnHelmet.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userHelmet.item_value1 + "\nĐỡ   : " + userHelmet.item_value2 + "\nMáu      : " + userHelmet.item_value3;
                 }
 
                 //Áo
@@ -125,7 +125,7 @@ public partial class TuiDo : User
                 if (userArmor != null)
                 {
                     btnArmor.ImageUrl = userArmor.item_icon;
-                    btnArmor.ToolTip = "Đánh   : " + userArmor.item_value1 + "\nĐỡ   : " + userArmor.item_value2 + "\nMáu      : " + userArmor.item_value3;
+                    btnArmor.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userArmor.item_value1 + "\nĐỡ   : " + userArmor.item_value2 + "\nMáu      : " + userArmor.item_value3;
                 }
 
                 //Giày
@@ -133,7 +133,7 @@ public partial class TuiDo : User
                 if (userBoots != null)
                 {
                     btnBoots.ImageUrl = userBoots.item_icon;
-                    btnBoots.ToolTip = "Đánh   : " + userBoots.item_value1 + "\nĐỡ   : " + userBoots.item_value2 + "\nMáu      : " + userBoots.item_value3;
+                    btnBoots.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userBoots.item_value1 + "\nĐỡ   : " + userBoots.item_value2 + "\nMáu      : " + userBoots.item_value3;
                 }
 
                 //Bao tay
@@ -141,7 +141,7 @@ public partial class TuiDo : User
                 if (userGloves != null)
                 {
                     btnGloves.ImageUrl = userGloves.item_icon;
-                    btnGloves.ToolTip = "Đánh   : " + userGloves.item_value1 + "\nĐỡ   : " + userGloves.item_value2 + "\nMáu      : " + userGloves.item_value3;
+                    btnGloves.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userGloves.item_value1 + "\nĐỡ   : " + userGloves.item_value2 + "\nMáu      : " + userGloves.item_value3;
                 }
 
                 //Vũ khí
@@ -149,7 +149,7 @@ public partial class TuiDo : User
                 if (userWeapon != null)
                 {
                     btnWeapon.ImageUrl = userWeapon.item_icon;
-                    btnWeapon.ToolTip = "Đánh   : " + userWeapon.item_value1 + "\nĐỡ   : " + userWeapon.item_value2 + "\nMáu      : " + userWeapon.item_value3;
+                    btnWeapon.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userWeapon.item_value1 + "\nĐỡ   : " + userWeapon.item_value2 + "\nMáu      : " + userWeapon.item_value3;
                 }
 
                 //Khiên
@@ -157,7 +157,7 @@ public partial class TuiDo : User
                 if (userShield != null)
                 {
                     btnShield.ImageUrl = userShield.item_icon;
-                    btnShield.ToolTip = "Đánh   : " + userShield.item_value1 + "\nĐỡ   : " + userShield.item_value2 + "\nMáu      : " + userShield.item_value3;
+                    btnShield.ToolTip = "Tên   : " + userHelmet.item_name + "\nMô tả   : " + userHelmet.item_description + "\nĐánh   : " + userShield.item_value1 + "\nĐỡ   : " + userShield.item_value2 + "\nMáu      : " + userShield.item_value3;
                 }
             }
         }

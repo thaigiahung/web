@@ -113,18 +113,11 @@
                             </tr>
                             <tr>
                                 <td valign=top style=" border-top-style:solid; padding-left:20px; ; border-right-style:solid;border-bottom-style:solid; padding-top:20px;" >
-                                
-                                    <asp:ImageButton ID="imgBag" runat="server" 
-                                        ImageUrl="~/resources/img/GoldBag.png"  Height="100" Width="100" 
-                                         PostBackUrl="~/TuiDo.aspx" />
-                                    </td>
-                            </tr>
-                            <tr>
-                                <td valign=top style=" border-top-style:solid; padding-left:20px; ; border-right-style:solid;border-bottom-style:solid; padding-top:20px;" >
                                     <input type="button" id="open_popup" name="open_popup" rel="shoponline" href="#popup_shop" value="Cửa hàng"/>
-                                    <asp:Button ID="Button1" PostBackUrl="~/main.aspx" runat="server" Text="Thành chính" />
+                                    <asp:Button ID="Button1" PostBackUrl="~/main.aspx" runat="server" Text="Thành chính" />    
                                 </td>
                             </tr>
+                            
                         </table>
                     </ItemTemplate>
                 </asp:FormView>
@@ -198,7 +191,7 @@
                                 onitemcommand="ListView1_ItemCommand">
                                  <AlternatingItemTemplate>
                                      <td id="Td1" runat="server" style="">
-                                        <asp:ImageButton ID="imgItem2" runat="server" Height="80px" ImageUrl='<%# Eval("item_icon") %>' Width="50px" CommandName="TrangBi2"
+                                        <asp:ImageButton ID="imgItem2" runat="server" ImageUrl='<%# Eval("item_icon") %>' Width="50px" CommandName="TrangBi2"
                                         ToolTip='<%# "Tên: " +  Eval("item_name") +"\n"+
                                                         "Mô tả: " +  Eval("item_description") +"\n"+
                                                         "Đánh: " +  Eval("item_value1") +"\n"+

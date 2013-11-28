@@ -19,7 +19,7 @@
 	<link href="../resources/admin_template/css/bootstrap-responsive.css" rel="stylesheet" />
 	<link id="Link2" href="../resources/admin_template/css/style.css" rel="stylesheet" />
 	<link id="Link3" href="../resources/admin_template/css/style-responsive.css" rel="stylesheet" />
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css' />
+	<%--<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css' />--%>
     <!-- end: CSS -->
 
     <!-- start: Favicon -->
@@ -233,7 +233,7 @@
 										<span class="avatar"><img src="../resources/admin_template/img/avatar.jpg" alt="Avatar" /></span>
 										<span class="header">
 											<span class="from">
-										    	Łukasz Holeczek
+                                                
 										     </span>
 											<span class="time">
 										    	6 min
@@ -323,11 +323,15 @@
 						    <!-- start: User Dropdown -->
 						    <li class="dropdown">
 							    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								    <i class="halflings-icon white user"></i> Łukasz Holeczek
+								    <i class="halflings-icon white user"></i> 
+                                    <asp:Label ID="lblName" runat="server" Text="Label"></asp:Label>
 								    <span class="caret"></span>
 							    </a>
 							    <ul class="dropdown-menu">
-								    <li><a href="account.aspx"><i class="halflings-icon white user"></i> Profile</a></li>
+								    <li>
+                                        <%--<a href="account.aspx"><i class="halflings-icon white user"></i> Profile</a>--%>
+                                        <asp:LinkButton ID="btnSignout" runat="server" onclick="btnSignout_Click">Đăng Xuất</asp:LinkButton>
+                                    </li>
 								    <!--
                                     <li><a href="~/adm/login.aspx"><i class="halflings-icon white off"></i> Logout</a></li>
 							        -->

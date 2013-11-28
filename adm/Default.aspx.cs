@@ -9,6 +9,6 @@ public partial class adm_Default : AdminPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Response.Redirect("~/adm/account.aspx");
     }
 }

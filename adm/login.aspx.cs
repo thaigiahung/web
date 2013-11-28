@@ -20,9 +20,9 @@ public partial class adm_login : System.Web.UI.Page
         {
             String hashedPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(txtPassword.Text, "MD5");
             account admin = db.accounts.Single(a => a.username == txtUsername.Text && a.password == hashedPassword && a.role == 1);
-            Session["Admin"] = admin;
+            Session["Admin"] = admin.username;
 
-            Response.Redirect("Default.aspx");
+            Response.Redirect("~/adm/account.aspx");
         }
         catch
         {

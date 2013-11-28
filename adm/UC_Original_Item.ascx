@@ -3,10 +3,10 @@
     .style1
     {
         width: 100%;
+        height: 422px;
     }
     .style2
     {
-        width: 501px;
         height: 346px;
     }
     .style3
@@ -17,7 +17,11 @@
 
 <table class="style1">
     <tr>
-        <td colspan="2" align="right">
+        <td align="right">
+            <asp:HyperLink ID="HyperLink1" runat="server" 
+                NavigateUrl="~/adm/reg_original.aspx">Insert New</asp:HyperLink>
+        </td>
+        <td align="right">
             <asp:TextBox ID="searchbox" runat="server" Width="150px"></asp:TextBox>
             <asp:Button ID="btnSearch" runat="server" CausesValidation="False" 
                 onclick="btnSearch_Click" Text="Search" Width="50px" /></td>
@@ -259,7 +263,8 @@
                         Text='<%# Bind("item_level") %>' />
                     <br />
                     item_icon:
-                    <asp:Label ID="item_iconLabel" runat="server" Text='<%# Bind("item_icon") %>' />
+                    <asp:Image ID="Image1" runat="server" Height="75px" 
+                        ImageUrl='<%# Bind("item_icon") %>' Width="75px" />
                     <br />
                     item_description:
                     <asp:Label ID="item_descriptionLabel" runat="server" 

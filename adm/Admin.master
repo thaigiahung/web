@@ -371,9 +371,8 @@
                             <li><a href="login.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
                             -->
                             <li><a href="admin_hero.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Hero</span></a></li>
-                            <li><a href="admin_itemevent.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Item Event</span></a></li>
-                            <li><a href="admin_itemeventoption.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Event Option</span></a></li>
-					        <li><a href="admin_itempage.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Item</span></a></li>
+                            <li><a href="account.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Account</span></a></li>
+                            <li><a href="admin_itempage.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Item</span></a></li>
                             <li><a href="admin_market.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Market</span></a></li>
                             <li><a href="admin_monster.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Monster</span></a></li>
                             <li><a href="admin_original.aspx"><i class="fa-icon-lock"></i><span class="hidden-tablet"> Original Item</span></a></li>

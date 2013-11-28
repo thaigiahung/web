@@ -12,7 +12,7 @@
 
 <table class="style1">
     <tr>
-        <td class="style1" colspan="2" align="right">
+        <td class="style1" align="right">
             <asp:TextBox ID="searchbox" runat="server" Width="150px"></asp:TextBox>
             <asp:Button ID="btnSearch" runat="server" CausesValidation="False" 
                 onclick="btnSearch_Click" Text="Search" Width="50px" />
@@ -140,10 +140,13 @@
                     <asp:Label ID="LoreLabel" runat="server" Text='<%# Bind("Lore") %>' />
                     <br />
                     Avatar:
-                    <asp:Label ID="AvatarLabel" runat="server" Text='<%# Bind("Avatar") %>' />
+                    <asp:Image ID="Image1" runat="server" Height="100px" 
+                        ImageUrl='<%# Eval("Avatar") %>' Width="100px" />
+                    <br />
                     <br />
                     Skin:
-                    <asp:Label ID="SkinLabel" runat="server" Text='<%# Bind("Skin") %>' />
+                    <asp:Image ID="Image2" runat="server" Height="100px" 
+                        ImageUrl='<%# Eval("Skin") %>' Width="100px" />
                     <br />
                     <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" 
                         CommandName="Edit" Text="Edit" />
@@ -154,6 +157,11 @@
                 </ItemTemplate>
             </asp:FormView>
         </td>
+    </tr>
+    <tr>
+        <td class="style2" align="center">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/adm/reg_hero.aspx">Insert</asp:HyperLink>
+&nbsp;(with picture upload)</td>
     </tr>
 </table>
 

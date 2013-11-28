@@ -22,6 +22,7 @@ public partial class fight : User
 
     public void Page_Load(object sender, EventArgs e)
     {
+        
         if (Session["User"] == null)
         {
             Response.Redirect("~/login.aspx");
@@ -205,6 +206,7 @@ public partial class fight : User
             if(Convert.ToInt32(MHP.Text)<=0)
             {
                 dropItemExp(Session["User"].ToString(), Request.QueryString["id"]);
+                
             }
             else
                 if(Convert.ToInt32(UHP.Text)<=0)
@@ -270,16 +272,39 @@ public partial class fight : User
     public item getOpt(original_item sourceItem)
     {
         Random rand = new Random();
-        int opt1 = rand.Next(-5, 5);
-        int opt2 = rand.Next(-5, 5);
-        int opt3 = rand.Next(-5, 5);
+        int opt1 = 0;
+        int opt2 = 0;
+        int opt3 = 0;
 
+        if (sourceItem.item_type == 1 || sourceItem.item_type == 2)
+        {
+            opt2 = rand.Next(-5, 5);
+            opt3 = rand.Next(-5, 5);
+        }
+        if (sourceItem.item_type == 3)
+        {
+            opt2 = rand.Next(-5, 5);
+        }
+        if (sourceItem.item_type == 4)
+        {
+            opt1 = rand.Next(-5, 5);
+        }
+        if (sourceItem.item_type == 5 || sourceItem.item_type == 6)
+        {
+            opt1 = rand.Next(-5, 5);
+            opt3 = rand.Next(-5, 5);
+        }
+
+            
         item reward = new item();
         reward.item_value1 = sourceItem.item_value1 + opt1;
         reward.item_value2 = sourceItem.item_value2 + opt2;
         reward.item_value3 = sourceItem.item_value3 + opt3;
+        reward.item_value4 = sourceItem.item_value4;
+        reward.item_value5 = sourceItem.item_value5;
         reward.item_username = Session["User"].ToString();
         reward.item_type = sourceItem.item_type;
+        reward.item_level = sourceItem.item_level;
         reward.item_require_level = sourceItem.item_level;
         reward.item_icon = sourceItem.item_icon;
         reward.item_name = sourceItem.item_name;
